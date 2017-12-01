@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言最近要开始新的项目，工作又开始忙起来了，不过还是每天要抽时间来写博客，但不可能做到日更，因为一篇博客，写的时间还是挺长的。Gitbook 同时更新喔。 目录 一、Python 语法的简要说明每种语言都有自己的语法，不管是自然语言还是我们的计算机编程语言，Python 也不例外，编辑器或者解析器根据符合语法的程序代码">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="草根学Python（二）基本数据类型和变量">
+<meta property="og:url" content="http://yoursite.com/2017/06/19/草根学Python（二）基本数据类型和变量/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言最近要开始新的项目，工作又开始忙起来了，不过还是每天要抽时间来写博客，但不可能做到日更，因为一篇博客，写的时间还是挺长的。Gitbook 同时更新喔。 目录 一、Python 语法的简要说明每种语言都有自己的语法，不管是自然语言还是我们的计算机编程语言，Python 也不例外，编辑器或者解析器根据符合语法的程序代码转换成 CPU 能够执行的机器码，然后执行。 Python 的语法比较简单，采用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/a3eb54781266e147c3cc.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-b9b072c2587cc89e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-88fdd2055dd834f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-8391230097f54800.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-36df87f50895af18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-69affa6da83f1dfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-052a908c25fcfc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://dn-mhke0kuv.qbox.me/91ef196a3875cb12abeb.png">
+<meta property="og:updated_time" content="2017-12-01T09:42:37.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="草根学Python（二）基本数据类型和变量">
+<meta name="twitter:description" content="前言最近要开始新的项目，工作又开始忙起来了，不过还是每天要抽时间来写博客，但不可能做到日更，因为一篇博客，写的时间还是挺长的。Gitbook 同时更新喔。 目录 一、Python 语法的简要说明每种语言都有自己的语法，不管是自然语言还是我们的计算机编程语言，Python 也不例外，编辑器或者解析器根据符合语法的程序代码转换成 CPU 能够执行的机器码，然后执行。 Python 的语法比较简单，采用">
+<meta name="twitter:image" content="https://dn-mhke0kuv.qbox.me/a3eb54781266e147c3cc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/19/草根学Python（二）基本数据类型和变量/"/>
+
+
+
+
+
+  <title>草根学Python（二）基本数据类型和变量 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/19/草根学Python（二）基本数据类型和变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">草根学Python（二）基本数据类型和变量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T00:00:00+08:00">
+                2017-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,461
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近要开始新的项目，工作又开始忙起来了，不过还是每天要抽时间来写博客，但不可能做到日更，因为一篇博客，写的时间还是挺长的。<a href="https://www.readwithu.com/" target="_blank" rel="noopener">Gitbook</a> 同时更新喔。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://dn-mhke0kuv.qbox.me/a3eb54781266e147c3cc.png" alt="草根学Python（二）基本数据类型和变量"></p>
+<h1 id="一、Python-语法的简要说明"><a href="#一、Python-语法的简要说明" class="headerlink" title="一、Python 语法的简要说明"></a>一、Python 语法的简要说明</h1><p>每种语言都有自己的语法，不管是自然语言还是我们的计算机编程语言，Python 也不例外，编辑器或者解析器根据符合语法的程序代码转换成 CPU 能够执行的机器码，然后执行。</p>
+<p>Python 的语法比较简单，采用缩进方式。因为之前是写 JAVA 或者 C++ 偏多，突然没了大括号和要注意缩进，是有点不习惯的，不过还是可以接受的。而且要养成使用 4 个空格的缩进，可以在文本编辑器设置 Tab 自动转换为 4 个空格。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-b9b072c2587cc89e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python语法.png"></p>
+<p>以 # 开头的语句是注释,其他每一行都是一个语句，当语句以冒号 : 结尾时，缩进的语句视为代码块。要注意的是 Python 程序是大小写敏感的，如果写错了大小写，程序会报错。</p>
+<p>更多的说明可以看看之前的文章：<a href="https://www.readwithu.com/codeSpecification/codeSpecification_first.html" target="_blank" rel="noopener">Python代码规范中的简明概述</a></p>
+<h1 id="二、Python-的基本数据类型"><a href="#二、Python-的基本数据类型" class="headerlink" title="二、Python 的基本数据类型"></a>二、Python 的基本数据类型</h1><h2 id="1、整数"><a href="#1、整数" class="headerlink" title="1、整数"></a>1、整数</h2><p>Python 可以处理任意大小的整数，当然包括负整数，在 Python 程序中，整数的表示方法和数学上的写法一模一样，例如：<code>1</code>，<code>100</code>，<code>-8080</code>，<code>0</code>，等等。</p>
+<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用 0x 前缀和 0-9，a-f 表示，例如：0xff00，0xa5b4c3d2，等等。</p>
+<h2 id="2、浮点数"><a href="#2、浮点数" class="headerlink" title="2、浮点数"></a>2、浮点数</h2><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的。整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的（除法也是精确的），而浮点数运算则可能会有四舍五入的误差。</p>
+<h2 id="3、字符串"><a href="#3、字符串" class="headerlink" title="3、字符串"></a>3、字符串</h2><p>字符串是以 ‘’ 或 “” 括起来的任意文本，比如 <code>&#39;abc&#39;</code> ，<code>&quot;123&quot;</code> 等等。请注意，’’ 或 “” 本身只是一种表示方式，不是字符串的一部分，因此，字符串 <code>&#39;abc&#39;</code> 只有 a，b，c 这 3 个字符。这个其他的编程语言也是类似的。</p>
+<h3 id="（1）-Python-中的字符串和字符串转义"><a href="#（1）-Python-中的字符串和字符串转义" class="headerlink" title="（1） Python 中的字符串和字符串转义"></a>（1） Python 中的字符串和字符串转义</h3><p>在上面那里提到，字符串可以用 <code>&#39;&#39;</code> 或者 <code>&quot;&quot;</code> 括起来表示。可是有些时候，我们字符串本身就包含了 <code>&#39;&#39;</code> 或者 <code>&quot;&quot;</code> ，怎么办呢？</p>
+<p>那这个时候就需要对字符串的某些特殊字符进行“转义”，Python 字符串用 <code>\</code> 进行转义。跟 JAVA 也是一样的。</p>
+<p>常用的转义字符还有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\n 表示换行</span><br><span class="line">\t 表示一个制表符</span><br><span class="line">\\ 表示 \ 字符本身</span><br></pre></td></tr></table></figure></p>
+<p>具体例子：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-88fdd2055dd834f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python字符串转义.png"></p>
+<p>那上面就有一个问题呢，如果一个字符串包含很多需要转义的字符，对每一个字符都进行转义会很麻烦。这里为了应付这种情况，我们可以在字符串前面加个前缀 <code>r</code> ，表示这是一个 raw 字符串，里面的字符就不需要转义了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-8391230097f54800.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python转义r.png"></p>
+<p>但是，要注意的一点是，但是<code>r&#39;...&#39;</code>表示法不能表示多行字符串，也不能表示包含<code>&#39;</code>和<code>&quot;</code>的字符串。</p>
+<p>如果要表示多行字符串，可以用<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>表示,当然你也还可以在多行字符串前面添加 <code>r</code> ，把这个多行字符串也变成一个raw字符串</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-36df87f50895af18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多行转义.png"></p>
+<h3 id="（2）-字符串的编码问题"><a href="#（2）-字符串的编码问题" class="headerlink" title="（2） 字符串的编码问题"></a>（2） 字符串的编码问题</h3><p>我们都知道计算机只能处理数字，如果要处理文本，就必须先把文本转换为数字才能处理。最早的计算机在设计时采用8个比特（bit）作为一个字节（byte），所以，一个字节能表示的最大的整数就是255（二进制11111111=十进制255），0 - 255被用来表示大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母 A 的编码是 65，小写字母 z 的编码是 122。</p>
+<p>如果要表示中文，显然一个字节是不够的，至少需要两个字节，而且还不能和 ASCII 编码冲突，所以，中国制定了 GB2312 编码，用来把中文编进去。</p>
+<p>类似的，日文和韩文等其他语言也有这个问题。为了统一所有文字的编码，Unicode 应运而生。Unicode 把所有语言都统一到一套编码里，这样就不会再有乱码问题了。</p>
+<p>Unicode 通常用两个字节表示一个字符，原有的英文编码从单字节变成双字节，只需要把高字节全部填为 0 就可以。</p>
+<p>因为 Python 的诞生比 Unicode 标准发布的时间还要早，所以最早的Python 只支持 ASCII 编码，普通的字符串 ‘ABC’ 在 Python 内部都是 ASCII 编码的。</p>
+<p>Python 在后来添加了对 Unicode 的支持，以 Unicode 表示的字符串用<code>u&#39;...&#39;</code>表示。</p>
+<p>不过在最新的 Python 3 版本中，字符串是以 Unicode 编码的，也就是说，Python 的字符串支持多语言。就像上面的例子一样，我的代码中没有加<code>u&#39;...&#39;</code>，也能正常显示。</p>
+<p>不过由于 Python 源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为 UTF-8 编码。当Python 解释器读取源代码时，为了让它按 UTF-8 编码读取，我们通常在文件开头写上这两行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure>
+<p>第一行注释是为了告诉 Linux/OS X 系统，这是一个 Python 可执行程序，Windows 系统会忽略这个注释；</p>
+<p>第二行注释是为了告诉 Python 解释器，按照 UTF-8 编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<p>申明了 UTF-8 编码并不意味着你的 .py 文件就是 UTF-8 编码的，必须并且要确保文本编辑器正在使用 UTF-8 without BOM 编码</p>
+<h2 id="4、布尔值"><a href="#4、布尔值" class="headerlink" title="4、布尔值"></a>4、布尔值</h2><p>布尔值和布尔代数的表示完全一致，一个布尔值只有 <code>True</code> 、 <code>False</code>两种值，要么是 <code>True</code>，要么是 <code>False</code>，在 Python 中，可以直接用 True、False 表示布尔值（请注意大小写），也可以通过布尔运算计算出来。</p>
+<p>布尔值可以用 <code>and</code>、<code>or</code> 和 <code>not</code> 运算。</p>
+<p><code>and</code> 运算是与运算，只有所有都为 True，and 运算结果才是 True。</p>
+<p><code>or</code> 运算是或运算，只要其中有一个为 True，or 运算结果就是 True。</p>
+<p><code>not</code> 运算是非运算，它是一个单目运算符，把 True 变成 False，False 变成 True。</p>
+<h2 id="5、空值"><a href="#5、空值" class="headerlink" title="5、空值"></a>5、空值</h2><p>基本上每种编程语言都有自己的特殊值——空值，在 Python 中，用 None 来表示</p>
+<h1 id="三、基本数据类型转换"><a href="#三、基本数据类型转换" class="headerlink" title="三、基本数据类型转换"></a>三、基本数据类型转换</h1><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int(x [,base ])</td>
+<td>将x转换为一个整数</td>
+</tr>
+<tr>
+<td>long(x [,base ])</td>
+<td>将x转换为一个长整数</td>
+</tr>
+<tr>
+<td>float(x )</td>
+<td>将x转换到一个浮点数</td>
+</tr>
+<tr>
+<td>complex(real [,imag ])</td>
+<td>创建一个复数</td>
+</tr>
+<tr>
+<td>str(x )</td>
+<td>将对象 x 转换为字符串</td>
+</tr>
+<tr>
+<td>repr(x )</td>
+<td>将对象 x 转换为表达式字符串</td>
+</tr>
+<tr>
+<td>eval(str )</td>
+<td>用来计算在字符串中的有效 Python 表达式,并返回一个对象</td>
+</tr>
+<tr>
+<td>tuple(s )</td>
+<td>将序列 s 转换为一个元组</td>
+</tr>
+<tr>
+<td>list(s )</td>
+<td>将序列 s 转换为一个列表</td>
+</tr>
+<tr>
+<td>chr(x )</td>
+<td>将一个整数转换为一个字符</td>
+</tr>
+<tr>
+<td>unichr(x )</td>
+<td>将一个整数转换为 Unicode 字符</td>
+</tr>
+<tr>
+<td>ord(x )</td>
+<td>将一个字符转换为它的整数值</td>
+</tr>
+<tr>
+<td>hex(x )</td>
+<td>将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td>oct(x )</td>
+<td>将一个整数转换为一个八进制字符串</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、Python-中的变量"><a href="#四、Python-中的变量" class="headerlink" title="四、Python 中的变量"></a>四、Python 中的变量</h1><h2 id="1、变量的创建和赋值"><a href="#1、变量的创建和赋值" class="headerlink" title="1、变量的创建和赋值"></a>1、变量的创建和赋值</h2><p>在 Python 程序中，变量是用一个变量名表示，可以是任意数据类型，变量名必须是大小写英文、数字和下划线（_）的组合，且不能用数字开头，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">88</span></span><br></pre></td></tr></table></figure>
+<p>这里的 <code>a</code> 就是一个变量，代表一个整数，注意一点是 Python 是不用声明数据类型的。在 Python 中 <code>=</code> 是赋值语句，跟其他的编程语言也是一样的，因为 Python 定义变量时不需要声明数据类型，因此可以把任意的数据类型赋值给变量，且同一个变量可以反复赋值，而且可以是不同的数据类型。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-69affa6da83f1dfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python 中的变量.png"></p>
+<p>这种变量本身类型不固定的语言称之为动态语言，与之对应的是静态语言。静态语言在定义变量时必须指定变量类型，如果赋值的时候类型不匹配，就会报错。例如 Java 是静态语言。</p>
+<h2 id="2、变量的指向问题"><a href="#2、变量的指向问题" class="headerlink" title="2、变量的指向问题"></a>2、变量的指向问题</h2><p>我们来看下这段代码，发现最后打印出来的变量 b 是 <code>Hello Python</code> 。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-052a908c25fcfc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python变量指向.png"></p>
+<p>这主要是变量 a 一开始是指向了字符串 <code>Hello Python</code> ，<code>b=a</code> 创建了变量 b ,变量 b 也指向了a 指向的字符串 <code>Hello Python</code>，最后 <code>a=123</code>，把 变量 a 重新指向了 <code>123</code>，所以最后输出变量 b 是 <code>Hello Python</code></p>
+<p><img src="https://dn-mhke0kuv.qbox.me/91ef196a3875cb12abeb.png" alt="变量的指向"></p>
+<h2 id="3、多个变量赋值"><a href="#3、多个变量赋值" class="headerlink" title="3、多个变量赋值"></a>3、多个变量赋值</h2><p>Python 允许同时为多个变量赋值。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>以上实例，创建一个整型对象，值为 1，三个变量被分配到相同的内存空间上。</p>
+<p>当然也可以为多个对象指定多个变量。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="string">"liangdianshui"</span></span><br></pre></td></tr></table></figure>
+<p>以上实例，两个整型对象 1 和 2 的分配给变量 a 和 b，字符串对象 “liangdianshui” 分配给变量 c。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/18/草根学Python（一）第一个Python程序/" rel="next" title="草根学Python（一）第一个Python程序">
+                <i class="fa fa-chevron-left"></i> 草根学Python（一）第一个Python程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/21/草根学Python（三）List 和 Tuple/" rel="prev" title="草根学Python（三）List 和 Tuple">
+                草根学Python（三）List 和 Tuple <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Python-语法的简要说明"><span class="nav-number">3.</span> <span class="nav-text">一、Python 语法的简要说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Python-的基本数据类型"><span class="nav-number">4.</span> <span class="nav-text">二、Python 的基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、整数"><span class="nav-number">4.1.</span> <span class="nav-text">1、整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、浮点数"><span class="nav-number">4.2.</span> <span class="nav-text">2、浮点数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、字符串"><span class="nav-number">4.3.</span> <span class="nav-text">3、字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）-Python-中的字符串和字符串转义"><span class="nav-number">4.3.1.</span> <span class="nav-text">（1） Python 中的字符串和字符串转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）-字符串的编码问题"><span class="nav-number">4.3.2.</span> <span class="nav-text">（2） 字符串的编码问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、布尔值"><span class="nav-number">4.4.</span> <span class="nav-text">4、布尔值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、空值"><span class="nav-number">4.5.</span> <span class="nav-text">5、空值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、基本数据类型转换"><span class="nav-number">5.</span> <span class="nav-text">三、基本数据类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Python-中的变量"><span class="nav-number">6.</span> <span class="nav-text">四、Python 中的变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、变量的创建和赋值"><span class="nav-number">6.1.</span> <span class="nav-text">1、变量的创建和赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、变量的指向问题"><span class="nav-number">6.2.</span> <span class="nav-text">2、变量的指向问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、多个变量赋值"><span class="nav-number">6.3.</span> <span class="nav-text">3、多个变量赋值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

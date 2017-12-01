@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言上一篇文章出现了个明显的知识点错误，不过感谢有个网友的提出，及时进行了修改。也希望各位多多包涵。 目录 一、字典(Dictionary)经过之前的学习，我们可以知道 list 和 tuple 可以用来表示有序集合，之前我们那个例子是用 list 来存储了用户的昵称 1user=[&apos;liangdianshu">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="草根学Python（四）Dict 和 Set">
+<meta property="og:url" content="http://yoursite.com/2017/06/25/草根学Python（四）Dict 和 Set/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言上一篇文章出现了个明显的知识点错误，不过感谢有个网友的提出，及时进行了修改。也希望各位多多包涵。 目录 一、字典(Dictionary)经过之前的学习，我们可以知道 list 和 tuple 可以用来表示有序集合，之前我们那个例子是用 list 来存储了用户的昵称 1user=[&apos;liangdianshui&apos;,&apos;twowater&apos;,&apos;两点水&apos;] 如果我们需要把用户的账号也记录进去呢？ 用 li">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/25/e56136d9dd32653bd7db19de0969e29d">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/23/9afd2a3081e9d618cc55bf859b545d12">
+<meta property="og:updated_time" content="2017-12-01T09:43:15.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="草根学Python（四）Dict 和 Set">
+<meta name="twitter:description" content="前言上一篇文章出现了个明显的知识点错误，不过感谢有个网友的提出，及时进行了修改。也希望各位多多包涵。 目录 一、字典(Dictionary)经过之前的学习，我们可以知道 list 和 tuple 可以用来表示有序集合，之前我们那个例子是用 list 来存储了用户的昵称 1user=[&apos;liangdianshui&apos;,&apos;twowater&apos;,&apos;两点水&apos;] 如果我们需要把用户的账号也记录进去呢？ 用 li">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/6/25/e56136d9dd32653bd7db19de0969e29d">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/25/草根学Python（四）Dict 和 Set/"/>
+
+
+
+
+
+  <title>草根学Python（四）Dict 和 Set | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/草根学Python（四）Dict 和 Set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">草根学Python（四）Dict 和 Set</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-25T00:00:00+08:00">
+                2017-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,851
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>上一篇文章出现了个明显的知识点错误，不过感谢有个网友的提出，及时进行了修改。也希望各位多多包涵。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://user-gold-cdn.xitu.io/2017/6/25/e56136d9dd32653bd7db19de0969e29d" alt="草根学Python（四） Dict 和 Set"></p>
+<h1 id="一、字典-Dictionary"><a href="#一、字典-Dictionary" class="headerlink" title="一、字典(Dictionary)"></a>一、字典(Dictionary)</h1><p>经过之前的学习，我们可以知道 list 和 tuple 可以用来表示有序集合，之前我们那个例子是用 list 来存储了用户的昵称</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=[<span class="string">'liangdianshui'</span>,<span class="string">'twowater'</span>,<span class="string">'两点水'</span>]</span><br></pre></td></tr></table></figure>
+<p>如果我们需要把用户的账号也记录进去呢？</p>
+<p>用 list 可以这样子解决：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=[[<span class="string">'liangdianshui'</span>,<span class="string">'111111'</span>],[<span class="string">'twowater'</span>,<span class="string">'222222'</span>],[<span class="string">'两点水'</span>,<span class="string">'333333'</span>]]</span><br></pre></td></tr></table></figure>
+<p>可是这样表示也不方便，而且很难根据昵称找到对应的昵称，且 list 越长，耗时越长；这时候就可以用 dict （字典）来表示了，Python 内置了 字典（dict），dict 全称dictionary，相当于 JAVA 中的 map，使用键-值（key-value）存储，具有极快的查找速度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1、dict-（字典）的创建"><a href="#1、dict-（字典）的创建" class="headerlink" title="1、dict （字典）的创建"></a>1、dict （字典）的创建</h2><p>字典是另一种可变容器模型，且可存储任意类型对象。</p>
+<p>字典的每个键值(key=&gt;value)对用冒号(:)分割，每个对之间用逗号(,)分割，整个字典包括在花括号({})中 ,格式如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;key1 : value1, key2 : value2 &#125;</span><br></pre></td></tr></table></figure>
+<p>注意：键必须是唯一的，但值则不必。值可以取任何数据类型，但键必须是不可变的。</p>
+<p>创建 dict（字典）实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>&#125;</span><br><span class="line">dict2=&#123;<span class="string">'abc'</span>:<span class="number">1234</span>,<span class="number">1234</span>:<span class="string">'abc'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、访问-dict-（字典）"><a href="#2、访问-dict-（字典）" class="headerlink" title="2、访问 dict （字典）"></a>2、访问 dict （字典）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>&#125;</span><br><span class="line">print(dict1)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;twowater&apos;: &apos;222222&apos;, &apos;两点水&apos;: &apos;333333&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的一点是：如果字典中没有这个键，是会报错的。</p>
+<h2 id="3、修改-dict-（字典）"><a href="#3、修改-dict-（字典）" class="headerlink" title="3、修改 dict （字典）"></a>3、修改 dict （字典）</h2><p>向字典添加新内容的方法是增加新的键/值对，修改或删除已有键/值对</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>&#125;</span><br><span class="line">print(dict1)</span><br><span class="line"><span class="comment"># 新增一个键值对</span></span><br><span class="line">dict1[<span class="string">'jack'</span>]=<span class="string">'444444'</span></span><br><span class="line">print(dict1)</span><br><span class="line"><span class="comment"># 修改键值对</span></span><br><span class="line">dict1[<span class="string">'liangdianshui'</span>]=<span class="string">'555555'</span></span><br><span class="line">print(dict1)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;twowater&apos;: &apos;222222&apos;, &apos;两点水&apos;: &apos;333333&apos;&#125;</span><br><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;twowater&apos;: &apos;222222&apos;, &apos;两点水&apos;: &apos;333333&apos;, &apos;jack&apos;: &apos;444444&apos;&#125;</span><br><span class="line">&#123;&apos;liangdianshui&apos;: &apos;555555&apos;, &apos;twowater&apos;: &apos;222222&apos;, &apos;两点水&apos;: &apos;333333&apos;, &apos;jack&apos;: &apos;444444&apos;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、删除-dict-（字典）"><a href="#4、删除-dict-（字典）" class="headerlink" title="4、删除 dict （字典）"></a>4、删除 dict （字典）</h2><p>通过 <code>del</code> 可以删除 dict （字典）中的某个元素，也能删除 dict （字典）</p>
+<p>通过调用 <code>clear()</code> 方法可以清除字典中的所有元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>&#125;</span><br><span class="line">print(dict1)</span><br><span class="line"><span class="comment"># 通过 key 值，删除对应的元素</span></span><br><span class="line"><span class="keyword">del</span> dict1[<span class="string">'twowater'</span>]</span><br><span class="line">print(dict1)</span><br><span class="line"><span class="comment"># 删除字典中的所有元素</span></span><br><span class="line">dict1.clear()</span><br><span class="line">print(dict1)</span><br><span class="line"><span class="comment"># 删除字典</span></span><br><span class="line"><span class="keyword">del</span> dict1</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;twowater&apos;: &apos;222222&apos;, &apos;两点水&apos;: &apos;333333&apos;&#125;</span><br><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;两点水&apos;: &apos;333333&apos;&#125;</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5、-dict-（字典）使用时注意的事项"><a href="#5、-dict-（字典）使用时注意的事项" class="headerlink" title="5、 dict （字典）使用时注意的事项"></a>5、 dict （字典）使用时注意的事项</h2><p>(1) dict （字典）是不允许一个键创建两次的，但是在创建 dict （字典）的时候如果出现了一个键值赋予了两次，会以最后一次赋予的值为准</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="string">'twowater'</span>:<span class="string">'222222'</span> ,<span class="string">'两点水'</span>:<span class="string">'333333'</span>,<span class="string">'twowater'</span>:<span class="string">'444444'</span>&#125;</span><br><span class="line">print(dict1)</span><br><span class="line">print(dict1[<span class="string">'twowater'</span>])</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, &apos;twowater&apos;: &apos;444444&apos;, &apos;两点水&apos;: &apos;333333&apos;&#125;</span><br><span class="line">444444</span><br></pre></td></tr></table></figure>
+<p>(2) dict （字典）键必须不可变，可是键可以用数字，字符串或元组充当，但是就是不能使用列表</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">dict1=&#123;<span class="string">'liangdianshui'</span>:<span class="string">'111111'</span> ,<span class="number">123</span>:<span class="string">'222222'</span> ,(<span class="number">123</span>,<span class="string">'tom'</span>):<span class="string">'333333'</span>,<span class="string">'twowater'</span>:<span class="string">'444444'</span>&#125;</span><br><span class="line">print(dict1)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;liangdianshui&apos;: &apos;111111&apos;, 123: &apos;222222&apos;, (123, &apos;tom&apos;): &apos;333333&apos;, &apos;twowater&apos;: &apos;444444&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>(3) dict 内部存放的顺序和 key 放入的顺序是没有任何关系</p>
+<p>和 list 比较，dict 有以下几个特点：</p>
+<ul>
+<li><p>查找和插入的速度极快，不会随着key的增加而变慢</p>
+</li>
+<li><p>需要占用大量的内存，内存浪费多</p>
+</li>
+</ul>
+<p>而list相反：</p>
+<ul>
+<li><p>查找和插入的时间随着元素的增加而增加</p>
+</li>
+<li><p>占用空间小，浪费内存很少</p>
+</li>
+</ul>
+<h2 id="6、dict-（字典）-的函数和方法"><a href="#6、dict-（字典）-的函数和方法" class="headerlink" title="6、dict （字典） 的函数和方法"></a>6、dict （字典） 的函数和方法</h2><table>
+<thead>
+<tr>
+<th>方法和函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmp(dict1, dict2)</td>
+<td>比较两个字典元素</td>
+</tr>
+<tr>
+<td>len(dict)</td>
+<td>计算字典元素个数</td>
+</tr>
+<tr>
+<td>str(dict)</td>
+<td>输出字典可打印的字符串表示</td>
+</tr>
+<tr>
+<td>type(variable)</td>
+<td>返回输入的变量类型，如果变量是字典就返回字典类型</td>
+</tr>
+<tr>
+<td>dict.clear()</td>
+<td>删除字典内所有元素</td>
+</tr>
+<tr>
+<td>dict.copy()</td>
+<td>返回一个字典的浅复制</td>
+</tr>
+<tr>
+<td>dict.values()</td>
+<td>以列表返回字典中的所有值</td>
+</tr>
+<tr>
+<td>popitem()</td>
+<td>随机返回并删除字典中的一对键和值</td>
+</tr>
+<tr>
+<td>dict.items()</td>
+<td>以列表返回可遍历的(键, 值) 元组数组</td>
+</tr>
+</tbody>
+</table>
+<h1 id="二、set"><a href="#二、set" class="headerlink" title="二、set"></a>二、set</h1><p>python 的 set 和其他语言类似, 是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素。set 和 dict 类似，但是 set 不存储 value 值的。</p>
+<h2 id="1、set-的创建"><a href="#1、set-的创建" class="headerlink" title="1、set 的创建"></a>1、set 的创建</h2><p>创建一个 set，需要提供一个 list 作为输入集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set1=set([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;456, 123, 789&#125;</span><br></pre></td></tr></table></figure>
+<p>传入的参数 <code>[123,456,789]</code> 是一个 list，而显示的 <code>{456, 123, 789}</code> 只是告诉你这个 set 内部有 456, 123, 789 这 3 个元素，显示的顺序跟你参数中的 list 里的元素的顺序是不一致的，这也说明了 set 是无序的。</p>
+<p>还有一点，我们观察到输出的结果是在大括号中的，经过之前的学习，可以知道，tuple (元组) 使用小括号，list (列表) 使用方括号, dict (字典) 使用的是大括号，dict 也是无序的，只不过 dict 保存的是 key-value 键值对值，而 set 可以理解为只保存 key 值。</p>
+<p>回忆一下，在 dict （字典） 中创建时，有重复的 key ，会被后面的 key-value 值覆盖的，而 重复元素在 set 中自动被过滤的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set1=set([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>,<span class="number">123</span>,<span class="number">123</span>])</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;456, 123, 789&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、set-添加元素"><a href="#2、set-添加元素" class="headerlink" title="2、set 添加元素"></a>2、set 添加元素</h2><p>通过 add(key) 方法可以添加元素到 set 中，可以重复添加，但不会有效果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set1=set([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">print(set1)</span><br><span class="line">set1.add(<span class="number">100</span>)</span><br><span class="line">print(set1)</span><br><span class="line">set1.add(<span class="number">100</span>)</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;456, 123, 789&#125;</span><br><span class="line">&#123;456, 123, 100, 789&#125;</span><br><span class="line">&#123;456, 123, 100, 789&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3、set-删除元素"><a href="#3、set-删除元素" class="headerlink" title="3、set 删除元素"></a>3、set 删除元素</h2><p>通过 remove(key) 方法可以删除 set 中的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set1=set([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">print(set1)</span><br><span class="line">set1.remove(<span class="number">456</span>)</span><br><span class="line">print(set1)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;456, 123, 789&#125;</span><br><span class="line">&#123;123, 789&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、set-的运用"><a href="#4、set-的运用" class="headerlink" title="4、set 的运用"></a>4、set 的运用</h2><p>因为 set 是一个无序不重复元素集，因此，两个 set 可以做数学意义上的 union(并集), intersection(交集), difference(差集) 等操作。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/6/23/9afd2a3081e9d618cc55bf859b545d12" alt="set集合运算"></p>
+<p>例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">set1=set(<span class="string">'hello'</span>)</span><br><span class="line">set2=set([<span class="string">'p'</span>,<span class="string">'y'</span>,<span class="string">'y'</span>,<span class="string">'h'</span>,<span class="string">'o'</span>,<span class="string">'n'</span>])</span><br><span class="line">print(set1)</span><br><span class="line">print(set2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交集 (求两个 set 集合中相同的元素)</span></span><br><span class="line">set3=set1 &amp; set2</span><br><span class="line">print(<span class="string">'\n交集 set3:'</span>)</span><br><span class="line">print(set3)</span><br><span class="line"><span class="comment"># 并集 （合并两个 set 集合的元素并去除重复的值）</span></span><br><span class="line">set4=set1 | set2</span><br><span class="line">print(<span class="string">'\n并集 set4:'</span>)</span><br><span class="line">print(set4)</span><br><span class="line"><span class="comment"># 差集</span></span><br><span class="line">set5=set1 - set2</span><br><span class="line">set6=set2 - set1</span><br><span class="line">print(<span class="string">'\n差集 set5:'</span>)</span><br><span class="line">print(set5)</span><br><span class="line">print(<span class="string">'\n差集 set6:'</span>)</span><br><span class="line">print( set6)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 去除海量列表里重复元素，用 hash 来解决也行，只不过感觉在性能上不是很高，用 set 解决还是很不错的</span></span><br><span class="line">list1 = [<span class="number">111</span>,<span class="number">222</span>,<span class="number">333</span>,<span class="number">444</span>,<span class="number">111</span>,<span class="number">222</span>,<span class="number">333</span>,<span class="number">444</span>,<span class="number">555</span>,<span class="number">666</span>]  </span><br><span class="line">set7=set(list1)</span><br><span class="line">print(<span class="string">'\n去除列表里重复元素 set7:'</span>)</span><br><span class="line">print(set7)</span><br></pre></td></tr></table></figure>
+<p>运行的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;h&apos;, &apos;l&apos;, &apos;e&apos;, &apos;o&apos;&#125;</span><br><span class="line">&#123;&apos;h&apos;, &apos;n&apos;, &apos;o&apos;, &apos;y&apos;, &apos;p&apos;&#125;</span><br><span class="line"></span><br><span class="line">交集 set3:</span><br><span class="line">&#123;&apos;h&apos;, &apos;o&apos;&#125;</span><br><span class="line"></span><br><span class="line">并集 set4:</span><br><span class="line">&#123;&apos;h&apos;, &apos;p&apos;, &apos;n&apos;, &apos;e&apos;, &apos;o&apos;, &apos;y&apos;, &apos;l&apos;&#125;</span><br><span class="line"></span><br><span class="line">差集 set5:</span><br><span class="line">&#123;&apos;l&apos;, &apos;e&apos;&#125;</span><br><span class="line"></span><br><span class="line">差集 set6:</span><br><span class="line">&#123;&apos;p&apos;, &apos;y&apos;, &apos;n&apos;&#125;</span><br><span class="line"></span><br><span class="line">去除列表里重复元素 set7:</span><br><span class="line">&#123;555, 333, 111, 666, 444, 222&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/21/草根学Python（三）List 和 Tuple/" rel="next" title="草根学Python（三）List 和 Tuple">
+                <i class="fa fa-chevron-left"></i> 草根学Python（三）List 和 Tuple
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/27/草根学Python（五） 条件语句和循环语句/" rel="prev" title="草根学Python（五）条件语句和循环语句">
+                草根学Python（五）条件语句和循环语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、字典-Dictionary"><span class="nav-number">3.</span> <span class="nav-text">一、字典(Dictionary)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、dict-（字典）的创建"><span class="nav-number">3.1.</span> <span class="nav-text">1、dict （字典）的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、访问-dict-（字典）"><span class="nav-number">3.2.</span> <span class="nav-text">2、访问 dict （字典）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、修改-dict-（字典）"><span class="nav-number">3.3.</span> <span class="nav-text">3、修改 dict （字典）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、删除-dict-（字典）"><span class="nav-number">3.4.</span> <span class="nav-text">4、删除 dict （字典）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、-dict-（字典）使用时注意的事项"><span class="nav-number">3.5.</span> <span class="nav-text">5、 dict （字典）使用时注意的事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、dict-（字典）-的函数和方法"><span class="nav-number">3.6.</span> <span class="nav-text">6、dict （字典） 的函数和方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、set"><span class="nav-number">4.</span> <span class="nav-text">二、set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、set-的创建"><span class="nav-number">4.1.</span> <span class="nav-text">1、set 的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、set-添加元素"><span class="nav-number">4.2.</span> <span class="nav-text">2、set 添加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、set-删除元素"><span class="nav-number">4.3.</span> <span class="nav-text">3、set 删除元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、set-的运用"><span class="nav-number">4.4.</span> <span class="nav-text">4、set 的运用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

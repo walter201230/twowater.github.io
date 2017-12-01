@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言第一次建学习群，而且是 Python 的学习群，虽然之前深入学习和工作都是 Android 相关的，最近学起来 Python ，真的很好玩，所以创了个微信群，希望童鞋们进群学习讨论。也可以直接加我微androidwed拉进群。也欢迎大家在 Gitbook 中提出文章的不足。  目录 一、条件语句Python 条件语">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="草根学Python（五）条件语句和循环语句">
+<meta property="og:url" content="http://yoursite.com/2017/06/27/草根学Python（五） 条件语句和循环语句/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言第一次建学习群，而且是 Python 的学习群，虽然之前深入学习和工作都是 Android 相关的，最近学起来 Python ，真的很好玩，所以创了个微信群，希望童鞋们进群学习讨论。也可以直接加我微androidwed拉进群。也欢迎大家在 Gitbook 中提出文章的不足。  目录 一、条件语句Python 条件语句跟其他语言基本一致的，都是通过一条或多条语句的执行结果（ True 或者 Fa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/27/aaeb2c5817779cef45fee80bf544ff30">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/27/b09d98a2f40724326f8b04b2049236b5">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/23/9b796437c2f0ac3ba1dc5009de091031">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/23/d0761ec24b83fea3d7008c29074ba5cb">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/6/26/235ff5c72862b213486e0bf23852a245">
+<meta property="og:updated_time" content="2017-12-01T09:44:05.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="草根学Python（五）条件语句和循环语句">
+<meta name="twitter:description" content="前言第一次建学习群，而且是 Python 的学习群，虽然之前深入学习和工作都是 Android 相关的，最近学起来 Python ，真的很好玩，所以创了个微信群，希望童鞋们进群学习讨论。也可以直接加我微androidwed拉进群。也欢迎大家在 Gitbook 中提出文章的不足。  目录 一、条件语句Python 条件语句跟其他语言基本一致的，都是通过一条或多条语句的执行结果（ True 或者 Fa">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/6/27/aaeb2c5817779cef45fee80bf544ff30">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/27/草根学Python（五） 条件语句和循环语句/"/>
+
+
+
+
+
+  <title>草根学Python（五）条件语句和循环语句 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/草根学Python（五） 条件语句和循环语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">草根学Python（五）条件语句和循环语句</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,028
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一次建学习群，而且是 Python 的学习群，虽然之前深入学习和工作都是 Android 相关的，最近学起来 Python ，真的很好玩，所以创了个微信群，希望童鞋们进群学习讨论。也可以直接加我微<code>androidwed</code>拉进群。也欢迎大家在 <a href="https://www.readwithu.com/" target="_blank" rel="noopener">Gitbook</a> 中提出文章的不足。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/6/27/aaeb2c5817779cef45fee80bf544ff30" alt="Python学习群"></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="https://user-gold-cdn.xitu.io/2017/6/27/b09d98a2f40724326f8b04b2049236b5" alt="草根学Python（五）  条件语句和循环语句"></p>
+<h1 id="一、条件语句"><a href="#一、条件语句" class="headerlink" title="一、条件语句"></a>一、条件语句</h1><p>Python 条件语句跟其他语言基本一致的，都是通过一条或多条语句的执行结果（ True 或者 False ）来决定执行的代码块。</p>
+<p>Python 程序语言指定任何非 0 和非空（null）值为 True，0 或者 null为 False。</p>
+<p>执行的流程图如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/6/23/9b796437c2f0ac3ba1dc5009de091031" alt="if语句流程图"></p>
+<h2 id="1、if-语句的基本形式"><a href="#1、if-语句的基本形式" class="headerlink" title="1、if 语句的基本形式"></a>1、if 语句的基本形式</h2><p>Python 中，if 语句的基本形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件：</span><br><span class="line">    执行语句……</span><br><span class="line"><span class="keyword">else</span>：</span><br><span class="line">    执行语句……</span><br></pre></td></tr></table></figure>
+<p>前面也提到过，Python 语言有着严格的缩进要求，因此这里也需要注意缩进，也不要少写了冒号 <code>:</code> 。</p>
+<p>if 语句的判断条件可以用&gt;（大于）、&lt;(小于)、==（等于）、&gt;=（大于等于）、&lt;=（小于等于）来表示其关系。</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line">results=<span class="number">59</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> results&gt;=<span class="number">60</span>:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'及格'</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'不及格'</span>)</span><br></pre></td></tr></table></figure>
+<p>输出的结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不及格</span><br></pre></td></tr></table></figure>
+<p>上面也说道，非零数值、非空字符串、非空 list 等，判断为True，否则为False。因此也可以这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">6</span> </span><br><span class="line"><span class="keyword">if</span> num :</span><br><span class="line">    print(<span class="string">'Hello Python'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2、if-语句多个判断条件的形式"><a href="#2、if-语句多个判断条件的形式" class="headerlink" title="2、if 语句多个判断条件的形式"></a>2、if 语句多个判断条件的形式</h2><p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如上面的例子中大于 60 的为及格，那我们还要判断大于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
+<p>这时候需要用到 if 语句多个判断条件，</p>
+<p>用伪代码来表示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</span><br><span class="line">    执行语句<span class="number">1</span>……</span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</span><br><span class="line">    执行语句<span class="number">2</span>……</span><br><span class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</span><br><span class="line">    执行语句<span class="number">3</span>……</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    执行语句<span class="number">4</span>……</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line">results = <span class="number">89</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> results &gt; <span class="number">90</span>:</span><br><span class="line">    print(<span class="string">'优秀'</span>)</span><br><span class="line"><span class="keyword">elif</span> results &gt; <span class="number">80</span>:</span><br><span class="line">    print(<span class="string">'良好'</span>)</span><br><span class="line"><span class="keyword">elif</span> results &gt; <span class="number">60</span>:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'及格'</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'不及格'</span>)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">良好</span><br></pre></td></tr></table></figure>
+<h2 id="3、if-语句多个条件同时判断"><a href="#3、if-语句多个条件同时判断" class="headerlink" title="3、if 语句多个条件同时判断"></a>3、if 语句多个条件同时判断</h2><p>Python 不像 Java 有 switch 语句，所以多个条件判断，只能用 elif 来实现，但是有时候需要多个条件需同时判断时，可以使用 or （或），表示两个条件有一个成立时判断条件成功；使用 and （与）时，表示只有两个条件同时成立的情况下，判断条件才成功。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*-coding:utf-8-*-</span></span><br><span class="line"></span><br><span class="line">java = <span class="number">86</span></span><br><span class="line">python = <span class="number">68</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> java &gt; <span class="number">80</span> <span class="keyword">and</span>  python &gt; <span class="number">80</span>:</span><br><span class="line">    print(<span class="string">'优秀'</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">    print(<span class="string">'不优秀'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( java &gt;= <span class="number">80</span>  <span class="keyword">and</span> java &lt; <span class="number">90</span> )  <span class="keyword">or</span> ( python &gt;= <span class="number">80</span> <span class="keyword">and</span> python &lt; <span class="number">90</span>):</span><br><span class="line">    print(<span class="string">'良好'</span>)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">不优秀</span><br><span class="line">良好</span><br></pre></td></tr></table></figure>
+<p>注意：if 有多个条件时可使用括号来区分判断的先后顺序，括号中的判断优先执行，此外 and 和 or 的优先级低于 &gt;（大于）、&lt;（小于）等判断符号，即大于和小于在没有括号的情况下会比与或要优先判断。</p>
+<h1 id="二、循环语句"><a href="#二、循环语句" class="headerlink" title="二、循环语句"></a>二、循环语句</h1><p>一般编程语言都有循环语句，循环语句允许我们执行一个语句或语句组多次。</p>
+<p>循环语句的一般形式如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/6/23/d0761ec24b83fea3d7008c29074ba5cb" alt="python循环语句"></p>
+<p>Python 提供了 for 循环和 while 循环，当然还有一些控制循环的语句：</p>
+<table>
+<thead>
+<tr>
+<th>循环控制语句</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break</td>
+<td>在语句块执行过程中终止循环，并且跳出整个循环</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>在语句块执行过程中终止当前循环，跳出该次循环，执行下一次循环</td>
+</tr>
+<tr>
+<td>pass</td>
+<td>pass 是空语句，是为了保持程序结构的完整性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1、While-循环语句"><a href="#1、While-循环语句" class="headerlink" title="1、While 循环语句"></a>1、While 循环语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">1</span> </span><br><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> (count &lt;= <span class="number">100</span>):</span><br><span class="line">    sum = sum + count</span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5050</span><br></pre></td></tr></table></figure>
+<p>当然 while 语句时还有另外两个重要的命令 continue，break 来跳过循环，continue 用于跳过该次循环，break 则是用于退出循环</p>
+<p>比如，上面的例子是计算 1 到 100 所有整数的和，当我们需要判断 sum 大于 1000 的时候，不在相加时，可以用到 break ，退出整个循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">1</span> </span><br><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> (count &lt;= <span class="number">100</span>):</span><br><span class="line">    sum = sum + count</span><br><span class="line">    <span class="keyword">if</span> ( sum &gt; <span class="number">1000</span>):  <span class="comment">#当 sum 大于 1000 的时候退出循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1035</span><br></pre></td></tr></table></figure>
+<p>有时候，我们只想统计 1 到 100 之间的奇数和，那么也就是说当 count 是偶数，也就是双数的时候，我们需要跳出当次的循环，不想加，这时候可以用到 break</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">1</span> </span><br><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> (count &lt;= <span class="number">100</span>):</span><br><span class="line">    <span class="keyword">if</span> ( count % <span class="number">2</span> == <span class="number">0</span>):  <span class="comment"># 双数时跳过输出</span></span><br><span class="line">        count = count + <span class="number">1</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    sum = sum + count</span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<p>输出的语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2500</span><br></pre></td></tr></table></figure>
+<p>在 Python 的 while 循环中，还可以使用 else 语句，while … else 在循环条件为 false 时执行 else 语句块</p>
+<p>比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> count &lt; <span class="number">5</span>:</span><br><span class="line">   <span class="keyword">print</span> (count)</span><br><span class="line">   count = count + <span class="number">1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   <span class="keyword">print</span> (count)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<h2 id="2、-for-循环语句"><a href="#2、-for-循环语句" class="headerlink" title="2、 for 循环语句"></a>2、 for 循环语句</h2><p> for循环可以遍历任何序列的项目，如一个列表或者一个字符串</p>
+<p>它的流程图基本如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2017/6/26/235ff5c72862b213486e0bf23852a245" alt="for循环的流程图"></p>
+<p>基本的语法格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> iterating_var <span class="keyword">in</span> sequence:</span><br><span class="line">   statements(s)</span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Hello 两点水'</span>:</span><br><span class="line">    print(letter)</span><br></pre></td></tr></table></figure>
+<p>输出的结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">H</span><br><span class="line">e</span><br><span class="line">l</span><br><span class="line">l</span><br><span class="line">o</span><br><span class="line"> </span><br><span class="line">两</span><br><span class="line">点</span><br><span class="line">水</span><br></pre></td></tr></table></figure>
+<p>有 while … else 语句，当然也有 for … else  语句啦，for 中的语句和普通的没有区别，else 中的语句会在循环正常执行完（即 for 不是通过 break 跳出而中断的）的情况下执行，while … else 也是一样。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">10</span>,<span class="number">20</span>):  <span class="comment"># 迭代 10 到 20 之间的数字</span></span><br><span class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,num): <span class="comment"># 根据因子迭代</span></span><br><span class="line">      <span class="keyword">if</span> num%i == <span class="number">0</span>:      <span class="comment"># 确定第一个因子</span></span><br><span class="line">         j=num/i          <span class="comment"># 计算第二个因子</span></span><br><span class="line">         <span class="keyword">print</span> (<span class="string">'%d 是一个合数'</span> % num)</span><br><span class="line">         <span class="keyword">break</span>            <span class="comment"># 跳出当前循环</span></span><br><span class="line">   <span class="keyword">else</span>:                  <span class="comment"># 循环的 else 部分</span></span><br><span class="line">      <span class="keyword">print</span> (<span class="string">'%d 是一个质数'</span> % num)</span><br></pre></td></tr></table></figure>
+<p>输出的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">10 是一个合数</span><br><span class="line">11 是一个质数</span><br><span class="line">12 是一个合数</span><br><span class="line">13 是一个质数</span><br><span class="line">14 是一个合数</span><br><span class="line">15 是一个合数</span><br><span class="line">16 是一个合数</span><br><span class="line">17 是一个质数</span><br><span class="line">18 是一个合数</span><br><span class="line">19 是一个质数</span><br></pre></td></tr></table></figure>
+<h2 id="3、嵌套循环"><a href="#3、嵌套循环" class="headerlink" title="3、嵌套循环"></a>3、嵌套循环</h2><p>Python 语言允许在一个循环体里面嵌入另一个循环。上面的实例也是使用了嵌套循环的，这里就不给出实例了。</p>
+<p>具体的语法如下：</p>
+<p><strong>for 循环嵌套语法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> iterating_var <span class="keyword">in</span> sequence:</span><br><span class="line">   <span class="keyword">for</span> iterating_var <span class="keyword">in</span> sequence:</span><br><span class="line">      statements(s)</span><br><span class="line">   statements(s)</span><br></pre></td></tr></table></figure>
+<p><strong>while 循环嵌套语法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> expression:</span><br><span class="line">   <span class="keyword">while</span> expression:</span><br><span class="line">      statement(s)</span><br><span class="line">   statement(s)</span><br></pre></td></tr></table></figure>
+<p>除此之外，你也可以在循环体内嵌入其他的循环体，如在 while 循环中可以嵌入 for 循环， 反之，你可以在 for 循环中嵌入 while 循环</p>
+<h1 id="三、条件语句和循环语句综合实例"><a href="#三、条件语句和循环语句综合实例" class="headerlink" title="三、条件语句和循环语句综合实例"></a>三、条件语句和循环语句综合实例</h1><h2 id="1、打印九九乘法表"><a href="#1、打印九九乘法表" class="headerlink" title="1、打印九九乘法表"></a>1、打印九九乘法表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印九九乘法表</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, i+<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 打印语句中，大括号及其里面的字符 (称作格式化字段) 将会被 .format() 中的参数替换,注意有个点的</span></span><br><span class="line">            print(<span class="string">'&#123;&#125;x&#123;&#125;=&#123;&#125;\t'</span>.format(i, j, i*j), end=<span class="string">''</span>)  </span><br><span class="line">        print()</span><br></pre></td></tr></table></figure>
+<p>输出的结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1x1=1   </span><br><span class="line">2x1=2   2x2=4   </span><br><span class="line">3x1=3   3x2=6   3x3=9   </span><br><span class="line">4x1=4   4x2=8   4x3=12  4x4=16  </span><br><span class="line">5x1=5   5x2=10  5x3=15  5x4=20  5x5=25  </span><br><span class="line">6x1=6   6x2=12  6x3=18  6x4=24  6x5=30  6x6=36  </span><br><span class="line">7x1=7   7x2=14  7x3=21  7x4=28  7x5=35  7x6=42  7x7=49  </span><br><span class="line">8x1=8   8x2=16  8x3=24  8x4=32  8x5=40  8x6=48  8x7=56  8x8=64  </span><br><span class="line">9x1=9   9x2=18  9x3=27  9x4=36  9x5=45  9x6=54  9x7=63  9x8=72  9x9=81</span><br></pre></td></tr></table></figure>
+<h2 id="2、判断是否是闰年"><a href="#2、判断是否是闰年" class="headerlink" title="2、判断是否是闰年"></a>2、判断是否是闰年</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 判断是否是闰年</span></span><br><span class="line"></span><br><span class="line">year = int(input(<span class="string">"请输入一个年份: "</span>))</span><br><span class="line"><span class="keyword">if</span> (year % <span class="number">4</span>) == <span class="number">0</span> <span class="keyword">and</span> (year % <span class="number">100</span>) != <span class="number">0</span> <span class="keyword">or</span> (year % <span class="number">400</span>) == <span class="number">0</span>:</span><br><span class="line">    print(<span class="string">'&#123;0&#125; 是闰年'</span> .format(year))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">     print(<span class="string">'&#123;0&#125; 不是闰年'</span> .format(year))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/25/草根学Python（四）Dict 和 Set/" rel="next" title="草根学Python（四）Dict 和 Set">
+                <i class="fa fa-chevron-left"></i> 草根学Python（四）Dict 和 Set
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/29/草根学Python（六） 函数/" rel="prev" title="草根学Python（六）函数">
+                草根学Python（六）函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="undefined" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、条件语句"><span class="nav-number">3.</span> <span class="nav-text">一、条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、if-语句的基本形式"><span class="nav-number">3.1.</span> <span class="nav-text">1、if 语句的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、if-语句多个判断条件的形式"><span class="nav-number">3.2.</span> <span class="nav-text">2、if 语句多个判断条件的形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、if-语句多个条件同时判断"><span class="nav-number">3.3.</span> <span class="nav-text">3、if 语句多个条件同时判断</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、循环语句"><span class="nav-number">4.</span> <span class="nav-text">二、循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、While-循环语句"><span class="nav-number">4.1.</span> <span class="nav-text">1、While 循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-for-循环语句"><span class="nav-number">4.2.</span> <span class="nav-text">2、 for 循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、嵌套循环"><span class="nav-number">4.3.</span> <span class="nav-text">3、嵌套循环</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、条件语句和循环语句综合实例"><span class="nav-number">5.</span> <span class="nav-text">三、条件语句和循环语句综合实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、打印九九乘法表"><span class="nav-number">5.1.</span> <span class="nav-text">1、打印九九乘法表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、判断是否是闰年"><span class="nav-number">5.2.</span> <span class="nav-text">2、判断是否是闰年</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
