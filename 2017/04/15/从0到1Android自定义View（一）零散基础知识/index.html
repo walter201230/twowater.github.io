@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android 自定义 View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 最近做个项目，写了大量的自定义 View ，突然今天就想写一个从 0 到1 的 Android 自定义 View 的文章，为了更好的总结和理解。最后，如果对每周的名企面试题或者本系列文章兴趣的可以关注公众号“于你供读”  Android 坐标系Android 屏幕坐标 数学中常见的坐标系与 Android 系统上">
+<meta name="keywords" content="Android 自定义 View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0到1Android自定义View（一）零散基础知识">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/从0到1Android自定义View（一）零散基础知识/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言 最近做个项目，写了大量的自定义 View ，突然今天就想写一个从 0 到1 的 Android 自定义 View 的文章，为了更好的总结和理解。最后，如果对每周的名企面试题或者本系列文章兴趣的可以关注公众号“于你供读”  Android 坐标系Android 屏幕坐标 数学中常见的坐标系与 Android 系统上 View 的坐标系是有点差别的，Android 设备中，屏幕的左上角为坐标原">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-4b0a0f0ba83fecfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-b54fd587394e1e80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-b3ce6a78001139de.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-8ae9eca478b9a362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-a29595a212a01832.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T06:49:44.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0到1Android自定义View（一）零散基础知识">
+<meta name="twitter:description" content="前言 最近做个项目，写了大量的自定义 View ，突然今天就想写一个从 0 到1 的 Android 自定义 View 的文章，为了更好的总结和理解。最后，如果对每周的名企面试题或者本系列文章兴趣的可以关注公众号“于你供读”  Android 坐标系Android 屏幕坐标 数学中常见的坐标系与 Android 系统上 View 的坐标系是有点差别的，Android 设备中，屏幕的左上角为坐标原">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/15/从0到1Android自定义View（一）零散基础知识/"/>
+
+
+
+
+
+  <title>从0到1Android自定义View（一）零散基础知识 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/15/从0到1Android自定义View（一）零散基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从0到1Android自定义View（一）零散基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T00:00:00+08:00">
+                2017-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/从0到1Android自定义View/" itemprop="url" rel="index">
+                    <span itemprop="name">从0到1Android自定义View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  853
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android.jpg"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>最近做个项目，写了大量的自定义 View ，突然今天就想写一个从 0 到1 的 Android 自定义 View 的文章，为了更好的总结和理解。最后，如果对每周的名企面试题或者本系列文章兴趣的可以关注公众号“于你供读”</p>
+</blockquote>
+<h2 id="Android-坐标系"><a href="#Android-坐标系" class="headerlink" title="Android 坐标系"></a>Android 坐标系</h2><p><strong>Android 屏幕坐标</strong></p>
+<p>数学中常见的坐标系与 Android 系统上 View 的坐标系是有点差别的，Android 设备中，屏幕的左上角为坐标原点，向右为 x 轴增大方向，向下为 y 轴增大方向。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-4b0a0f0ba83fecfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android坐标系与数学坐标系的区别.png"></p>
+<p><strong>View 的坐标</strong></p>
+<p>View 的坐标是相对父容器而言的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">getTop();       <span class="comment">//获取子View左上角距父View顶部的距离</span></span><br><span class="line">getLeft();      <span class="comment">//获取子View左上角距父View左侧的距离</span></span><br><span class="line">getBottom();    <span class="comment">//获取子View右下角距父View顶部的距离</span></span><br><span class="line">getRight();     <span class="comment">//获取子View右下角距父View左侧的距离</span></span><br></pre></td></tr></table></figure>
+<p>其中的源代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Top position of this view relative to its parent.</span></span><br><span class="line"><span class="comment">* 相对应父控件的top位置，单位为像素，即头部到父控件的距离</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span> The top of this view, in pixels.</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"><span class="meta">@ViewDebug</span>.CapturedViewProperty </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">getTop</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> mTop; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-b54fd587394e1e80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="View坐标系.png"></p>
+<p><strong>MotionEvent中 get 和 getRaw 的区别</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">event.getX();       <span class="comment">//触摸点相对于其所在组件坐标系的坐标</span></span><br><span class="line">event.getY();</span><br><span class="line"></span><br><span class="line">event.getRawX();    <span class="comment">//触摸点相对于屏幕默认坐标系的坐标</span></span><br><span class="line">event.getRawY();</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-b3ce6a78001139de.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="getY和getRawY.jpg"></p>
+<h2 id="Android-中的角度与弧度"><a href="#Android-中的角度与弧度" class="headerlink" title="Android 中的角度与弧度"></a>Android 中的角度与弧度</h2><p>Android 自定义 View 中，经常会用到一些角度弧度的计算，还有一些数学函数的应用，因此，Android 中的角度和弧度我们也需要了解。</p>
+<p><strong>角度与弧度的定义</strong></p>
+<p>角度：两条射线从圆心向圆周射出，形成一个夹角和夹角正对的一段弧。当这段弧长正好等于圆周长的360分之一时，两条射线的夹角的大小为1度.</p>
+<p>弧度：两条射线从圆心向圆周射出，形成一个夹角和夹角正对的一段弧。当这段弧长正好等于圆的半径时，两条射线的夹角大小为1弧度.</p>
+<p><strong>角度和弧度的换算关系</strong></p>
+<p>圆一周对应的角度为360度(角度)，对应的弧度为2π弧度。</p>
+<p>故得等价关系:360(角度) = 2π(弧度) ==&gt; 180(角度) = π(弧度)</p>
+<p>得出公式：</p>
+<p>一角度=π/180弧度</p>
+<p>一弧度= 180/π角度</p>
+<p>注意：</p>
+<p>在常见的数学坐标系中角度增大方向为逆时针方向<br>在默认的屏幕坐标系中角度增大方向为顺时针方向 </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-8ae9eca478b9a362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="角度增大的方向.png"></p>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p><strong>Java 中定义颜色</strong></p>
+<p>xml 定义颜色相信刚接触 Android 的都基本会用的，所以这里就介绍下 Java 中定义颜色，毕竟颜色在自定义 View 中也是必不可少的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> color = Color.BLACK;     <span class="comment">//黑色</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> color = Color.argb(<span class="number">127</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>);   <span class="comment">//半透明红色</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> color  = Color.parseColor(<span class="string">"#ffffff"</span>);  <span class="comment">//白色</span></span><br></pre></td></tr></table></figure>
+<p><strong>透明度</strong></p>
+<p>透明度也是必不可少的，透明度分为 256 阶（0-255），计算机上用 16 进制表示为（00-ff）。透明就是 0 阶，不透明就是25 5阶,如果 50% 明就是 127 阶（256 的一半当然是 128，但因为是从 0 开始，所以实际上是127 ）。</p>
+<p>透明度 和 不透明度 是两个概念， 它们加起来是 1，或者 100%</p>
+<p>ARGB 中的透明度alpha，表示的是不透明度。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-a29595a212a01832.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="透明度参照表.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-自定义-View/" rel="tag"># Android 自定义 View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/13/2016年头条校招笔试(LRU算法)/" rel="next" title="2016年头条校招笔试（LRU算法）">
+                <i class="fa fa-chevron-left"></i> 2016年头条校招笔试（LRU算法）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/23/滴滴2016校招测评题(建水库问题)/" rel="prev" title="滴滴2016校招测评题（建水库问题）">
+                滴滴2016校招测评题（建水库问题） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-坐标系"><span class="nav-number">2.</span> <span class="nav-text">Android 坐标系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-中的角度与弧度"><span class="nav-number">3.</span> <span class="nav-text">Android 中的角度与弧度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色"><span class="nav-number">4.</span> <span class="nav-text">颜色</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

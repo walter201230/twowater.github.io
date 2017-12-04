@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、微信小程序的来源在2016年9月中，微信公众平台向外发出200个小程序内测邀请函，那么什么是微信小程序，有什么功能呢？微信小程序尽管叫小程序，但其实这就是今年年初腾讯曾对外提及的微信“应用号”。 早在2016年1月份的微信公开课上，微信之父张小龙就透露微信即将推出应用号。张小龙曾说，让创造发挥价值，好产品应该是用完">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序学习（1）微信小程序简介">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/微信小程序学习（1）微信小程序简介/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、微信小程序的来源在2016年9月中，微信公众平台向外发出200个小程序内测邀请函，那么什么是微信小程序，有什么功能呢？微信小程序尽管叫小程序，但其实这就是今年年初腾讯曾对外提及的微信“应用号”。 早在2016年1月份的微信公开课上，微信之父张小龙就透露微信即将推出应用号。张小龙曾说，让创造发挥价值，好产品应该是用完即走，微信应该是给用户提供便利，而非浪费时间。希望用户在微信里看到的都是自己愿意">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161006234940363">
+<meta property="og:image" content="http://img.blog.csdn.net/20161006235250243">
+<meta property="og:image" content="http://img.blog.csdn.net/20161006235353399">
+<meta property="og:updated_time" content="2017-12-04T09:04:40.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序学习（1）微信小程序简介">
+<meta name="twitter:description" content="一、微信小程序的来源在2016年9月中，微信公众平台向外发出200个小程序内测邀请函，那么什么是微信小程序，有什么功能呢？微信小程序尽管叫小程序，但其实这就是今年年初腾讯曾对外提及的微信“应用号”。 早在2016年1月份的微信公开课上，微信之父张小龙就透露微信即将推出应用号。张小龙曾说，让创造发挥价值，好产品应该是用完即走，微信应该是给用户提供便利，而非浪费时间。希望用户在微信里看到的都是自己愿意">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161006234940363">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/微信小程序学习（1）微信小程序简介/"/>
+
+
+
+
+
+  <title>微信小程序学习（1）微信小程序简介 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/微信小程序学习（1）微信小程序简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序学习（1）微信小程序简介</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/微信小程序学习/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,379
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、微信小程序的来源"><a href="#一、微信小程序的来源" class="headerlink" title="一、微信小程序的来源"></a>一、微信小程序的来源</h2><p>在2016年9月中，微信公众平台向外发出200个小程序内测邀请函，那么什么是微信小程序，有什么功能呢？微信小程序尽管叫小程序，但其实这就是今年年初腾讯曾对外提及的微信“应用号”。</p>
+<p>早在2016年1月份的微信公开课上，微信之父张小龙就透露微信即将推出应用号。张小龙曾说，让创造发挥价值，好产品应该是用完即走，微信应该是给用户提供便利，而非浪费时间。希望用户在微信里看到的都是自己愿意看到的东西，也希望用户能够留出来更多的时间去做其他的事情。</p>
+<hr>
+<h2 id="二、微信小程序是什么呢？"><a href="#二、微信小程序是什么呢？" class="headerlink" title="二、微信小程序是什么呢？"></a>二、微信小程序是什么呢？</h2><p>微信应用号是一个APP应用推广平台，微信应用号目前暂定名为“小程序”，使用微信应用号平台，用户关注一个应用号就如同安装一个App一样，而微信应用号就相当于另一个App Store，主要功能就是应用推广。</p>
+<p>应用号有两大特色：首先APP功能可以直接通过关注应用号来实现，所以用户就省去了安装下载卸载等等一系列动作，对那些使用频率不高的软件来说，你完全可以用“应用号”代替;另外，用户也免去了不定时下载软件更新包的困扰。</p>
+<p>然而微信应用号要能获取足够多的用户，还得要开发者的支持。</p>
+<p>毫无疑问，开发者将是微信应用号的最大获益群体。对于开发者而言，应用号可以节省开发成本，并且可以提升研发效率，开发人员只需要研发出一款适用于浏览器应用的产品，就可满足不同操作系统的使用需求。另外，入驻应用号的APP营销推广工作也能取到事半功倍的效果。</p>
+<hr>
+<h2 id="三、微信小程序可以用来干什么呢？"><a href="#三、微信小程序可以用来干什么呢？" class="headerlink" title="三、微信小程序可以用来干什么呢？"></a>三、微信小程序可以用来干什么呢？</h2><p>我们可以通过观察微信小程序给出的接口文档信息来猜微信小程序可以用来干什么？首先我们先来看看微信小程序的官方API！首先我们可以点击这个网站进入到微信小程序的简介和文档!<a href="https://mp.weixin.qq.com/wiki" target="_blank" rel="noopener">https://mp.weixin.qq.com/wiki</a></p>
+<p><img src="http://img.blog.csdn.net/20161006234940363" alt="这里写图片描述"></p>
+<p>可以看到里面有个小程序的按钮，我们点击进去，就可以看到：</p>
+<p><img src="http://img.blog.csdn.net/20161006235250243" alt="这里写图片描述"></p>
+<p>我们点击开发文档，就可以看到微信小程序的API了，</p>
+<p><img src="http://img.blog.csdn.net/20161006235353399" alt="这里写图片描述"></p>
+<p>从API可以看到，微信小程序的接口和框架包括：视图、内容、按钮、导航、多媒体、网络能力、罗盘、重力感应、画板等等。</p>
+<p>有了这个框架和丰富的组件，小程序的启动和运行速度将可以和原生 app 媲美。能实现的功能也将被纯网页的服务号要多得多;小程序开发后，不能直接发布，需要经过审核，类似 App Store。微信应用号被认为是“跨平台的操作系统”。作为Android开发者，说实话，微信小程序的出现在一定程度上对移动开发是有冲击和影响的，可是会不会完全替代呢?这个个人感觉倒不用太担心，原生的App还是有原生的魅力所在的！</p>
+<hr>
+<h2 id="四、微信小程序平台有什么优势？"><a href="#四、微信小程序平台有什么优势？" class="headerlink" title="四、微信小程序平台有什么优势？"></a>四、微信小程序平台有什么优势？</h2><p>1.微信有海量用户，而且粘性很高，在微信里开发产品更容易触达用户;</p>
+<p>2.推广app 或公众号的成本太高，而应用号“无需下载”的优势能够使用户减少心理负担，推广效率更高。推广微信应用号，只需要用户扫码即可，不管是流量环境还是WIFI环境，都不是问题，最大程度减少了用户的耐心损耗。</p>
+<p>3.微信除了能给用户提供功能，还能推送内容，同时还会多出一个未读标记。这种推送到达率比 app 更高。</p>
+<p>4.开发适配成本低。微信公众号开发涉及网页前端和服务器后端，相比起 iOS 和 Android 开发，至少节省了两个平台的开发成本，节省了大量的时间和人力。因为开发这两个平台的客户端，服务器后端的开发几乎是必须有的，网页前端可能相对微信公众号要少一些，但相比之下，这些前端的工作比客户端的工作量要少很多。</p>
+<p>在微信应用里，不管用户用的是何种手机，获得的体验是一致的。如果不一致，也能用相对较低的开发成本让其一致。如果你开发的是一个微信消息应用，微信提供了固定的消息模板，这意味着，不管用户使用的是什么系统，他们看到的界面是相同的。</p>
+<p>5.容易小规模试错，然后快速迭代。这被认为是现今互联网创业的基本方法。而且修改无需等待审核，迭代后马上能看到效果，然后继续观察和迭代。</p>
+<p>6.跨平台。微信应用号本身是网页，可以在群里被转发，可以搭建到公众号上，传播起来非常方便。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/微信小程序学习（2）开发准备和开发工具简介/" rel="next" title="微信小程序学习（2）开发准备和开发工具简介">
+                <i class="fa fa-chevron-left"></i> 微信小程序学习（2）开发准备和开发工具简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/2016腾讯软件开发面试题(不定项选择题【1-12】)/" rel="prev" title="2016腾讯软件开发面试题(不定项选择题【1-12】)">
+                2016腾讯软件开发面试题(不定项选择题【1-12】) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、微信小程序的来源"><span class="nav-number">1.</span> <span class="nav-text">一、微信小程序的来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、微信小程序是什么呢？"><span class="nav-number">2.</span> <span class="nav-text">二、微信小程序是什么呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、微信小程序可以用来干什么呢？"><span class="nav-number">3.</span> <span class="nav-text">三、微信小程序可以用来干什么呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、微信小程序平台有什么优势？"><span class="nav-number">4.</span> <span class="nav-text">四、微信小程序平台有什么优势？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

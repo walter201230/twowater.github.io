@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android网络框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="现在每篇文章前都会吐槽下自己的生活事情，也当作个记录，本来想写这篇博客很久的了，看标题就知道，想 11 月 7 日就开始写的了，可是现在（2016年11月27日22:45:12）还没写完，因为这段事件赶公司的即时聊天的项目，还有每个星期都会来一篇算法的文章或做算法的题，因此导致这篇文章很久还没写完，不想拖下去，赶紧写完">
+<meta name="keywords" content="Android网络框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="现在每篇文章前都会吐槽下自己的生活事情，也当作个记录，本来想写这篇博客很久的了，看标题就知道，想 11 月 7 日就开始写的了，可是现在（2016年11月27日22:45:12）还没写完，因为这段事件赶公司的即时聊天的项目，还有每个星期都会来一篇算法的文章或做算法的题，因此导致这篇文章很久还没写完，不想拖下去，赶紧写完。   一、 OKHttp基础我们可以通过右键 new——》Module——》">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127225131458">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127230254713">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127230519261">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127230620918">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127231456307">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127231846503">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127232034659">
+<meta property="og:image" content="http://img.blog.csdn.net/20161127232331458">
+<meta property="og:image" content="http://img.blog.csdn.net/20161128000130207">
+<meta property="og:image" content="http://img.blog.csdn.net/20161128000146145">
+<meta property="og:image" content="http://img.blog.csdn.net/20161128000525781">
+<meta property="og:image" content="http://img.blog.csdn.net/20161128001145041">
+<meta property="og:image" content="http://img.blog.csdn.net/20161128010634691">
+<meta property="og:image" content="http://img.blog.csdn.net/20161129000137359">
+<meta property="og:image" content="http://img.blog.csdn.net/20161129001841108">
+<meta property="og:image" content="http://img.blog.csdn.net/20161129002907807">
+<meta property="og:image" content="http://img.blog.csdn.net/20161129012533348">
+<meta property="og:updated_time" content="2017-12-04T09:09:54.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3">
+<meta name="twitter:description" content="现在每篇文章前都会吐槽下自己的生活事情，也当作个记录，本来想写这篇博客很久的了，看标题就知道，想 11 月 7 日就开始写的了，可是现在（2016年11月27日22:45:12）还没写完，因为这段事件赶公司的即时聊天的项目，还有每个星期都会来一篇算法的文章或做算法的题，因此导致这篇文章很久还没写完，不想拖下去，赶紧写完。   一、 OKHttp基础我们可以通过右键 new——》Module——》">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161127225131458">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3/"/>
+
+
+
+
+
+  <title>Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Android网络框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Android网络框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,021
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>现在每篇文章前都会吐槽下自己的生活事情，也当作个记录，本来想写这篇博客很久的了，看标题就知道，想 11 月 7 日就开始写的了，可是现在（2016年11月27日22:45:12）还没写完，因为这段事件赶公司的即时聊天的项目，还有每个星期都会来一篇算法的文章或做算法的题，因此导致这篇文章很久还没写完，不想拖下去，赶紧写完。</p>
+</blockquote>
+<hr>
+<h1 id="一、-OKHttp基础"><a href="#一、-OKHttp基础" class="headerlink" title="一、 OKHttp基础"></a>一、 OKHttp基础</h1><p>我们可以通过右键 new——》Module——》java Library 的方式来创建一个 Module 的方式来测试一下 OKHttp3 ，为什么是创建 java Library 呢？因为对于一般的网络框架而已，我们只需要创建 java Library就可以了，不必要创建 Android Library 。</p>
+<p>然后导入我们的OKHttp3，具体的官网在之前的系列文章中就有个介绍：<br>CSDN：<a href="http://blog.csdn.net/Two_Water/article/details/53055524" target="_blank" rel="noopener">http://blog.csdn.net/Two_Water/article/details/53055524</a><br>简书：<a href="http://www.jianshu.com/p/049a91e9958a" target="_blank" rel="noopener">http://www.jianshu.com/p/049a91e9958a</a></p>
+<p><img src="http://img.blog.csdn.net/20161127225131458" alt="创建lib"></p>
+<hr>
+<p><strong>1.同步请求和异步请求</strong></p>
+<p>创建完项目后，来了解一下OKHttp3的同步请求和异步请求，虽然官网就有很详细的例子，可是最好还是自己读尝试一次，就算是跟着官网的例子敲一遍，还是有一番体会的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui.http.lib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Call;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Callback;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * OKHttp 同步请求和异步请求</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Created by liangdianshui on 2016/11/8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendRequest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 同步请求</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 会阻塞当前线程</span></span><br><span class="line"><span class="comment">     * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendRequest</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response response = client.newCall(request).execute();</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">                System.out.println(response.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 异步请求</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendAsyncRequest</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">        client.newCall(request).enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">                    System.out.println(Thread.currentThread().getId());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        sendRequest(<span class="string">"http://blog.csdn.net/two_water"</span>);</span><br><span class="line">        System.out.println(<span class="string">"-------------------------------------------"</span>);</span><br><span class="line">        System.out.println(Thread.currentThread().getId());</span><br><span class="line">        sendAsyncRequest(<span class="string">"http://blog.csdn.net/two_water"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>2.请求头和响应头</strong></p>
+<p>在上一个博客中也有介绍到响应头和请求头，也介绍了一大堆参数，那么我们如何使用这些参数呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui.http.lib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Headers;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 增加请求头的请求</span></span><br><span class="line"><span class="comment"> * Created by liangdianshui on 2016/11/8</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddHeaderRequest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addHeaderRequest</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder()</span><br><span class="line">                .url(url)</span><br><span class="line">                .addHeader(<span class="string">"User-Agent"</span>, <span class="string">"liangdianshui"</span>)</span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response response = client.newCall(request).execute();</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">                Headers requestHeaders = request.headers();</span><br><span class="line">                System.out.println(<span class="string">"----------Request Headers------------"</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; requestHeaders.size(); i++) &#123;</span><br><span class="line">                    System.out.println(requestHeaders.name(i) + <span class="string">" : "</span> + requestHeaders.value(i));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                Headers responseHeaders = response.headers();</span><br><span class="line">                System.out.println(<span class="string">"------------Response Headers-----------"</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; responseHeaders.size(); i++) &#123;</span><br><span class="line">                    System.out.println(responseHeaders.name(i) + <span class="string">" : "</span> + responseHeaders.value(i));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        addHeaderRequest(<span class="string">"http://blog.csdn.net/two_water"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们也可以通过 Fiddler 来查看到我们请求中的请求头的，合理使用这些工具可以验证我们获取的数据是否正确，少走一些弯路</p>
+<p><img src="http://img.blog.csdn.net/20161127230254713" alt="Fiddler查看请求头和响应头"></p>
+<hr>
+<p><strong>3.添加请求参数的get请求</strong></p>
+<p>请求参数的 get 请求，我们使用和风网的免费天气查询 api 作为例子，和风网的官网地址：</p>
+<p><a href="http://www.heweather.com/" target="_blank" rel="noopener">http://www.heweather.com/</a></p>
+<p>我们首先的注册一个用户，就会分配key：</p>
+<p><img src="http://img.blog.csdn.net/20161127230519261" alt="和风网免费注册后的个人认证key"></p>
+<p>注册完成后我们就可以去查找相关的API文档，看看如何调用：</p>
+<p><img src="http://img.blog.csdn.net/20161127230620918" alt="和风网天气api接口"></p>
+<p>最后就是上代码了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui.http.lib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.HttpUrl;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加请求参数的get请求</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * Created by Administrator on 2016/11/16 0016.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AddQueryParameterRequest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用和风网的免费天气查询的api</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addQueryParameterRequest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        OkHttpClient client=<span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        HttpUrl httpUrl=HttpUrl.parse(<span class="string">"https://free-api.heweather.com/v5/now"</span>)</span><br><span class="line">                .newBuilder()</span><br><span class="line">                .addQueryParameter(<span class="string">"city"</span>,<span class="string">"shenzhen"</span>)</span><br><span class="line">                .addQueryParameter(<span class="string">"key"</span>,<span class="string">" 9b82700caecd4d3aa709c54a7593754d"</span>)</span><br><span class="line">                .build();</span><br><span class="line">        Request request=<span class="keyword">new</span> Request.Builder().url(httpUrl.toString()).build();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response response=client.newCall(request).execute();</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">                System.out.println(response.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        addQueryParameterRequest();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>4.post请求</strong><br>如果使用公共的 api 提交 post 请求，相对于 get 请求来说，是相对麻烦一些的，因此我们自己写一个简单的服务，来请求 post 请求，</p>
+<p>服务器的代码主要是这个：<br><img src="http://img.blog.csdn.net/20161127231456307" alt="post请求服务器代码"></p>
+<p>客户端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui.http.lib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.FormBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by liangdianshui on 2016/11/27 0027.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PostRequest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">postRequest</span><span class="params">(String url, String name, String password)</span> </span>&#123;</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        FormBody body = <span class="keyword">new</span> FormBody.Builder().add(<span class="string">"username"</span>, name).add(<span class="string">"password"</span>, password).build();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().url(url).post(body).build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response reponse = client.newCall(request).execute();</span><br><span class="line">            <span class="keyword">if</span> (reponse.isSuccessful()) &#123;</span><br><span class="line">                System.out.println(reponse.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        postRequest(<span class="string">"http://localhost:8080/OKHttpTest/OKHttpPost"</span>, <span class="string">"liangdianshui"</span>, <span class="string">"123456"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果：</p>
+<p><img src="http://img.blog.csdn.net/20161127231846503" alt="post请求结果"></p>
+<p>在这里呢，我们先了解一个知识点：</p>
+<p><img src="http://img.blog.csdn.net/20161127232034659" alt="POST"></p>
+<p>可以看到 post 请求中默认的类型就是：application/x-www-form-urlencoded    因此我们可以查看下我们 OKHttp 中的 FormBody 中的源码：</p>
+<p><img src="http://img.blog.csdn.net/20161127232331458" alt="OKHttp源码中FormBody的post请求"></p>
+<p>可以看到我们使用的 FormBody 就是这个类型的，而 multipart/form-data 这个类型主要是用于上传文件等相关操作的。因为这个上传方式不做编码处理，你上传什么就是什么</p>
+<hr>
+<p><strong>5.上传文件</strong></p>
+<p>这里我们先写一下服务器的代码，也要了解一下到底 http 是怎样上传文件的</p>
+<p>先写一个 html 的页面：</p>
+<p><img src="http://img.blog.csdn.net/20161128000130207" alt="上传文件的页面"></p>
+<p>然后我们看下服务器的代码，写的非常的简单，主要是我们只是了解下上传文件的流程而已。</p>
+<p><img src="http://img.blog.csdn.net/20161128000146145" alt="上传文件post请求服务器代码"></p>
+<p>我们来看下效果：</p>
+<p><img src="http://img.blog.csdn.net/20161128000525781" alt="post请求上传文件"></p>
+<p>好了，服务器完成了，我们来查看一下上传文件的协议是怎样的：</p>
+<p><img src="http://img.blog.csdn.net/20161128001145041" alt="查看协议"></p>
+<p>可以看到，如果我们自己写上传文件的代码还是比较复杂的，只不过这里面的过程，OKHttp 都帮我们封装好了，因此使用起来还是比较简单的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui.http.lib;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.MediaType;</span><br><span class="line"><span class="keyword">import</span> okhttp3.MultipartBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.RequestBody;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by liangdianshui on 2016/11/28 0028.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiparHttp</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        <span class="comment">//上传一张本地的图片</span></span><br><span class="line">        RequestBody imageBody = RequestBody.create(MediaType.parse(<span class="string">"image/jpeg"</span>), <span class="keyword">new</span> File(<span class="string">"C:\\Users\\Administrator\\Desktop\\service\\liangdianshui.jpg"</span>));</span><br><span class="line">        MultipartBody body = <span class="keyword">new</span> MultipartBody.Builder().</span><br><span class="line">                setType(MultipartBody.FORM).  <span class="comment">//要配置上传的类型，否则会上传不成功</span></span><br><span class="line">                addFormDataPart(<span class="string">"name"</span>, <span class="string">"nate"</span>).</span><br><span class="line">                addFormDataPart(<span class="string">"filename"</span>, <span class="string">"girl.jpg"</span>, imageBody).build();</span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient();</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().</span><br><span class="line">                url(<span class="string">"http://localhost:8080/OKHttpTest/UploadServlet"</span>).post(body).build();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Response response = client.newCall(request).execute();</span><br><span class="line">            <span class="keyword">if</span> (response.isSuccessful()) &#123;</span><br><span class="line">                System.out.println(response.body().string());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果：<br><img src="http://img.blog.csdn.net/20161128010634691" alt="上传图片"></p>
+<hr>
+<p><strong>6. Http 缓存</strong></p>
+<p>其实 OkHttp 给我们封装好了 Http 的缓存，用起来还是挺方便的，可是我们不能仅限于在用，先不说我们要创造属于自己的艺术品，起码我们得知其所以然，只有这样，才能有利于我们技术的进阶。竟然说到 Http 的缓存，那么我们必需得问，为什么要有 Http 请求缓存呢？每个设计肯定有它的思想所在，我们得理解，得探讨。</p>
+<p>为什么要有 Http 请求的缓存？<br>（1）<strong>快</strong>： 缓存缓解了网络瓶颈的问题，不需要更多的网络带宽就能更快的加载页面。<br>（2）<strong>省</strong>：缓存减少了冗余的数据传输，节省了网络费用。<br>（3）<strong>低</strong>：缓存降低了对原始服务器的要求，服务器可以更快的响应。同时，搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器的压力。</p>
+<p>当然 Http 请求缓存给我们带来了一系列的好处之外，也有它的不足，那么它有什么不足或缺点呢？<br>（1）<strong>占空间</strong>：缓存没有清理机制，这些缓存的文件会永久性地保存在机器上，在特定的时间内，这些文件可能是帮了你大忙，但是时间一长，我们已经不再需要浏览之前的这些网页，这些文件就成了无效或者无用的文件，它们存储在用户硬盘中只会占用空间而没有任何用处，如果要缓存的东西非常多，那就会撑暴整个硬盘空间。<br>（2）<strong>不即现</strong>：因为缓存，有时候我们明明修改了样式文件、图片、视频或脚本，刷新页面或部署到站点之后看不到修改之后的效果。所以在产品开发的时候我们总是想办法避免缓存产生，而在产品发布之时又在想策略管理缓存提升网页的访问速度。这就给我们带来了一定的困扰。</p>
+<p>那么是怎样实现 Http 的缓存的呢？<br>其实 Http 缓存在不同的类型上缓存的方式不一样，可是原理还是一样的，我们通过了解浏览器缓存来探讨一下是怎样实现的？</p>
+<p><img src="http://img.blog.csdn.net/20161129000137359" alt="Http缓存"></p>
+<p>Http 请求缓存中相关的字段有哪些呢？</p>
+<p><img src="http://img.blog.csdn.net/20161129001841108" alt="Http请求缓存缓存相关字段"></p>
+<p>最后通过请求我的博客来看一下缓存：<br><img src="http://img.blog.csdn.net/20161129002907807" alt="请求博客查看缓存"><br>其中：<br>Cache-control 常见的取值有 private、no-cache、max-age、must-revalidate 等，默认为private 。其作用根据不同的重新浏览方式分为以下几种情况：<br>（1） 打开新窗口<br>如果指定 cache-control 的值为 private、no-cache、must-revalidate，那么打开新窗口访问时都会重新访问服务器。而如果指定了 max-age 值，那么在此值内的时间里就不会重新访问服务器，例如：<br>Cache-control: max-age=5<br>表示当访问此网页后的5秒内再次访问不会去服务器<br>（2） 在地址栏回车<br>如果值为 private 或 must-revalidate（和网上说的不一样），则只有第一次访问时会访问服务器，以后就不再访问。如果值为 no-cache，那么每次都会访问。如果值为 max-age ，则在过期之前不会重复访问。<br>（3） 按后退按扭<br>如果值为 private、must-revalidate、max-age，则不会重访问，而如果为 no-cache，则每次都重复访问<br>（4） 按刷新按扭<br>无论为何值，都会重复访问</p>
+<p>最后我们来看下 OKHttp 是如何设置缓存的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 请求一个网址，设置缓存</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;要进行缓存，首先网址的服务器端先要支持缓存，再者，我们可以通过</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@code</span>:&#123;  public Builder cacheControl(CacheControl cacheControl) &#125; 的方式控制客户端的缓存&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> maxCacheSize</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">cachRequest</span><span class="params">(String url, File file, <span class="keyword">int</span> maxCacheSize)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Cache cache = <span class="keyword">new</span> Cache(file, maxCacheSize);</span><br><span class="line">    OkHttpClient client = <span class="keyword">new</span> OkHttpClient.Builder().cache(cache).build();</span><br><span class="line">    Request request = <span class="keyword">new</span> Request.Builder().url(url).build();</span><br><span class="line">    Response response = client.newCall(request).execute();</span><br><span class="line">    String body = response.body().string();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想了解 OKHttp 是如何实现缓存的，我们可以先从 OKHttp 整个的流程图中入手：</p>
+<p><img src="http://img.blog.csdn.net/20161129012533348" alt="OKHttp 流程图"></p>
+<p>本来还想写完缓存的分析的，可是看了下时间（2016年11月29日01:25:49）已经很晚了，还是睡了，明天还得上班，其实 OKHttp 缓存的实现看了很久源码，里面一大堆的 if 判断，看的有点晕，不过整体大概的原理还是可以理解的，细节的部分就略过了。哎，总是对自己那么仁慈，可能这就是跟大神的距离了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android网络框架/" rel="tag"># Android网络框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/Android 网络框架_网络框架的核心Http协议/" rel="next" title="Android 网络框架 网络框架的核心Http协议">
+                <i class="fa fa-chevron-left"></i> Android 网络框架 网络框架的核心Http协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/Android 网络框架_常用的网络框架/" rel="prev" title="Android 网络框架 常用的网络框架">
+                Android 网络框架 常用的网络框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、-OKHttp基础"><span class="nav-number">1.</span> <span class="nav-text">一、 OKHttp基础</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

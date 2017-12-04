@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 博客停止更新一个多月了，之前还下定决心说每周一篇面试题相关的博客的，不过 16 年 12 月到 现在 17 年 3 月过得还是挺充实的，而且也从中学习到了很多；特别在没更新博客这一段时间了，试过了三天只睡了 12 个小时，只为心里的那份信仰。好了，不扯淡了，之后继续更新博客，现在（2017年3月19日00:13:">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016美团研发工程师笔试题（让人头疼的两个数字）">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/2016美团研发工程师笔试题(让人头疼的两个数字)/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言 博客停止更新一个多月了，之前还下定决心说每周一篇面试题相关的博客的，不过 16 年 12 月到 现在 17 年 3 月过得还是挺充实的，而且也从中学习到了很多；特别在没更新博客这一段时间了，试过了三天只睡了 12 个小时，只为心里的那份信仰。好了，不扯淡了，之后继续更新博客，现在（2017年3月19日00:13:32） 12 点了，看了一些面试题，最终选了 2016 美团研发工程师笔试题的其">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-ea6acbef2f71326d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T09:21:20.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016美团研发工程师笔试题（让人头疼的两个数字）">
+<meta name="twitter:description" content="前言 博客停止更新一个多月了，之前还下定决心说每周一篇面试题相关的博客的，不过 16 年 12 月到 现在 17 年 3 月过得还是挺充实的，而且也从中学习到了很多；特别在没更新博客这一段时间了，试过了三天只睡了 12 个小时，只为心里的那份信仰。好了，不扯淡了，之后继续更新博客，现在（2017年3月19日00:13:32） 12 点了，看了一些面试题，最终选了 2016 美团研发工程师笔试题的其">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-ea6acbef2f71326d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/2016美团研发工程师笔试题(让人头疼的两个数字)/"/>
+
+
+
+
+
+  <title>2016美团研发工程师笔试题（让人头疼的两个数字） | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/2016美团研发工程师笔试题(让人头疼的两个数字)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2016美团研发工程师笔试题（让人头疼的两个数字）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,395
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>博客停止更新一个多月了，之前还下定决心说每周一篇面试题相关的博客的，不过 16 年 12 月到 现在 17 年 3 月过得还是挺充实的，而且也从中学习到了很多；特别在没更新博客这一段时间了，试过了三天只睡了 12 个小时，只为心里的那份信仰。好了，不扯淡了，之后继续更新博客，现在（2017年3月19日00:13:32） 12 点了，看了一些面试题，最终选了 2016 美团研发工程师笔试题的其中一道题来写这篇博客。</p>
+</blockquote>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote>
+<p> 从2到5中选两个数，第一个数较大，将两数之和告诉甲，两数之差告诉乙，两个人根据自己手上的数都算不出来答案，求这两个数分别是多少？</p>
+<p>A. 4，3<br>B. 5，3<br>C. 5，2<br>D. 4，2</p>
+</blockquote>
+<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><p>看到这题，第一个想法就是排除法来解了，那么，我们一个一个答案来分析：</p>
+<ul>
+<li>A 选项中，甲得到的两数之和为 7 ， 乙得到的两数之差为 1 ，因此甲从 2 到 5 这四个数中，能组成两数之和为 7 的组合有 （5 , 2） 和 （4 , 3） ，乙组成两数之差为 1 的组合有 （3 , 2） ， （4 , 3） 和 （5 ， 4） ，因此两个人都算不出答案</li>
+<li>B 选项，两数为 5 和 3，因此两数之和为 8 ，甲得到数为 8 ，可以猜到的组合就只有 （5 , 3）了，因为题目是说明甲乙两个人都算不出答案，因此排除 B 选项</li>
+<li>C 选项中，两数为 5 和 2 ，因此两数之差为 3 ，乙得到的数为 3 ，从 2 到 5 中的组合就只有（5 , 2），因此排除 C</li>
+<li>D 选项中，两数和为 6，组合只有 （4 , 2） ， 所以排除 D</li>
+</ul>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p>上面的题目是不是挺简单的，那么来拓展一下，看一道类似的经典题目【鬼谷子问徒】</p>
+<blockquote>
+<p>孙膑，庞涓都是鬼谷子的徒弟。一天鬼谷子出了这道题目：<br>他从 2 到 99 中选出两个不同的整数，把积告诉孙膑，把和告诉庞涓；<br>庞涓说：我虽然不能确定这两个数是什么，但是我肯定你也不知道这两个数是什么。<br>孙膑说：我本来的确不知道，但是听你这么一说，我现在能够确定这两个数字了。<br>庞涓说：既然你这么说，我现在也知道这两个数字是什么了。<br>请问这两个数字是什么？为什么？</p>
+</blockquote>
+<p>这道题目一定要看，用上面的方法解决太麻烦了吧，先直接写个穷举来看下答案吧</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;鬼谷子问徒[经典] 孙膑，庞涓都是鬼谷子的徒弟。一天鬼谷子出了这道题目： 他从2到99中选出两个不同的整数，把积告诉孙膑，把和告诉庞涓；</span></span><br><span class="line"><span class="comment"> * 庞涓说：我虽然不能确定这两个数是什么，但是我肯定你也不知道这两个数是什么。</span></span><br><span class="line"><span class="comment"> * 孙膑说：我本来的确不知道，但是听你这么一说，我现在能够确定这两个数字了。</span></span><br><span class="line"><span class="comment"> * 庞涓说：既然你这么说，我现在也知道这两个数字是什么了。 请问这两个数字是什么？为什么？</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Administrator</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DigitalProblem</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">6</span>; n &lt; <span class="number">200</span>; ++n) <span class="comment">// 穷举和的可能，最大不超过200</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// 其和能同时满足条件1和3者即为结果</span></span><br><span class="line">			<span class="keyword">if</span> (p1(n) &amp;&amp; p3(n)) &#123;</span><br><span class="line">				<span class="comment">// 找出对应解</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">2</span>; t * <span class="number">2</span> &lt; n; ++t) &#123;</span><br><span class="line">					<span class="keyword">if</span> (p2(t * (n - t))) <span class="comment">// 分拆结果符合条件2就输出</span></span><br><span class="line">						System.out.println(<span class="string">"("</span> + t + <span class="string">","</span> + (n - t) + <span class="string">")"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 是否是唯一分解</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> n</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> nMax</span></span><br><span class="line"><span class="comment">	 *            最大值为100</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isOnlySolve</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> nMax)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> nRet = <span class="number">0</span>; <span class="comment">// 记录满足本条件数</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt; n; ++i) &#123;</span><br><span class="line">			<span class="keyword">if</span> (n % i == <span class="number">0</span> &amp;&amp; n / i &lt; nMax)</span><br><span class="line">				<span class="keyword">if</span> (++nRet &gt; <span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * sum的任意和的分拆之积不可能有唯一分解，否则对方可能猜出</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 我虽然不能确定这两个数是什么，但是我肯定你也不知道这两个数是什么。</span></span><br><span class="line"><span class="comment">	 * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sum</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">p1</span><span class="params">(<span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (sum &lt; <span class="number">6</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> t = (sum - <span class="number">1</span>) / <span class="number">2</span>; t &gt; <span class="number">1</span>; --t) &#123;</span><br><span class="line">			<span class="keyword">if</span> (isOnlySolve(t * (sum - t), <span class="number">100</span>))</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 只有一种积的分拆满足 p1</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 我本来的确不知道，但是听你这么一说，我现在能够确定这两个数字了</span></span><br><span class="line"><span class="comment">	 * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> times2</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">p2</span><span class="params">(<span class="keyword">int</span> times2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> nRet = <span class="number">0</span>; <span class="comment">// 记录满足本条件数</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> nd = <span class="number">2</span>; nd * nd &lt; times2; ++nd) &#123;</span><br><span class="line">			<span class="keyword">if</span> (times2 % nd == <span class="number">0</span> &amp;&amp; p1(nd + times2 / nd))</span><br><span class="line">				<span class="keyword">if</span> (++nRet &gt; <span class="number">1</span>)</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 只有一种和的分拆满足 p2</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;</span></span><br><span class="line"><span class="comment">	 * 既然你这么说，我现在也知道这两个数字是什么了</span></span><br><span class="line"><span class="comment">	 * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sum</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">p3</span><span class="params">(<span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> nRet = <span class="number">0</span>; <span class="comment">// 记录满足本条件数</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> t = (sum - <span class="number">1</span>) / <span class="number">2</span>; t &gt; <span class="number">1</span>; --t) &#123;</span><br><span class="line">			<span class="keyword">if</span> (p2(t * (sum - t)))</span><br><span class="line">				<span class="keyword">if</span> (++nRet &gt; <span class="number">1</span>)</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果为：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-ea6acbef2f71326d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序运行结果.png"></p>
+<p>有人直接逻辑推理出来的吗？在评论那里写下可好，让我学习学习</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/2016腾讯软件开发面试题(不定项选择题【1-12】)/" rel="next" title="2016腾讯软件开发面试题(不定项选择题【1-12】)">
+                <i class="fa fa-chevron-left"></i> 2016腾讯软件开发面试题(不定项选择题【1-12】)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/2016百度春招笔试题(高中熟悉的题现在却变得陌生)/" rel="prev" title="2016百度春招笔试题(高中熟悉的题现在却变得陌生)">
+                2016百度春招笔试题(高中熟悉的题现在却变得陌生) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解题"><span class="nav-number">3.</span> <span class="nav-text">解题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拓展"><span class="nav-number">4.</span> <span class="nav-text">拓展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

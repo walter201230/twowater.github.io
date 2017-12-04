@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、前言 上个星期的面试题前言也提过，每周一篇的面试题是我在一周内看过的面试题中选择大众较好的来分享自己的解题过程，这周就偷懒一下，来看下 Google 刁钻古怪的面试题，其中大部分的解答是参考了网友的答案，因为本人实力有限，真的不知从何思考。明天（2017年1月14日22:48:07）就是年会了，公司从深圳到珠海举行">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google刁钻古怪面试题">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/Google刁钻古怪面试题/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、前言 上个星期的面试题前言也提过，每周一篇的面试题是我在一周内看过的面试题中选择大众较好的来分享自己的解题过程，这周就偷懒一下，来看下 Google 刁钻古怪的面试题，其中大部分的解答是参考了网友的答案，因为本人实力有限，真的不知从何思考。明天（2017年1月14日22:48:07）就是年会了，公司从深圳到珠海举行两天一夜的年会，不禁感慨，时间过得很快，上一年刚实习的时候，我也是在珠海过的年">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-1cfd88ae1cfdacfa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-2b63a602433ef1cb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-b407b9b0aae93bc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T09:20:28.268Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google刁钻古怪面试题">
+<meta name="twitter:description" content="一、前言 上个星期的面试题前言也提过，每周一篇的面试题是我在一周内看过的面试题中选择大众较好的来分享自己的解题过程，这周就偷懒一下，来看下 Google 刁钻古怪的面试题，其中大部分的解答是参考了网友的答案，因为本人实力有限，真的不知从何思考。明天（2017年1月14日22:48:07）就是年会了，公司从深圳到珠海举行两天一夜的年会，不禁感慨，时间过得很快，上一年刚实习的时候，我也是在珠海过的年">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-1cfd88ae1cfdacfa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/Google刁钻古怪面试题/"/>
+
+
+
+
+
+  <title>Google刁钻古怪面试题 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/Google刁钻古怪面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Google刁钻古怪面试题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,118
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2136918-1cfd88ae1cfdacfa.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="面试题.jpg"></p>
+<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><blockquote>
+<p>上个星期的面试题前言也提过，每周一篇的面试题是我在一周内看过的面试题中选择大众较好的来分享自己的解题过程，这周就偷懒一下，来看下 Google 刁钻古怪的面试题，其中大部分的解答是参考了网友的答案，因为本人实力有限，真的不知从何思考。明天（2017年1月14日22:48:07）就是年会了，公司从深圳到珠海举行两天一夜的年会，不禁感慨，时间过得很快，上一年刚实习的时候，我也是在珠海过的年会，一下子又一年了，很期待明天重回珠海。</p>
+</blockquote>
+<h1 id="二、题目"><a href="#二、题目" class="headerlink" title="二、题目"></a>二、题目</h1><p><strong>1. 多少只高尔夫球才能填满一辆校车？(职位：产品经理)</strong></p>
+<p>刚看到这题我真不知道怎么解答，看过我之前博客的也知道，通常我的面试题都是分析，程序解题，这样一个过程，显然 Google 希望测试出求职者是否有能力判断出解决问题的关键。其中我选了一个网友的解答：</p>
+<blockquote>
+<p>一辆标准大小的校车约有 8 英尺宽、6 英尺高、20 英尺长——我能知道这些数字完全是因为我曾经无数次被堵在校车后面。</p>
+<p>据此估算，一辆校车的容积约为 960 立方英尺，也就是 160 万立方英寸。一个高尔夫球的半径约为0.85 英寸，我认为一个高尔夫球的体积约为 2.6 立方英寸。</p>
+<p>用校车的容积除以高尔夫球的体积，得到的结果是 66 万。不过，由于校车里面还有座位等等各种东西，而且高尔夫球的形状使得不同的球之间会有不少空隙。我的最终估算结果是 50 万。这听起来有些荒唐。如果我直接猜的话，我给出的答案肯定是 10 万以下，不过我相信我的数学水平。</p>
+</blockquote>
+<p><strong>2.让你清洗西雅图所有的玻璃窗，你的报价是多少？(职位：产品经理)</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-2b63a602433ef1cb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="西雅图.jpg"></p>
+<p>看到这题的时候，我真的傻B的去猜具体的价格，谁知道，做完后，查看了网友的答案，发现自己多么的愚昧，不会转弯，换角度思考。因为我们报价不一定要报一共多少钱，你可以报每扇窗多少钱。比如一个网友的答案：</p>
+<blockquote>
+<p>这一题我们可以玩点花招，我们的答案是“每扇窗 10 美元”</p>
+</blockquote>
+<p>当然，看完这个答案后，个人觉得也可以做一个界限，比如超过几层楼的窗，每扇多少钱，低于这个的又多少钱。毕竟清洗十几层楼的玻璃窗价格肯定和低层的不一样。或者也可以不用每扇窗来算，可以直接根据楼层的高度来分，比如二十层以上的一个价格，二十层以下的一个价格。</p>
+<p><strong>3.马路上的井盖为什么是圆的？(职位：软件工程师)</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-b407b9b0aae93bc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="井盖.jpg"></p>
+<p>注意了，这题面试的职位可是软件工程师啊。然后我搜了一下资料，发现这题最早是微软公司招聘员工时的测试题,答案是这样的：圆盖的任何直径都不会比放它的圆圈小,盖子不会掉下去.方盖的任何一个边都比放它的方圈的对角线短,但盖子立起时会掉下去。</p>
+<p>当然，还有很多解释：</p>
+<blockquote>
+<ul>
+<li>圆的盖子在更换时可以滚动，比较省力</li>
+<li>是个营销学的问题，就是帮买卖有关的！ 因为圆形切去了4个角，可以最大程度的节约了成本</li>
+<li>圆的直径只有一个，所以圆形井盖在井口上任意转动，都不会掉进井口。而方型井盖，无论是正方形的边长还是长方形的长或宽，都必然小于对角线的长度；如果方型井盖侧立在井口上，就很容易掉进井口。</li>
+<li>从力学的角度来看，圆形井盖与支撑点的受力量是均匀的而方型或长方形井盖的受力点则靠近于施力点</li>
+</ul>
+</blockquote>
+<p>最后贴一个很有趣的解答，看完后我也是佩服的不得了：</p>
+<ul>
+<li><p>从哲学（philosophical）的角度来考虑，比如：<br>井盖是圆的是因为井洞是圆的<br><strong>如果你是从这个角度来思考，那么你是一个善于辩证、且突破传统思维的人</strong></p>
+</li>
+<li><p>从工程（Engineering）和科学（Science）的角度来考虑问题，比如：<br>圆的好制造，井盖铁合金浇注而成，机床加工、打磨也方便<br>圆的受力更均匀不容易坍塌，可以参考圆顶建筑<br>圆的好运输和施工，滚起来就可以动。城市标准排水井盖重达几十公斤，搬运时起码需要几个成年男子同时动作<br>无方向性，所以无需对准和校对位置<br>可以旋转锁定（比如法国的井盖，旋转四分之一周可以锁定，不易打开）<br><strong>如果你是从这个角度来思考，那么你是一个理性的人，有着缜密的思维方式和理性科学的世界观。</strong></p>
+</li>
+<li><p>从历史成因（History Learning）的角度分析，比如：<br>19世纪最开始工业化时，没有汽车，所以排水管道和矿藏管道先于柏马路的发展。<br>建筑学和土木工程学中，井道都是圆形，因为圆形通道最有利于保持土壤的压力（Round tubes are the strongest and most material-efficient shape against the compression of the earth around them）。比如水井，矿井。所以平时看人跳井，没见过井是方的吧？所以圆形的井洞，配合圆形的井盖也就理所当然了。<br><strong>如果你是从这个角度来思考，那么你是一个喜欢探究事物本质成因的人。</strong></p>
+</li>
+<li><p>从设计（Design）的角度来考虑问题，比如：<br>圆的好看，更像邮票戳，可以设计上城市Logo<br>圆的排水时可以形成好看的漩涡等等<br><strong>如果你是从这个角度来思考，那么你是一个感性的人，有着独特的美学思维和设计才能。</strong></p>
+</li>
+</ul>
+<p><strong>4.有人把车停在旅馆外，丢失了他的财物，他接下来会干什么？(职位：软件工程师)</strong></p>
+<p>当然其实这题也是没有标准答案，我查了一下，很多网站都标明答案是什么什么，其实 Google 的这些面试题，只是为了考查面试者思考问题的角度，这些题目的答案都是客观的，没有固定的。一下的一些题目也是差不多的了，我们可以自身思考下如何回答，能回答就行了，或者参考下别人是怎么回答的，对于具体的答案还是不要太纠结。</p>
+<p><strong>5.假设你是海盗船的船长，船员们即将对黄金的分配方案投票。如果赞成票不到半数的话，你会被杀死。你怎样才能在保证自己存活的情况下拿到最多的黄金？(职位：软件工程师)</strong></p>
+<blockquote>
+<p>将黄金平均分给最有权势的51%的船员</p>
+</blockquote>
+<p><strong>6.有八个大小相等的球，其中有一个重量比其他球略重。如何在只用天平称两次的情况下找出那个不一样的球？(职位：产品经理)</strong></p>
+<p>这题就有点不一样了，显然这题是有解决的方案的。</p>
+<p>（1）从 8 个球中取出 6 个，在天平两边各放 3 个<br>（2）如果平衡，把剩下的 2 个球分别放在天平两边，就能找出较重的球。如果不平衡，较重的球就在天平下沉的一边，从这 3 个当中取出 2 个称量，若不平衡，下沉的一边较重，若平衡，剩下的就是较重的球。</p>
+<p>网上还有很多类似这样的题，就不一一列举了，有兴趣的可以看下，其实个人觉得看这几题就差不多了，主要是要形成多角度思考问题或者换个角度思考问题。（嘻嘻嘻，其实还不是为了偷懒，因为困了。哈哈哈）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/2016滴滴出行研发工程师笔试题(亮灯问题)/" rel="next" title="搜狐2017实习生笔试题（概率问题）">
+                <i class="fa fa-chevron-left"></i> 搜狐2017实习生笔试题（概率问题）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/Android 网络框架_网络框架的核心Http协议/" rel="prev" title="Android 网络框架 网络框架的核心Http协议">
+                Android 网络框架 网络框架的核心Http协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、题目"><span class="nav-number">2.</span> <span class="nav-text">二、题目</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

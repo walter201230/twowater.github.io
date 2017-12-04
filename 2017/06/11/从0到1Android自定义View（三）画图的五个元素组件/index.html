@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android 自定义 View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言迟来的第三篇，这篇还是知识点，不过没有细讲每个方法的运用等等，因为我个人觉得，API 方法是变的，且死记硬背效果不佳，当然能记住是好事，我们必需学会在编程中猜想和查找到对应的方法，所以这里提供的只是一些方法的概况，下一篇就是进行实践来完善这些知识点。 目录 一、画图五个元素组件简介Android Framework">
+<meta name="keywords" content="Android 自定义 View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0到1Android自定义View（三）画图的五个元素组件">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/从0到1Android自定义View（三）画图的五个元素组件/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言迟来的第三篇，这篇还是知识点，不过没有细讲每个方法的运用等等，因为我个人觉得，API 方法是变的，且死记硬背效果不佳，当然能记住是好事，我们必需学会在编程中猜想和查找到对应的方法，所以这里提供的只是一些方法的概况，下一篇就是进行实践来完善这些知识点。 目录 一、画图五个元素组件简介Android Framework 提供了一些 2D 画图的 API，android.graphics 包就是其">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-13c6a1f9b79fbae8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-2337469189f142be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-b3ad107b4612e7fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-68536e51767e051d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-36adc631951d495b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T06:26:24.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0到1Android自定义View（三）画图的五个元素组件">
+<meta name="twitter:description" content="前言迟来的第三篇，这篇还是知识点，不过没有细讲每个方法的运用等等，因为我个人觉得，API 方法是变的，且死记硬背效果不佳，当然能记住是好事，我们必需学会在编程中猜想和查找到对应的方法，所以这里提供的只是一些方法的概况，下一篇就是进行实践来完善这些知识点。 目录 一、画图五个元素组件简介Android Framework 提供了一些 2D 画图的 API，android.graphics 包就是其">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/11/从0到1Android自定义View（三）画图的五个元素组件/"/>
+
+
+
+
+
+  <title>从0到1Android自定义View（三）画图的五个元素组件 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/从0到1Android自定义View（三）画图的五个元素组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从0到1Android自定义View（三）画图的五个元素组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T00:00:00+08:00">
+                2017-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/从0到1Android自定义View/" itemprop="url" rel="index">
+                    <span itemprop="name">从0到1Android自定义View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,838
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android.jpg"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>迟来的第三篇，这篇还是知识点，不过没有细讲每个方法的运用等等，因为我个人觉得，API 方法是变的，且死记硬背效果不佳，当然能记住是好事，我们必需学会在编程中猜想和查找到对应的方法，所以这里提供的只是一些方法的概况，下一篇就是进行实践来完善这些知识点。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://upload-images.jianshu.io/upload_images/2136918-13c6a1f9b79fbae8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从0到1Android自定义View（三） 画图的五个元素组件.png"></p>
+<h1 id="一、画图五个元素组件简介"><a href="#一、画图五个元素组件简介" class="headerlink" title="一、画图五个元素组件简介"></a>一、画图五个元素组件简介</h1><p>Android Framework 提供了一些 2D 画图的 API，android.graphics 包就是其中之一。</p>
+<p>通常我们在自定义 View 中需要画一些东西，那么基本就是需要 5 个元素组件协同来完成的。这 5 个组件分别是：</p>
+<ul>
+<li><p>颜色：Color </p>
+</li>
+<li><p>位图：Bitmap 来保持（hold）那些像素，通过 Matrix 来使图像变换，如平移、旋转、缩放、扭曲等</p>
+</li>
+<li><p>画布：Canvas 来响应画画（draw）的调用（并将其写入 bitmap）</p>
+</li>
+<li><p>画笔：Paint 描述画画的颜色和样式等</p>
+</li>
+<li><p>路径：Path 根据路径绘制文本和剪裁画布</p>
+</li>
+</ul>
+<p>其实这也很好理解，编程其实就是根据生活哲学创造的。比如 JAVA 的编程思想就是：万事万物皆对象。在现实生活中，我们需要画一些东西，也是需要画纸，画笔，颜料等等，因此自定义 View 中，我们需要画一些东西，也是离不开画布（Canvas），画笔（paint），其中我们可以调整画布的颜色和画笔的颜色。</p>
+<p>下面我们一个一个类的看下相关的知识点，虽然会有点闷，可是感觉这又是必需的，过完这些知识点后，就开始一些实战的运用了。</p>
+<h1 id="二、颜色：Color-类"><a href="#二、颜色：Color-类" class="headerlink" title="二、颜色：Color 类"></a>二、颜色：Color 类</h1><p>Color 我们应该是接触的比较多的，因此只是简单的介绍一下使用方式。Android 系统中颜色的常用表示方法有以下 3 种：</p>
+<p>1、int color = Color.BLUE;</p>
+<p>2、int color = Color.argb(150,200,0,100);</p>
+<p>3、在xml文件中定义颜色；</p>
+<h1 id="三、位图：Bitmap-类"><a href="#三、位图：Bitmap-类" class="headerlink" title="三、位图：Bitmap 类"></a>三、位图：Bitmap 类</h1><h2 id="1、Bitmap-类在自定义-View-中的简介"><a href="#1、Bitmap-类在自定义-View-中的简介" class="headerlink" title="1、Bitmap 类在自定义 View 中的简介"></a>1、Bitmap 类在自定义 View 中的简介</h2><p>Bitmap (android.graphics.Bitmap)，是 Android 系统中的图像处理的最重要类之一。用它可以获取图像文件信息，进行图像剪切、旋转、缩放等操作，并可以指定格式保存图像文件。</p>
+<p>当然，在自定义 View 中使用最多的操作大概就是一些剪切，旋转等动画功能了。因为 Bitmap 涉及的方面挺广的，因为这是自定义 View 系列，主要是介绍如何通过 Matrix 在 Android 中的使图像（ Bitmap ）变换，如平移、旋转、缩放、扭曲等。</p>
+<h2 id="2、Matrix-简介"><a href="#2、Matrix-简介" class="headerlink" title="2、Matrix 简介"></a>2、Matrix 简介</h2><p>Matrix 内部通过维护一个 float[9] 的数组来构成 3x3 矩阵的形式，而实际上所有的变换方法说到底就是通过更改数组中某个或某几个位置的数值。Matrix 提供了 setValues() 和 getValues() 方法来操作数组。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-2337469189f142be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Matrix 矩阵格式.png"></p>
+<p>实际上我们平常利用 Matrix 来进行 Translate（平移）、Scale（缩放）、Rotate（旋转）的操作，就是在操作着这个矩阵中元素的数值来达到我们想要的效果。但是现在问题来了，上面提到的平移、缩放、旋转操作中，旋转和缩放可以用乘法表示，而平移就只能用加法表示，而且 Matrix 是一个 3 X 3 的矩阵，实际上表示这些操作 2 X 2 的矩阵足矣！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-b3ad107b4612e7fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Matrix的平移、缩放、旋转的矩阵.png"></p>
+<p>如上，可以依次看到平移、缩放、旋转的矩阵，其中</p>
+<ul>
+<li><p>（x’，y’）表示执行操作后的点的坐标</p>
+</li>
+<li><p>（x，y）表示执行操作前的点的坐标</p>
+</li>
+<li><p>tx、ty 分别表示 x 轴、y 轴上平移的距离</p>
+</li>
+<li><p>Sx、Sy 分别表示x轴、y轴上的缩放比例</p>
+</li>
+<li><p>θ 则表示旋转角度</p>
+</li>
+</ul>
+<p>其实在计算机图形应用涉及到几何变换，主要包括平移、旋转、缩放。以矩阵表达式来计算这些变换时，平移是矩阵相加，旋转和缩放则是矩阵相乘。不过，通过齐次坐标（齐次坐标有着广泛的应用，包括电脑图形及 3D 电脑视觉。使用齐次坐标可让电脑进行仿射变换，并通常，其投影变换能简单地使用矩阵来表示。），将平移的加法合并用乘法表示。</p>
+<h2 id="3、Matrix-9-个元素的作用"><a href="#3、Matrix-9-个元素的作用" class="headerlink" title="3、Matrix 9 个元素的作用"></a>3、Matrix 9 个元素的作用</h2><p>上面都提到了 Matrix 是一个 3 X 3 的矩阵，也就是说一个 Matrix 共有 9 个元素，那么它每个元素的值发生改变会起到什么作用呢？</p>
+<p>Matrix 基本变换有 4 种: 平移(translate)、缩放(scale)、旋转(rotate) 和 错切(skew)。这 4 种变换都是由矩阵中的 9 个元素参数控制的</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-68536e51767e051d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Matrix 9 个元素的作用.png"></p>
+<p>上面提到了平移(translate)、缩放(scale)、旋转(rotate) 和 错切(skew) 都是由这 9 个元素控制的，当然，Android 给我们提供了一系列的方法函数，且这些变换操作，每一种操作在 Matrix 均有三类,前乘(pre)，后乘(post)和设置(set)</p>
+<p><strong>常用API包括下面的组合形式</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">set</th>
+<th style="text-align:center">pre</th>
+<th style="text-align:center">post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">translate</td>
+<td style="text-align:center">setTranslate</td>
+<td style="text-align:center">preTranslate</td>
+<td style="text-align:center">postTranslate</td>
+</tr>
+<tr>
+<td style="text-align:center">scale</td>
+<td style="text-align:center">setScale</td>
+<td style="text-align:center">preScale</td>
+<td style="text-align:center">postScale</td>
+</tr>
+<tr>
+<td style="text-align:center">rotate</td>
+<td style="text-align:center">setRotate</td>
+<td style="text-align:center">preRotate</td>
+<td style="text-align:center">postRotate</td>
+</tr>
+</tbody>
+</table>
+<p>我们用<code>translate</code>来讲</p>
+<p><code>setTranslate()</code> 指定了移动的位置，不需要通过左乘右乘</p>
+<p><code>postTranslate()</code> 在方法内部进行的是 <code>M&#39; = T(dx, dy) * M</code>，t 左乘m</p>
+<p><code>preTranslate()</code>  在方法内部进行的是 <code>M&#39; = M * T(dx, dy)</code>，m左乘t</p>
+<p><code>post</code>,<code>pre</code>的乘法计算顺序是相反的，矩阵乘法不满足交换律，所以计算结果几乎是不同的。</p>
+<p>可能不太好理解，不过先要知道有这回事，之后通过实践就能很好的理解了。当然，Matrix 提供的 API 方法还有很多，罗列出来给各位看，效果也不是很好，主要是 API 方法是会变的，因此我们最重要的技能还是学会在编程中看 API 方法，查看源码或者源码中的解释介绍来看和了解相关方法的作用。</p>
+<h1 id="四、画布：-Canvas-类"><a href="#四、画布：-Canvas-类" class="headerlink" title="四、画布： Canvas 类"></a>四、画布： Canvas 类</h1><h2 id="1、Canvas-类简介"><a href="#1、Canvas-类简介" class="headerlink" title="1、Canvas 类简介"></a>1、Canvas 类简介</h2><p>Canvas，画布，能够在上面绘制各种东西，是安卓平台 2D 图形绘制的基础。因为 Canvas 类是构成上层的基础，所以它的可操作性强，里面提供的方法也是相对基础的，因此想弄成复杂一点的图像是有一定的难度的。</p>
+<h2 id="2、Canvas-类提供的-API"><a href="#2、Canvas-类提供的-API" class="headerlink" title="2、Canvas 类提供的 API"></a>2、Canvas 类提供的 API</h2><p>其实我的看法跟上面一样，不全列出来 Canvas 类提供的 API 方法，因为太多了，列出来，相信各位也不会细看，太多的话，更不容易让各位了解记忆。所以大概总结一下， 用到可以打关键字，就能在 AS 或者 Eclpise 中查到相关的方法了。</p>
+<p>Canvas 提供的绘制图形的方法，基本都是以 draw 开头的。好，我们只要知道这个，我们只要打出关键字就可以知道相关的方法了，例如：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-36adc631951d495b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Canvas draw方法.png"></p>
+<p>从上面方法的名字看来我们可以知道 Canvas 可以绘制的对象有：弧线(arcs)、填充颜色(argb 和color)、 Bitmap、圆(circle 和 oval)、点(point)、线(line)、矩形(Rect)、图片(Picture)、圆角矩形 (RoundRect)、文本(text)、顶点(Vertices)、路径(path)。</p>
+<p>我个人是比较不提倡死记硬背有哪些 API 方法的，通过思考，猜想 Google 的工程师可能会提供什么方法出来，比如，上面的，Canvas 类提供了可以绘制的对象，可是只有这些，还是不够的，为什么？因为我们看到的自定义 View 都是附带一些动画的，比如选择等等，所以我们可以知道，Android 会提供了一些对 Canvas 位置转换的方法：rorate、scale、translate、skew(扭曲)等。而且它允许你通过获得它的转换矩阵对象，也就是上面所介绍的。这些操作就像是虽然你的笔还是原来的地方画，但是画纸旋转或者移动了，所以你画的东西的方位就产生变化。为了方便一些转换操作，Canvas 还提供了保存和回滚属性的方法( save 和 restore )，比如你可以先保存目前画纸的位置(save)，然后旋转 90 度，向下移动 100 像素后画一些图形，画完后调用 restore 方法返回到刚才保存的位置。</p>
+<h1 id="五、画笔：-Paint-类"><a href="#五、画笔：-Paint-类" class="headerlink" title="五、画笔： Paint 类"></a>五、画笔： Paint 类</h1><h2 id="1、Paint-类简介"><a href="#1、Paint-类简介" class="headerlink" title="1、Paint 类简介"></a>1、Paint 类简介</h2><p>Paint 类包含有用来画几何图形、文本、位图的类型和颜色等信息，如果把 Canvas 类看作是画板，那我们可以把 Paint类 看做是画笔，可以根据需要画出不同颜色和样式的图形、文本等内容。其实基本 Paint 类和 Canvas 类都是结合使用的。</p>
+<h2 id="2、Paint-类提供的-API"><a href="#2、Paint-类提供的-API" class="headerlink" title="2、Paint 类提供的 API"></a>2、Paint 类提供的 API</h2><p>Paint 类提供了很多方法来设置和获取 Paint 对象的属性，像上面提到的观点一样，猜下会提供什么 API 方法，竟然是画笔，我们现实中有不同的颜色的画笔，所以 API 提供了的很多方法来设置和获取Paint 对象的属性，像刚提到的颜色值（setColor），Alpha 值（setAlpha），字体尺寸（setTextSize）和画笔风格，空心或者实心（setStyle）等等。当然有 set 方法肯定也会有对应的 get 方法。</p>
+<h1 id="六、路径：Path-类"><a href="#六、路径：Path-类" class="headerlink" title="六、路径：Path 类"></a>六、路径：Path 类</h1><h2 id="1、Path-类简介"><a href="#1、Path-类简介" class="headerlink" title="1、Path 类简介"></a>1、Path 类简介</h2><p>Path 类的官方定义：路径，即无数个点连起来的线。其实也就是说 Path 类封装了由直线和曲线构成的几何路径。</p>
+<h2 id="2、Path-类作用"><a href="#2、Path-类作用" class="headerlink" title="2、Path 类作用"></a>2、Path 类作用</h2><p>上面提到的绘制都是简单图形(如 矩形 圆 圆弧等)，而对于那些复杂一点的图形则没法去绘制(如绘制一个心形 正多边形 五角星等)，而使用 Path 不仅能够绘制简单图形，也可以绘制这些比较复杂的图形。另外，根据路径绘制文本和剪裁画布都会用到 Path。</p>
+<h2 id="3、Path-类提供的-API"><a href="#3、Path-类提供的-API" class="headerlink" title="3、Path 类提供的 API"></a>3、Path 类提供的 API</h2><p>Path 类相对来说，提供的方法不是三言两语就能说明白的，需要通过实践来体会，这里只是简单的提下，还是要通过往后实践来加深理解的。</p>
+<p>Path 类，上面提到可以绘制复杂的图形，因此会有基本绘图方法。比如绘制圆形（addCircle），绘制直线（lineTo）和绘制圆角矩形（addRoundRect）。这时我们就会想到，不是绘制复杂的图形吗，这些都是基本的图形啊。那么怎么绘制复杂的图形呢，当然复杂的图形都是有基本的图形演变来的，那么 Path 提供了什么特别的 API 吗？所以 Path 提供了     lineTo,moveTo,quadTo,cubicTo 以及与之对应的 rLineTo ，rMoveTo ，rQuadTo，rCubicTo的方法。比如 lineTo(float x, float y)，绘制一条 x 到 y 的直线，因为两点决定一条直线，所以提供两个点就行了。而 rLineTo 呢？rLineTo 方法是基于当前绘制开始点的offest。比如当前 paint 位于 (100,100) 处， rLineTo(100,100) 方法绘制出来的直线是从 (100,100) 到 (200,200) 的。也就是 rXXX 方法方便用来基于之前的绘制作连续绘制。</p>
+<p>当然 Path 类还有一些其他的方法，比如移动画笔到 (x,y) 处：moveTo(float x,float y)，设置当前 path 的终点： setLastPoint(float x,float y) 等等一些列的方法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-自定义-View/" rel="tag"># Android 自定义 View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/25/滴滴出行2017秋招算法笔试题(作弊概率)/" rel="next" title="滴滴出行2017秋招算法笔试题（作弊概率）">
+                <i class="fa fa-chevron-left"></i> 滴滴出行2017秋招算法笔试题（作弊概率）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/11/从0到1Android自定义View（四）贝塞尔曲线/" rel="prev" title="从0到1Android自定义View（四）贝塞尔曲线">
+                从0到1Android自定义View（四）贝塞尔曲线 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、画图五个元素组件简介"><span class="nav-number">3.</span> <span class="nav-text">一、画图五个元素组件简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、颜色：Color-类"><span class="nav-number">4.</span> <span class="nav-text">二、颜色：Color 类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、位图：Bitmap-类"><span class="nav-number">5.</span> <span class="nav-text">三、位图：Bitmap 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Bitmap-类在自定义-View-中的简介"><span class="nav-number">5.1.</span> <span class="nav-text">1、Bitmap 类在自定义 View 中的简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Matrix-简介"><span class="nav-number">5.2.</span> <span class="nav-text">2、Matrix 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Matrix-9-个元素的作用"><span class="nav-number">5.3.</span> <span class="nav-text">3、Matrix 9 个元素的作用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、画布：-Canvas-类"><span class="nav-number">6.</span> <span class="nav-text">四、画布： Canvas 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Canvas-类简介"><span class="nav-number">6.1.</span> <span class="nav-text">1、Canvas 类简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Canvas-类提供的-API"><span class="nav-number">6.2.</span> <span class="nav-text">2、Canvas 类提供的 API</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、画笔：-Paint-类"><span class="nav-number">7.</span> <span class="nav-text">五、画笔： Paint 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Paint-类简介"><span class="nav-number">7.1.</span> <span class="nav-text">1、Paint 类简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Paint-类提供的-API"><span class="nav-number">7.2.</span> <span class="nav-text">2、Paint 类提供的 API</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、路径：Path-类"><span class="nav-number">8.</span> <span class="nav-text">六、路径：Path 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Path-类简介"><span class="nav-number">8.1.</span> <span class="nav-text">1、Path 类简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Path-类作用"><span class="nav-number">8.2.</span> <span class="nav-text">2、Path 类作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Path-类提供的-API"><span class="nav-number">8.3.</span> <span class="nav-text">3、Path 类提供的 API</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

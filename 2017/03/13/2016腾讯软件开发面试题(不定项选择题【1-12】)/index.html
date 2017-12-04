@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、前言 2017年1月27日19:05:28，今天是年三十，首先祝大家新年快乐，之前对自己要求过，每星期一篇面试题的博客，虽然今天心里有一万个不愿意写，也还是得写。这篇博客是 2016 腾讯软件开发面试题中不定项选择题集合中的 1 -12 题，其中后面的 13-25题在下周的博客中写，说明一下，这篇博客跟以往的每周一">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016腾讯软件开发面试题(不定项选择题【1-12】)">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/2016腾讯软件开发面试题(不定项选择题【1-12】)/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、前言 2017年1月27日19:05:28，今天是年三十，首先祝大家新年快乐，之前对自己要求过，每星期一篇面试题的博客，虽然今天心里有一万个不愿意写，也还是得写。这篇博客是 2016 腾讯软件开发面试题中不定项选择题集合中的 1 -12 题，其中后面的 13-25题在下周的博客中写，说明一下，这篇博客跟以往的每周一题有点不同，因为如果选择一两题，博客的边幅有点少，而且选择题相对来说，难度没那么">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-7442afa9facd1544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-8267d9642bcdf874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-eec8bde19ecadcd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-80196f74355c2112.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-3a482a10105ddef8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-7e2e70c5ad5e4d83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T09:16:20.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016腾讯软件开发面试题(不定项选择题【1-12】)">
+<meta name="twitter:description" content="一、前言 2017年1月27日19:05:28，今天是年三十，首先祝大家新年快乐，之前对自己要求过，每星期一篇面试题的博客，虽然今天心里有一万个不愿意写，也还是得写。这篇博客是 2016 腾讯软件开发面试题中不定项选择题集合中的 1 -12 题，其中后面的 13-25题在下周的博客中写，说明一下，这篇博客跟以往的每周一题有点不同，因为如果选择一两题，博客的边幅有点少，而且选择题相对来说，难度没那么">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-7442afa9facd1544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/2016腾讯软件开发面试题(不定项选择题【1-12】)/"/>
+
+
+
+
+
+  <title>2016腾讯软件开发面试题(不定项选择题【1-12】) | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/2016腾讯软件开发面试题(不定项选择题【1-12】)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2016腾讯软件开发面试题(不定项选择题【1-12】)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,906
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><blockquote>
+<p>2017年1月27日19:05:28，今天是年三十，首先祝大家新年快乐，之前对自己要求过，每星期一篇面试题的博客，虽然今天心里有一万个不愿意写，也还是得写。这篇博客是 2016 腾讯软件开发面试题中不定项选择题集合中的 1 -12 题，其中后面的 13-25题在下周的博客中写，说明一下，这篇博客跟以往的每周一题有点不同，因为如果选择一两题，博客的边幅有点少，而且选择题相对来说，难度没那么大，更主要的是为了让大家全面的感受一下腾讯的面试题。</p>
+</blockquote>
+<h1 id="二、2016-腾讯软件开发面试题（不定项选择题【1-12】）"><a href="#二、2016-腾讯软件开发面试题（不定项选择题【1-12】）" class="headerlink" title="二、2016 腾讯软件开发面试题（不定项选择题【1-12】）"></a>二、2016 腾讯软件开发面试题（不定项选择题【1-12】）</h1><blockquote>
+<p>1、已知一棵二叉树，如果先序遍历的节点顺序是： ADCEFGHB ，中序遍历是： CDFEGHAB ，则后序遍历结果为：（ ）</p>
+<p>A. CFHGEBDA<br>B. CDFEGHBA<br>C. FGHCDEBA<br>D. CFHGEDBA</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<p>对于二叉树的遍历方式一般分为三种先序、中序、后序三种方式：</p>
+<ul>
+<li><p>先序遍历（根左右）<br>若二叉树为空，则不进行任何操作：否则<br>1、访问根结点。<br>2、先序方式遍历左子树。<br>3、先序遍历右子树。</p>
+</li>
+<li><p>中序遍历 （左根右）<br>若二叉树为空，则不进行任何操作：否则<br>1、中序遍历左子树。<br>2、访问根结点。<br>3、中序遍历右子树。</p>
+</li>
+<li><p>后序遍历 （左右根）<br>若二叉树为空，则不进行任何操作：否则<br>1、后序遍历左子树。<br>2、后序遍历右子树。<br>3、放问根结点。</p>
+</li>
+</ul>
+<p>因此，根据题目给出的先序遍历和中序遍历，可以画出二叉树：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-7442afa9facd1544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二叉树遍历.png"></p>
+<p>最后结果选择： D</p>
+<hr>
+<blockquote>
+<p>2、下列哪两个数据结构，同时具有较高的查找和删除性能？（ ）</p>
+<p>A. 有序数组<br>B. 有序链表<br>C. AVL 树<br>D. Hash 表</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-8267d9642bcdf874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="几种常见的数据结构操作性能.png"></p>
+<p>平衡二叉树的查找，插入和删除性能都是 O(logN) ，其中查找和删除性能较好；哈希表的查找、插入和删除性能都是 O(1) ，都是最好的。所以最后的结果选择： CD</p>
+<hr>
+<blockquote>
+<p>3、下列排序算法中，哪些时间复杂度不会超过 nlogn？（ ）</p>
+<p>A. 快速排序<br>B. 堆排序<br>C. 归并排序<br>D. 冒泡排序</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-eec8bde19ecadcd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="几种常见的排序算法对比.png"></p>
+<p>根据上图，观察平均情况，最好最差情况的时间复杂度基本可以知道答案了，最后结果选择： BC</p>
+<hr>
+<blockquote>
+<p>4、初始序列为 1 8 6 2 5 4 7 3 一组数采用堆排序，当建堆（小根堆）完毕时，堆所对应的二叉树中序遍历序列为：（ ）</p>
+<p>A. 8 3 2 5 1 6 4 7<br>B. 3 2 8 5 1 4 6 7<br>C. 3 8 2 5 1 6 7 4<br>D. 8 2 3 5 1 4 7 6</p>
+</blockquote>
+<p>初始化序列：1 8 6 2 5 4 7 3,，小根堆就是要求结点的值小于其左右孩子结点的值，左右孩子的大小没有关系，那么小根堆排序之后为：1 2 4 3 5 6 7 8；</p>
+<p>中序遍历：左根右，故遍历结果为：8 3 2 5 1 6 4 7</p>
+<p>故最后选择的结果： A</p>
+<hr>
+<blockquote>
+<p>5、当 n = 5 时，下列函数的返回值是：（ ）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; [cpp] view plaincopy</span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> n)</span>  </span></span><br><span class="line">&gt; &#123;  </span><br><span class="line">&gt;     <span class="keyword">if</span>(n&lt;<span class="number">2</span>)<span class="keyword">return</span> n;  </span><br><span class="line">&gt;     <span class="keyword">return</span> foo(n<span class="number">-1</span>)+foo(n<span class="number">-2</span>);  </span><br><span class="line">&gt; &#125;  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>A．5<br>B．7<br>C．8<br>D．1</p>
+</blockquote>
+<p>这题只需把数代进去，就可以知道结果了，所以最后结果选： A</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-80196f74355c2112.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="递归.png"></p>
+<hr>
+<blockquote>
+<p>6、 S 市 A ，B 共有两个区，人口比例为 3：5 ，据历史统计 A 区的犯罪率为 0.01% ，B 区为 0.015% ，现有一起新案件发生在 S 市，那么案件发生在 A 区的可能性有多大？（ ）</p>
+<p>A．37.5%<br>B．32.5%<br>C．28.6%<br>D．26.1%</p>
+</blockquote>
+<p>这道题首先得了解犯罪率是什么？犯罪率就是犯罪人数与总人口数的比。因此可以直接得出公式：( 3 <em> 0.01% ) / ( 3 </em> 0.01% + 5 * 0.015% ) =  28.6%</p>
+<p>当然如果不好理解的话，我们可以实例化，比如 B 区假设 5000 人，A 区 3000 人，A 区的犯罪率为 0.01%，那么 A 区犯罪人数为 30 人，B 区的犯罪率为 0.015% ，那么 B 区的犯罪人数为 75 人 ，求发生在 A 区的可能性，就是说 A 区的犯罪人数在总犯罪人数的多少，也就是 30/(30+75)=0.2857</p>
+<p>当然，也可以回归到我们高中遗忘的知识：</p>
+<p>假设C表示犯案属性<br>在A区犯案概率：P(C|A)=0.01%<br>在B区犯案概率：P(C|B)=0.015%<br>在A区概率：P(A)=3/8<br>在B区概率：P(B)=5/8<br>犯案概率：P(C)=（3/8<em>0.01%+5/8</em>0.015%)<br>根据贝叶斯公式：P(A|C) = P(A,C) / P(C) = [P(C|A) P(A)] / [ P(C|A) P(A)+  P(C|B) P(B) ] 也可以算出答案来</p>
+<p>故，最后结果选择为： C</p>
+<hr>
+<blockquote>
+<p>7、Unix系统中，哪些可以用于进程间的通信？（ ）</p>
+<p>A．Socket<br>B．共享内存<br>C．消息队列<br>D．信号量</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<ol>
+<li><p>管道（Pipe）及有名管道（named pipe）：管道可用于具有亲缘关系进程间的通信，有名管道克服了管道没有名字的限制，因此，除具有管道所具有的功能外，它还允许无亲缘关系进程间的通信；</p>
+</li>
+<li><p>信号（Signal）：信号是比较复杂的通信方式，用于通知接受进程有某种事件发生，除了用于进程间通信外，进程还可以发送信号给进程本身；linux除了支持Unix早期信号语义函数sigal外，还支持语义符合Posix.1标准的信号函数sigaction（实际上，该函数是基于BSD的，BSD为了实现可靠信号机制，又能够统一对外接口，用sigaction函数重新实现了signal函数）；</p>
+</li>
+<li><p>报文（Message）队列（消息队列）：消息队列是消息的链接表，包括Posix消息队列system V消息队列。有足够权限的进程可以向队列中添加消息，被赋予读权限的进程则可以读走队列中的消息。消息队列克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。</p>
+</li>
+<li><p>共享内存：使得多个进程可以访问同一块内存空间，是最快的可用IPC形式。是针对其他通信机制运行效率较低而设计的。往往与其它通信机制，如信号量结合使用，来达到进程间的同步及互斥。<br>信号量（semaphore）：主要作为进程间以及同一进程不同线程之间的同步手段。</p>
+</li>
+<li><p>套接口（Socket）：更为一般的进程间通信机制，可用于不同机器之间的进程间通信。起初是由Unix系统的BSD分支开发出来的，但现在一般可以移植到其它类Unix系统上：Linux和System V的变种都支持套接字。</p>
+</li>
+</ol>
+<p>故最后选择的结果为： ABCD</p>
+<hr>
+<blockquote>
+<p>8、静态变量通常存储在进程哪个区？（ ）</p>
+<p>A．栈区<br>B．堆区<br>C．全局区<br>D．代码区</p>
+</blockquote>
+<p>静态变量的修饰关键字：static，又称静态全局变量。故最后选择的结果为： C</p>
+<hr>
+<blockquote>
+<p>9、查询性能（ ）</p>
+<p>A． 在Name字段上添加主键<br>B． 在Name字段上添加索引<br>C． 在Age字段上添加主键<br>D． 在Age字段上添加索引</p>
+</blockquote>
+<p>结果选: B</p>
+<hr>
+<blockquote>
+<p>10、IP地址131.153.12.71是一个（B）类IP地址。</p>
+<p>A．A<br>B．B<br>C．C<br>D．D</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-3a482a10105ddef8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="IP地址分类.png"></p>
+<p>故将 131 转为二进制 ：10000011，因此为 B 类 IP 地址，结果选 B</p>
+<hr>
+<blockquote>
+<p>11、下推自动识别机的语言是：（C）</p>
+<p>A．0型语言<br>B．1型语言<br>C．2型语言<br>D．3型语言</p>
+</blockquote>
+<p><strong>知识点</strong></p>
+<p>这是有关编译原理的。</p>
+<p>乔姆斯基体系是计算机科学中刻画形式文法表达能力的一个分类谱系，是由诺姆·乔姆斯基于1956年提出的。它包括四个层次：</p>
+<ul>
+<li><p>0-型文法（无限制文法或短语结构文法）包括所有的文法。该类型的文法能够产生所有可被图灵机识别的语言。可被图灵机识别的语言是指能够使图灵机停机的字串，这类语言又被称为递归可枚举语言。注意递归可枚举语言与递归语言的区别，后者是前者的一个真子集，是能够被一个总停机的图灵机判定的语言。</p>
+</li>
+<li><p>1-型文法（上下文相关文法）生成上下文相关语言。这种文法的产生式规则取如 αAβ -&gt; αγβ 一样的形式。这里的A 是非终结符号，而 α, β 和 γ 是包含非终结符号与终结符号的字串；α, β 可以是空串，但 γ 必须不能是空串；这种文法也可以包含规则 S-&gt;ε ，但此时文法的任何产生式规则都不能在右侧包含 S 。这种文法规定的语言可以被线性有界非确定图灵机接受。</p>
+</li>
+<li><p>2-型文法（上下文无关文法）生成上下文无关语言。这种文法的产生式规则取如 A -&gt; γ 一样的形式。这里的A 是非终结符号，γ 是包含非终结符号与终结符号的字串。这种文法规定的语言可以被非确定下推自动机接受。上下文无关语言为大多数程序设计语言的语法提供了理论基础。</p>
+</li>
+<li><p>3-型文法（正规文法）生成正规语言。这种文法要求产生式的左侧只能包含一个非终结符号，产生式的右侧只能是空串、一个终结符号或者一个非终结符号后随一个终结符号；如果所有产生式的右侧都不含初始符号 S ，规则 S -&gt; ε 也允许出现。这种文法规定的语言可以被有限状态自动机接受，也可以通过正则表达式来获得。正规语言通常用来定义检索模式或者程序设计语言中的词法结构。</p>
+</li>
+</ul>
+<p>正规语言类包含于上下文无关语言类，上下文无关语言类包含于上下文相关语言类，上下文相关语言类包含于递归可枚举语言类。这里的包含都是集合的真包含关系，也就是说：存在递归可枚举语言不属于上下文相关语言类，存在上下文相关语言不属于上下文无关语言类，存在上下文无关语言不属于正规语言类。</p>
+<p>四种类型的文法的主要特点：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-7e2e70c5ad5e4d83.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="四种类型的文法的主要特点.png"></p>
+<p>因此答案选择：B</p>
+<hr>
+<blockquote>
+<p>12、下列程序的输出是：（ ）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; [cpp] view plaincopy</span><br><span class="line">&gt; <span class="meta">#<span class="meta-keyword">define</span> add(a+b) a+b  </span></span><br><span class="line">&gt; <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line">&gt; &#123;  </span><br><span class="line">&gt;     <span class="built_in">printf</span>(“%d\n”，<span class="number">5</span>*add(<span class="number">3</span>+<span class="number">4</span>));  </span><br><span class="line">&gt;     <span class="keyword">return</span> ;  </span><br><span class="line">&gt; &#125;  </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>A．23<br>B．35<br>C．16<br>D．19</p>
+</blockquote>
+<p>因为我主要是 java 开发的，可是毕竟 c 和 c++ 都是大学的必修课，因此还是有点了解的。这里主要看清楚 define ，#define 的本质就是一个代换，题目 <code>#define add(a+b) a+b</code>表明了 add(a+b) 替换成 a+b ，因此代码输出的那一行其实是 <code>printf(“%d\n”，5*3+4);</code> ,所以最后的结果选择 D</p>
+<h1 id="三、祝福"><a href="#三、祝福" class="headerlink" title="三、祝福"></a>三、祝福</h1><blockquote>
+<p>2017年1月27日20:17:36 终于写完了，最后还是祝福大家，新年快乐，心想事成。哈哈，可以去玩耍了。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/微信小程序学习（1）微信小程序简介/" rel="next" title="微信小程序学习（1）微信小程序简介">
+                <i class="fa fa-chevron-left"></i> 微信小程序学习（1）微信小程序简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/2016美团研发工程师笔试题(让人头疼的两个数字)/" rel="prev" title="2016美团研发工程师笔试题（让人头疼的两个数字）">
+                2016美团研发工程师笔试题（让人头疼的两个数字） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、2016-腾讯软件开发面试题（不定项选择题【1-12】）"><span class="nav-number">2.</span> <span class="nav-text">二、2016 腾讯软件开发面试题（不定项选择题【1-12】）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、祝福"><span class="nav-number">3.</span> <span class="nav-text">三、祝福</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

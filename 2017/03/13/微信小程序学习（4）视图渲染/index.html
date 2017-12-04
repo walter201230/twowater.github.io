@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、创建一个页面1.首先我们新建一个项目，在新建的项目中有index 页面和 logs 页面，即欢迎页和小程序启动日志的展示页，他们都在 pages 目录下。微信小程序中的每一个页面的【路径+页面名】都需要写在 app.json 的 pages 中，且 pages 中的第一个页面是小程序的首页。 每一个小程序页面是由同">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序学习（4）视图渲染">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/微信小程序学习（4）视图渲染/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、创建一个页面1.首先我们新建一个项目，在新建的项目中有index 页面和 logs 页面，即欢迎页和小程序启动日志的展示页，他们都在 pages 目录下。微信小程序中的每一个页面的【路径+页面名】都需要写在 app.json 的 pages 中，且 pages 中的第一个页面是小程序的首页。 每一个小程序页面是由同路径下同名的四个不同后缀文件的组成，如：index.js、index.wxml、">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013001100317">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013001233376">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013001641757">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013002929027">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013002122214">
+<meta property="og:image" content="http://img.blog.csdn.net/20161013232700639">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014003012005">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014003034181">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014003314776">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014003331167">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014003633717">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014005632256">
+<meta property="og:image" content="http://img.blog.csdn.net/20161014005653490">
+<meta property="og:image" content="http://img.blog.csdn.net/20161016022317380">
+<meta property="og:image" content="http://img.blog.csdn.net/20161016022325615">
+<meta property="og:image" content="http://img.blog.csdn.net/20161016022403694">
+<meta property="og:image" content="http://img.blog.csdn.net/20161016022411678">
+<meta property="og:image" content="http://img.blog.csdn.net/20161016022425819">
+<meta property="og:updated_time" content="2017-12-04T09:05:29.314Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序学习（4）视图渲染">
+<meta name="twitter:description" content="一、创建一个页面1.首先我们新建一个项目，在新建的项目中有index 页面和 logs 页面，即欢迎页和小程序启动日志的展示页，他们都在 pages 目录下。微信小程序中的每一个页面的【路径+页面名】都需要写在 app.json 的 pages 中，且 pages 中的第一个页面是小程序的首页。 每一个小程序页面是由同路径下同名的四个不同后缀文件的组成，如：index.js、index.wxml、">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161013001100317">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/微信小程序学习（4）视图渲染/"/>
+
+
+
+
+
+  <title>微信小程序学习（4）视图渲染 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/微信小程序学习（4）视图渲染/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序学习（4）视图渲染</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/微信小程序学习/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  930
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、创建一个页面"><a href="#一、创建一个页面" class="headerlink" title="一、创建一个页面"></a>一、创建一个页面</h2><p>1.首先我们新建一个项目，在新建的项目中有index 页面和 logs 页面，即欢迎页和小程序启动日志的展示页，他们都在 pages 目录下。微信小程序中的每一个页面的【路径+页面名】都需要写在 app.json 的 pages 中，且 pages 中的第一个页面是小程序的首页。</p>
+<p>每一个小程序页面是由同路径下同名的四个不同后缀文件的组成，如：index.js、index.wxml、index.wxss、index.json。.js后缀的文件是脚本文件，.json后缀的文件是配置文件，.wxss后缀的是样式表文件，.wxml后缀的文件是页面结构文件。</p>
+<p>好了，然后我们新建一个自己的页面，首先建一个文件夹（myPage），在文件夹下创建对应的布局文件（myPage.wxml）和js文件（myPage.js），最后记得在app.json中配置页面信息，在app.json中需要注意了，在pages的数组里，第一个代表着启动时第一个加载的页面</p>
+<p><img src="http://img.blog.csdn.net/20161013001100317" alt="这里写图片描述"></p>
+<p>2.然后进入调试界面，点击重启按钮，看下效果，会发现在控制台中弹出了报错的信息，如下：</p>
+<p><img src="http://img.blog.csdn.net/20161013001233376" alt="这里写图片描述"></p>
+<p>3.看报错的信息，很清楚的知道在myPage.js文件中没有找到Page方法，因此我们在myPage.js文件中调用Page方法，然后调试，重启，就会发现不报错了！</p>
+<p><img src="http://img.blog.csdn.net/20161013001641757" alt="这里写图片描述"></p>
+<p>4.好了，在第一点中也说到，在app.json中pages的数组里，第一个代表着启动时第一个加载的页面，那好我们把顺序调转一下，就可以验证我们的结论了</p>
+<p><img src="http://img.blog.csdn.net/20161013002929027" alt="这里写图片描述"></p>
+<p>建议看官方的教程：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/dev/</a></p>
+<hr>
+<h2 id="二、组件的使用和数据的绑定"><a href="#二、组件的使用和数据的绑定" class="headerlink" title="二、组件的使用和数据的绑定"></a>二、组件的使用和数据的绑定</h2><p>1.要了解微信小程序组件的使用，最好的方法就是查看微信小程序的API文档：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/component/" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/dev/component/</a></p>
+<p><img src="http://img.blog.csdn.net/20161013002122214" alt="这里写图片描述"></p>
+<p>可以看到API文档详细的介绍了各种组件的使用，要熟悉组件的使用，最好的方式就是多练了!</p>
+<p>2.看着文档，把官方文档的例子直接贴进来，然后我们也创建一个text组件，看看效果先吧：</p>
+<p><img src="http://img.blog.csdn.net/20161013232700639" alt="这里写图片描述"></p>
+<p>结合代码进行分析：</p>
+<p><img src="http://img.blog.csdn.net/20161014003012005" alt="这里写图片描述"></p>
+<p>js代码：</p>
+<p><img src="http://img.blog.csdn.net/20161014003034181" alt="这里写图片描述"></p>
+<hr>
+<h2 id="三、渲染标签"><a href="#三、渲染标签" class="headerlink" title="三、渲染标签"></a>三、渲染标签</h2><p>微信小程序给我提供了两种渲染标签：</p>
+<p><strong>1.判断标签wx:if和wx:else</strong></p>
+<p><img src="http://img.blog.csdn.net/20161014003314776" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20161014003331167" alt="这里写图片描述"></p>
+<p>虽然之前没有接触过js，可是代码也挺容易理解的，逻辑思维跟Android还是有点像，不过想学好，还是要学下js的，所以最近我也会学下js</p>
+<p>最后我们看下效果图吧，可以看到当位true的时候就显示1 false时显示2</p>
+<p><img src="http://img.blog.csdn.net/20161014003633717" alt="这里写图片描述"></p>
+<p><strong>2.循环标签（wx:for）</strong></p>
+<p>看下循环标签在布局文件中的使用吧</p>
+<p><img src="http://img.blog.csdn.net/20161014005632256" alt="这里写图片描述"></p>
+<p>看下效果图：</p>
+<p><img src="http://img.blog.csdn.net/20161014005653490" alt="这里写图片描述"></p>
+<h2 id="四、样式模板的使用"><a href="#四、样式模板的使用" class="headerlink" title="四、样式模板的使用"></a>四、样式模板的使用</h2><p>从上面的代码就可以看到，一个界面可能会用到很多布局的代码，可是界面与界面之间可能会有很多重复的样式，然而这些样式的代码，每次都要重新写就很麻烦了，而且也浪费资源，微信小程序像其他开发一样，也有样式模板的使用方式</p>
+<p><strong>1.使用include的方式包含模板样式</strong><br>例如：<code>&lt;include src=&quot;../templates/myText&quot;  /&gt;</code><br>具体的使用看图片：</p>
+<p><img src="http://img.blog.csdn.net/20161016022317380" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20161016022325615" alt="这里写图片描述"></p>
+<p>使用这种方式引用模板，实际上就是等同于把templates中的myText的代码全部复制到include这里</p>
+<p><strong>2.使用import的方式</strong><br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--模板样式的使用  底部样式--&gt;</span><br><span class="line">&lt;import src=&quot;../templates/footer&quot;  /&gt;</span><br><span class="line">&lt;template is=&quot;footer1&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://img.blog.csdn.net/20161016022403694" alt="这里写图片描述"></p>
+<p><img src="http://img.blog.csdn.net/20161016022411678" alt="这里写图片描述"></p>
+<p>最后看下效果图：<br><img src="http://img.blog.csdn.net/20161016022425819" alt="这里写图片描述"></p>
+<hr>
+<p>Demo下载地址：<a href="http://download.csdn.net/detail/two_water/9655006" target="_blank" rel="noopener">http://download.csdn.net/detail/two_water/9655006</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/2015携程JAVA工程师笔试题(基础却又没多少人做对的面向对象面试题)/" rel="next" title="携程JAVA工程师笔试题(基础却又没多少人做对的面向对象面试题)">
+                <i class="fa fa-chevron-left"></i> 携程JAVA工程师笔试题(基础却又没多少人做对的面向对象面试题)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/微信小程序学习（3）目录文件详解/" rel="prev" title="微信小程序学习（3）目录文件详解">
+                微信小程序学习（3）目录文件详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建一个页面"><span class="nav-number">1.</span> <span class="nav-text">一、创建一个页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、组件的使用和数据的绑定"><span class="nav-number">2.</span> <span class="nav-text">二、组件的使用和数据的绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、渲染标签"><span class="nav-number">3.</span> <span class="nav-text">三、渲染标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、样式模板的使用"><span class="nav-number">4.</span> <span class="nav-text">四、样式模板的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android 自定义 View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言 扯来扯去，前面三篇自定义 View 文章，终于扯完了一些知识点，有些枯燥，所以我也是讲下核心点，没有细分析，主要是让各位有点印象和了解。这篇终于是实践，敲代码的了，因为工作原因，这篇拖的比较久，不过这系列会一直更新下去的，会把我工作中用到的自定义 View 也会加上去。好了，回归正原题，说到自定义 View ，似">
+<meta name="keywords" content="Android 自定义 View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0到1Android自定义View（四）贝塞尔曲线">
+<meta property="og:url" content="http://yoursite.com/2017/06/11/从0到1Android自定义View（四）贝塞尔曲线/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="前言 扯来扯去，前面三篇自定义 View 文章，终于扯完了一些知识点，有些枯燥，所以我也是讲下核心点，没有细分析，主要是让各位有点印象和了解。这篇终于是实践，敲代码的了，因为工作原因，这篇拖的比较久，不过这系列会一直更新下去的，会把我工作中用到的自定义 View 也会加上去。好了，回归正原题，说到自定义 View ，似乎都离不开贝塞尔曲线，因此，第一篇实践就是与贝塞尔曲线有关的。  目录 一、贝">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-4b08f44b9ebd59b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-74d99aa448f97f08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-d78064fc7c752088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-23f56825949a50fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-848a0274786287f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-4b6130d8c199ccb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-9e3bd95020d76e40.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-225e9cd25fe54a8c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-c4c507683eb26ffb.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-ac0384f3556a5376.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-110cceca52aeaf54.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-432264d4d439fdaf.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-498b7780f1e87a86.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-8830ef6591e73afe.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-73ff3f9744cca980.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-752c0595971bccd5.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-d58a9e0fd0e72efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-106d244b551236e5.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2017-12-04T06:26:08.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0到1Android自定义View（四）贝塞尔曲线">
+<meta name="twitter:description" content="前言 扯来扯去，前面三篇自定义 View 文章，终于扯完了一些知识点，有些枯燥，所以我也是讲下核心点，没有细分析，主要是让各位有点印象和了解。这篇终于是实践，敲代码的了，因为工作原因，这篇拖的比较久，不过这系列会一直更新下去的，会把我工作中用到的自定义 View 也会加上去。好了，回归正原题，说到自定义 View ，似乎都离不开贝塞尔曲线，因此，第一篇实践就是与贝塞尔曲线有关的。  目录 一、贝">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/11/从0到1Android自定义View（四）贝塞尔曲线/"/>
+
+
+
+
+
+  <title>从0到1Android自定义View（四）贝塞尔曲线 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/11/从0到1Android自定义View（四）贝塞尔曲线/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从0到1Android自定义View（四）贝塞尔曲线</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-11T00:00:00+08:00">
+                2017-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/从0到1Android自定义View/" itemprop="url" rel="index">
+                    <span itemprop="name">从0到1Android自定义View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,268
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android.jpg"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>扯来扯去，前面三篇自定义 View 文章，终于扯完了一些知识点，有些枯燥，所以我也是讲下核心点，没有细分析，主要是让各位有点印象和了解。这篇终于是实践，敲代码的了，因为工作原因，这篇拖的比较久，不过这系列会一直更新下去的，会把我工作中用到的自定义 View 也会加上去。好了，回归正原题，说到自定义 View ，似乎都离不开贝塞尔曲线，因此，第一篇实践就是与贝塞尔曲线有关的。</p>
+</blockquote>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://upload-images.jianshu.io/upload_images/2136918-4b08f44b9ebd59b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="从0到1Android自定义View（四） 贝塞尔曲线.png"></p>
+<h1 id="一、贝塞尔曲线"><a href="#一、贝塞尔曲线" class="headerlink" title="一、贝塞尔曲线"></a>一、贝塞尔曲线</h1><h2 id="1、贝塞尔曲线简介"><a href="#1、贝塞尔曲线简介" class="headerlink" title="1、贝塞尔曲线简介"></a>1、贝塞尔曲线简介</h2><p>来看看官方对神奇的赛贝尔曲线的介绍：贝塞尔曲线于 1962，由法国工程师皮埃尔·贝塞尔所广泛发表，他运用贝塞尔曲线来为汽车的主体进行设计。贝塞尔曲线最初由 Paul de Casteljau 于 1959 年运用 de Casteljau 演算法开发，以稳定数值的方法求出贝兹曲线。贝塞尔曲线主要用于二维图形应用程序中的数学曲线，曲线由起始点，终止点（也称锚点）和控制点组成，通过调整控制点，贝塞尔曲线的形状会发生变化。</p>
+<p>看完后是不是一脸蒙蔽，一句话理解贝塞尔曲线就是：将任意一条曲线转化为精确的数学公式。</p>
+<h2 id="2、赛贝尔曲线公式"><a href="#2、赛贝尔曲线公式" class="headerlink" title="2、赛贝尔曲线公式"></a>2、赛贝尔曲线公式</h2><p>竟然说了是将曲线转化为精确的数学公式，那么我们来看下具体的数学公式（ 注：以下公式中，B(t) 为 t 时间下点的坐标； P0 为起点,Pn 为终点,Pi 为控制点 ）：</p>
+<p><strong>(1) 一阶贝塞尔曲线(线段)</strong></p>
+<p>由 P0 至 P1 的连续点， 描述的一条线段</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-74d99aa448f97f08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一阶贝塞尔曲线公式.jpg"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-d78064fc7c752088.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一阶贝塞尔曲线公式图.jpg"></p>
+<p><strong>(2) 二阶贝塞尔曲线(抛物线)：</strong></p>
+<p>由 P0 至 P1 的连续点 Q0，描述一条线段。 </p>
+<p>由 P1 至 P2 的连续点 Q1，描述一条线段。 </p>
+<p>由 Q0 至 Q1 的连续点 B(t)，描述一条二次贝塞尔曲线。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-23f56825949a50fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二阶贝塞尔曲线(抛物线)公式.jpg"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-848a0274786287f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="二阶贝塞尔曲线(抛物线)公式图.jpg"></p>
+<p><strong>(3) 三阶贝塞尔曲线：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-4b6130d8c199ccb1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三阶贝塞尔曲线公式.jpg"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-9e3bd95020d76e40.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三阶贝塞尔曲线公式图.jpg"></p>
+<h2 id="3、贝塞尔曲线在-Android-中的应用"><a href="#3、贝塞尔曲线在-Android-中的应用" class="headerlink" title="3、贝塞尔曲线在 Android 中的应用"></a>3、贝塞尔曲线在 Android 中的应用</h2><p>其实贝塞尔曲线在 Android 自定义 View 中运用还是挺多的，比如</p>
+<ul>
+<li>Android 5.0 后下拉刷新的阴影曲线</li>
+<li>QQ 消息提醒的小红点</li>
+<li>用于左右滑动时显示个数的点的移动动画</li>
+<li>水流波动效果</li>
+<li>一个弹性效果的抽屉菜单</li>
+</ul>
+<h2 id="4、Android-Path-类中提供贝塞尔曲线的操作方法"><a href="#4、Android-Path-类中提供贝塞尔曲线的操作方法" class="headerlink" title="4、Android Path 类中提供贝塞尔曲线的操作方法"></a>4、Android Path 类中提供贝塞尔曲线的操作方法</h2><p>在 Android 开发中，要实现贝塞尔曲线其实还是很简单的，因为 Android 已经给我们提供了相关接口，此接口方法在 Path 类中，而关于 Path 类的讲解，前面一篇博客就介绍过了。而且通过 Android 的 API 可以知道，贝塞尔曲线从 API1 就开始支持了。下面就是赛贝尔曲线对应的 API 方法了。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">贝塞尔曲线</th>
+<th>对应的方法</th>
+<th>演示动画</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"> 一阶曲线 <br> (线性曲线)</td>
+<td>lineTo</td>
+<td><img src="http://upload-images.jianshu.io/upload_images/2136918-225e9cd25fe54a8c.gif?imageMogr2/auto-orient/strip" alt="一阶贝塞尔曲线动图.gif"></td>
+</tr>
+<tr>
+<td style="text-align:center"> 二阶曲线</td>
+<td>quadTo</td>
+<td><img src="http://upload-images.jianshu.io/upload_images/2136918-c4c507683eb26ffb.gif?imageMogr2/auto-orient/strip" alt="二阶贝塞尔曲线(抛物线)动图.gif"></td>
+</tr>
+<tr>
+<td style="text-align:center">三阶曲线</td>
+<td>cubicTo</td>
+<td><img src="http://upload-images.jianshu.io/upload_images/2136918-ac0384f3556a5376.gif?imageMogr2/auto-orient/strip" alt="三阶贝塞尔曲线动图.gif"></td>
+</tr>
+<tr>
+<td style="text-align:center">四阶曲线</td>
+<td>无</td>
+<td><img src="http://upload-images.jianshu.io/upload_images/2136918-110cceca52aeaf54.gif?imageMogr2/auto-orient/strip" alt="四阶贝塞尔曲线动图.gif"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="5、通过-de-Casteljau-算法绘制贝塞尔曲线"><a href="#5、通过-de-Casteljau-算法绘制贝塞尔曲线" class="headerlink" title="5、通过 de Casteljau 算法绘制贝塞尔曲线"></a>5、通过 de Casteljau 算法绘制贝塞尔曲线</h2><p>上面提过，Path 类中提供了画一到三阶的贝塞尔曲线的方法，如果我们需要绘制更高阶的贝塞尔曲线呢？我们可以采用德卡斯特里奥算法（De Casteljau’s Algorithm）来实现贝塞尔曲线。</p>
+<p>效果图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-432264d4d439fdaf.gif?imageMogr2/auto-orient/strip" alt="贝塞尔曲线截屏1.gif"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-498b7780f1e87a86.gif?imageMogr2/auto-orient/strip" alt="贝塞尔曲线截屏2.gif"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-8830ef6591e73afe.gif?imageMogr2/auto-orient/strip" alt="贝塞尔曲线截屏3.gif"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-73ff3f9744cca980.gif?imageMogr2/auto-orient/strip" alt="贝塞尔曲线截屏4.gif"></p>
+<p>Github 上的代码：<a href="https://github.com/TwoWater/CustomizeView/tree/master/beziercurve" target="_blank" rel="noopener">beziercurve</a></p>
+<p>里面主要就一个类，<a href="https://github.com/TwoWater/CustomizeView/tree/master/beziercurve" target="_blank" rel="noopener">beziercurve</a> ，这是个自定义 View ，<a href="https://github.com/TwoWater/CustomizeView/blob/master/beziercurve/src/main/java/com/twowater/beziercurve/BezierCurve.java" target="_blank" rel="noopener">BezierCurve</a> 里面主要提供了以下的方法：</p>
+<h5 id="Methods"><a href="#Methods" class="headerlink" title="Methods:"></a>Methods:</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">method 方法</th>
+<th style="text-align:left">description 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">void <strong>start</strong>()</td>
+<td style="text-align:left">开始贝塞尔曲线（required）</td>
+</tr>
+<tr>
+<td style="text-align:left">void <strong>stop</strong>()</td>
+<td style="text-align:left">停止贝塞尔曲线（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean <strong>addPoint</strong>()</td>
+<td style="text-align:left">增加控制点（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean <strong>delPoint</strong>()</td>
+<td style="text-align:left">删除控制点（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">int <strong>getOrder</strong>()</td>
+<td style="text-align:left">获取贝塞尔曲线阶数（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">void <strong>setRate</strong>(int rate)</td>
+<td style="text-align:left">设置移动速率（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">void <strong>setTangent</strong>(boolean tangent)</td>
+<td style="text-align:left">设置是否显示切线（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">void <strong>setLoop</strong>(boolean loop)</td>
+<td style="text-align:left">设置是否循环（optional）</td>
+</tr>
+<tr>
+<td style="text-align:left">void <strong>setOrder</strong>(int order)</td>
+<td style="text-align:left">设置贝塞尔曲线阶数（optional）</td>
+</tr>
+</tbody>
+</table>
+<p>最后通过 <a href="https://github.com/TwoWater/CustomizeView/blob/master/app/src/main/java/com/twowater/customizeview/activity/BezierCurveActivity.java" target="_blank" rel="noopener">BezierCurveActivity</a> 来展示。</p>
+<h1 id="二、贝塞尔曲线的应用"><a href="#二、贝塞尔曲线的应用" class="headerlink" title="二、贝塞尔曲线的应用"></a>二、贝塞尔曲线的应用</h1><h2 id="1-QQ-消息提醒可拖拽红点"><a href="#1-QQ-消息提醒可拖拽红点" class="headerlink" title="1.QQ 消息提醒可拖拽红点"></a>1.QQ 消息提醒可拖拽红点</h2><p>Github 上的项目地址：<a href="https://github.com/TwoWater/CustomizeView/tree/master/qqmsgnotify" target="_blank" rel="noopener">qqmsgnotify</a></p>
+<p>效果图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-752c0595971bccd5.gif?imageMogr2/auto-orient/strip" alt="QQ消息提醒红点.gif"></p>
+<p>主要是在绘制红点的时候运用了贝塞尔曲线，在固定的位置中，拖拽的时候，有一种粘性的效果，就是这里运用了贝塞尔曲线。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-d58a9e0fd0e72efa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ消息提醒红点.png"></p>
+<p>运用：</p>
+<p>(1) 在对应的位置创建一个 TextView<br>(2) 设置 GooViewListener 监听事件就可以了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mTvPoint = (TextView) findViewById(R.id.point_conversation);</span><br><span class="line">       mTvPoint.setText(<span class="string">"10"</span>);</span><br><span class="line">       mTvPoint.setTag(<span class="number">10</span>);</span><br><span class="line">       GooViewListener listener = <span class="keyword">new</span> GooViewListener(<span class="keyword">this</span>, mTvPoint) &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDisappear</span><span class="params">(PointF mDragCenter)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">super</span>.onDisappear(mDragCenter);</span><br><span class="line">               Toast.makeText(QQMsgNotifyActivity.<span class="keyword">this</span>, <span class="string">"消失了"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReset</span><span class="params">(<span class="keyword">boolean</span> isOutOfRange)</span> </span>&#123;</span><br><span class="line">               <span class="keyword">super</span>.onReset(isOutOfRange);</span><br><span class="line">               Toast.makeText(QQMsgNotifyActivity.<span class="keyword">this</span>, <span class="string">"重置了"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">       mTvPoint.setOnTouchListener(listener);</span><br></pre></td></tr></table></figure>
+<h2 id="2-Viewpage页面引导切换动画"><a href="#2-Viewpage页面引导切换动画" class="headerlink" title="2.Viewpage页面引导切换动画"></a>2.Viewpage页面引导切换动画</h2><p>Github 上的项目地址：<a href="https://github.com/TwoWater/CustomizeView/tree/master/guideview" target="_blank" rel="noopener">guideview</a></p>
+<p>效果图：</p>
+<p><a href="![ViewPage引导动画.gif](http://upload-images.jianshu.io/upload_images/2136918-106d244b551236e5.gif?imageMogr2/auto-orient/strip"><img src="http://upload-images.jianshu.io/upload_images/2136918-106d244b551236e5.gif?imageMogr2/auto-orient/strip" alt="ViewPage引导动画.gif"></a>)</p>
+<p>其实这个例子也是，运用贝塞尔曲线也就是在绘制那个圆形的地方而已，其他地方基本不怎么使用贝塞尔曲线。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-自定义-View/" rel="tag"># Android 自定义 View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/11/从0到1Android自定义View（三）画图的五个元素组件/" rel="next" title="从0到1Android自定义View（三）画图的五个元素组件">
+                <i class="fa fa-chevron-left"></i> 从0到1Android自定义View（三）画图的五个元素组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/13/Python代码规范/" rel="prev" title="Python代码规范">
+                Python代码规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、贝塞尔曲线"><span class="nav-number">3.</span> <span class="nav-text">一、贝塞尔曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、贝塞尔曲线简介"><span class="nav-number">3.1.</span> <span class="nav-text">1、贝塞尔曲线简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、赛贝尔曲线公式"><span class="nav-number">3.2.</span> <span class="nav-text">2、赛贝尔曲线公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、贝塞尔曲线在-Android-中的应用"><span class="nav-number">3.3.</span> <span class="nav-text">3、贝塞尔曲线在 Android 中的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、Android-Path-类中提供贝塞尔曲线的操作方法"><span class="nav-number">3.4.</span> <span class="nav-text">4、Android Path 类中提供贝塞尔曲线的操作方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、通过-de-Casteljau-算法绘制贝塞尔曲线"><span class="nav-number">3.5.</span> <span class="nav-text">5、通过 de Casteljau 算法绘制贝塞尔曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Methods"><span class="nav-number">3.5.0.0.1.</span> <span class="nav-text">Methods:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、贝塞尔曲线的应用"><span class="nav-number">4.</span> <span class="nav-text">二、贝塞尔曲线的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-QQ-消息提醒可拖拽红点"><span class="nav-number">4.1.</span> <span class="nav-text">1.QQ 消息提醒可拖拽红点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Viewpage页面引导切换动画"><span class="nav-number">4.2.</span> <span class="nav-text">2.Viewpage页面引导切换动画</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

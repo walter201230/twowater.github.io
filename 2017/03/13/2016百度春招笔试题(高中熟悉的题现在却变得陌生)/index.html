@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试题," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、前言 前几个星期的面试题都有点稀奇古怪，这个星期来一个正常点的题目，可是这题目可能对于个别人来说是如此的熟悉但又很陌生。因为那是我们高中时常做的题目，现在却还给老师了。那让我们好好回忆一下。  二、题目 6× 9的的方格中，起点的左下角，终点在右上角，从起点到终点，只能从下向上，从左向右走，问一共有多少种不同的走法">
+<meta name="keywords" content="面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016百度春招笔试题(高中熟悉的题现在却变得陌生)">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/2016百度春招笔试题(高中熟悉的题现在却变得陌生)/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、前言 前几个星期的面试题都有点稀奇古怪，这个星期来一个正常点的题目，可是这题目可能对于个别人来说是如此的熟悉但又很陌生。因为那是我们高中时常做的题目，现在却还给老师了。那让我们好好回忆一下。  二、题目 6× 9的的方格中，起点的左下角，终点在右上角，从起点到终点，只能从下向上，从左向右走，问一共有多少种不同的走法。A.  4200B.  5005C.  1005D.  以上都不正确  三、解">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-6fbc6a0a498aee48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-edc507db09ebeae5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-c502dcaaa186ea5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T09:15:20.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016百度春招笔试题(高中熟悉的题现在却变得陌生)">
+<meta name="twitter:description" content="一、前言 前几个星期的面试题都有点稀奇古怪，这个星期来一个正常点的题目，可是这题目可能对于个别人来说是如此的熟悉但又很陌生。因为那是我们高中时常做的题目，现在却还给老师了。那让我们好好回忆一下。  二、题目 6× 9的的方格中，起点的左下角，终点在右上角，从起点到终点，只能从下向上，从左向右走，问一共有多少种不同的走法。A.  4200B.  5005C.  1005D.  以上都不正确  三、解">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-6fbc6a0a498aee48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/2016百度春招笔试题(高中熟悉的题现在却变得陌生)/"/>
+
+
+
+
+
+  <title>2016百度春招笔试题(高中熟悉的题现在却变得陌生) | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/2016百度春招笔试题(高中熟悉的题现在却变得陌生)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2016百度春招笔试题(高中熟悉的题现在却变得陌生)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,247
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><blockquote>
+<p>前几个星期的面试题都有点稀奇古怪，这个星期来一个正常点的题目，可是这题目可能对于个别人来说是如此的熟悉但又很陌生。因为那是我们高中时常做的题目，现在却还给老师了。那让我们好好回忆一下。</p>
+</blockquote>
+<h1 id="二、题目"><a href="#二、题目" class="headerlink" title="二、题目"></a>二、题目</h1><blockquote>
+<p>6× 9的的方格中，起点的左下角，终点在右上角，从起点到终点，只能从下向上，从左向右走，问一共有多少种不同的走法。<br>A.  4200<br>B.  5005<br>C.  1005<br>D.  以上都不正确</p>
+</blockquote>
+<h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><p>当然这道题有点异议，为什么这样说呢？因为题目没有明确说明是按方格来走还是按照线来走。</p>
+<p>首先我们尝试下按方格来走，得到的结果是什么？要想知道结果，我们需要知道题目想考察我们什么，很显然，题目其实考察我们高中非常熟悉的排列组合的问题，完完全全就是高中的题目，可是现在可能对于我们来说又是如此的陌生。这道题如果按方格来走的话，结果就是 C(5, 13) = 1287 。13 是哪里来的，5 又是哪里来的，思考之前，我们可以先看一张图。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-6fbc6a0a498aee48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="走格子.png"></p>
+<p>根据图片可以看出，13 就从左下角到右上角一个要走的格子数，5 就是走的行数，为什么是从 13 个中选 5 个来组合就知道一共有多少种走法呢？其实因为我们只要知道了行数的 5 个的位置我们就知道列数 8 个格子的位置，当然你也可以 13 选 8 ，结果都是一样的。为啥一样，贴一张图来回忆起我们遗忘的记忆吧。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-edc507db09ebeae5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="排列组合的公式.jpg"></p>
+<p>因此，<strong>按走的是格子来算，结果是 C(5, 13) = C(8, 13) = 1287</strong></p>
+<p>其实这道题目想表达的意思是按线来算的，可是原理还是跟上面一样的</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-c502dcaaa186ea5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="走线.png"></p>
+<p>因此，<strong>按走的是线来算，结果是 C(6, 15) = C(9, 15) = 5005</strong></p>
+<h1 id="四、类似的题目"><a href="#四、类似的题目" class="headerlink" title="四、类似的题目"></a>四、类似的题目</h1><p>其实这种题目很多大企业大公司都会作为面试题，比如我们来看看下面两道类似的题目：</p>
+<p><strong>1.阿里巴巴的笔试题目</strong></p>
+<blockquote>
+<p>说 16 个人按顺序去买烧饼，其中 8 个人每人身上只有一张 5 块钱，另外 8 个人每人身上只有一张 10 块钱。烧饼 5 块一个，开始时烧饼店老板身上没有钱。16 个顾客互相不通气，每人只买一个。问这 16 个人共有多少种排列方法能避免找不开钱的情况出现。</p>
+</blockquote>
+<p>假设付 5 块钱的人都是 1，付 10 块钱的人都是 0 ，则排队顺序可能为1111111100000000 或各种 1 与 0 的排列组合，那么总共的排列顺序就是C（16，8），这里跟上面的都是一样的，但是为了避免找不开钱，则从左到右时，不能有 0 的数目小于 1 的数目的情况出现。如果出现这种情况，则必然存在第2m+1 个数目时（即某个奇数数目），前 2m+1 个数目中有 m+1个0，m 个 1 。那么在剩余的 16-2m-1 个数目中，即 15-2m 个数目中，必然存在着 8-m-1 个 0 ，8-m 个 1 ，即 7-m 个 0 ，8-m 个 1 。现在再把剩余的 16-2m-1 个数目中的 0 与 1 互换，则为 8-m 个0，7-m 个 1 ，这个时候，整个数列就变为了 9 个 0，7 个 1 。所以一个不符合要求的数目为 9 个 0 和 7 个 1 组成。因此，<strong>结果为 C（16，8）-C（16，9）= 12870 - 11440 = 1430</strong></p>
+<p><strong>2.2012腾讯实习招聘笔试题</strong></p>
+<blockquote>
+<p>在图书馆一共6个人在排队，3个还《面试宝典》一书，3个在借《面试宝典》一书，图书馆此时没有了面试宝典了，求他们排队的总数？</p>
+</blockquote>
+<p>其实这些问题可以转化为下面的格路问题，从左下角到右上角，不能是对角线，有多少种方案。不过加了限制条件而已，这道题跟阿里巴巴那道面试题一样，结果为：<strong>结果为 C（6，3）-C（6，4）= 20 - 15 = 5</strong></p>
+<h1 id="五、编程"><a href="#五、编程" class="headerlink" title="五、编程"></a>五、编程</h1><p>GitHub:<a href="https://github.com/TwoWater/Interview/tree/master/Interview" target="_blank" rel="noopener">https://github.com/TwoWater/Interview/tree/master/Interview</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.liangdianshui;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 6× 9的的方格中，起点的左下角，终点在右上角，从起点到终点，只能从下向上，从左向右走，问一共有多少种不同的走法。</span></span><br><span class="line"><span class="comment"> *  A. 4200</span></span><br><span class="line"><span class="comment"> *  B. 5005</span></span><br><span class="line"><span class="comment"> *  C. 1005</span></span><br><span class="line"><span class="comment"> *  D. 以上都不正确</span></span><br><span class="line"><span class="comment"> * &lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liangdianshui</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Catalan</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(func(<span class="number">6</span>, <span class="number">9</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (m &lt; <span class="number">1</span> || n &lt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> func(m - <span class="number">1</span>, n) + func(m, n - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/2016美团研发工程师笔试题(让人头疼的两个数字)/" rel="next" title="2016美团研发工程师笔试题（让人头疼的两个数字）">
+                <i class="fa fa-chevron-left"></i> 2016美团研发工程师笔试题（让人头疼的两个数字）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/2014新浪校招笔试题：取水果(17年第一篇让人懵逼的面试题)/" rel="prev" title="新浪校招笔试题：取水果(17年第一篇让人懵逼的面试题)">
+                新浪校招笔试题：取水果(17年第一篇让人懵逼的面试题) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、题目"><span class="nav-number">2.</span> <span class="nav-text">二、题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、解题"><span class="nav-number">3.</span> <span class="nav-text">三、解题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、类似的题目"><span class="nav-number">4.</span> <span class="nav-text">四、类似的题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、编程"><span class="nav-number">5.</span> <span class="nav-text">五、编程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

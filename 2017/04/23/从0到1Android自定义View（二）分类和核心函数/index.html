@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android 自定义 View," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、前言这篇主要还是介绍一些知识点，包括上一篇的知识点在内，我们都是需要理解，只有这样，才能更好的制作更多酷炫的自定义 View 。当然每一篇文章都会越来越深入，一步一个台阶，慢慢攀登。 二、自定义 View 分类常见的 Android 自定义 View 主要有两种类型： 组合控件 通过 Android 的基础控件(T">
+<meta name="keywords" content="Android 自定义 View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0到1Android自定义View（二）分类和核心函数">
+<meta property="og:url" content="http://yoursite.com/2017/04/23/从0到1Android自定义View（二）分类和核心函数/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、前言这篇主要还是介绍一些知识点，包括上一篇的知识点在内，我们都是需要理解，只有这样，才能更好的制作更多酷炫的自定义 View 。当然每一篇文章都会越来越深入，一步一个台阶，慢慢攀登。 二、自定义 View 分类常见的 Android 自定义 View 主要有两种类型： 组合控件 通过 Android 的基础控件(TextView、ImageView、Button、ProgressBar 等)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-8fc0b04e27991ed9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-59d290b32abbfaea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-d4ca9b79f00fcca2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-06ef7dda4b967653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-4ffb9fb9831047fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-25a75f176a06a1e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-11fadbfcc508eee4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2136918-4f8eb3bf4fb38d28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-12-04T06:26:55.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0到1Android自定义View（二）分类和核心函数">
+<meta name="twitter:description" content="一、前言这篇主要还是介绍一些知识点，包括上一篇的知识点在内，我们都是需要理解，只有这样，才能更好的制作更多酷炫的自定义 View 。当然每一篇文章都会越来越深入，一步一个台阶，慢慢攀登。 二、自定义 View 分类常见的 Android 自定义 View 主要有两种类型： 组合控件 通过 Android 的基础控件(TextView、ImageView、Button、ProgressBar 等)">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/23/从0到1Android自定义View（二）分类和核心函数/"/>
+
+
+
+
+
+  <title>从0到1Android自定义View（二）分类和核心函数 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/从0到1Android自定义View（二）分类和核心函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从0到1Android自定义View（二）分类和核心函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T00:00:00+08:00">
+                2017-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/从0到1Android自定义View/" itemprop="url" rel="index">
+                    <span itemprop="name">从0到1Android自定义View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,149
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/2136918-34a35689699ed060.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android.jpg"></p>
+<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>这篇主要还是介绍一些知识点，包括上一篇的知识点在内，我们都是需要理解，只有这样，才能更好的制作更多酷炫的自定义 View 。当然每一篇文章都会越来越深入，一步一个台阶，慢慢攀登。</p>
+<h1 id="二、自定义-View-分类"><a href="#二、自定义-View-分类" class="headerlink" title="二、自定义 View 分类"></a>二、自定义 View 分类</h1><p>常见的 Android 自定义 View 主要有两种类型：</p>
+<p><strong>组合控件</strong></p>
+<p>通过 Android 的基础控件(TextView、ImageView、Button、ProgressBar 等)组合而成，比如下拉刷新、瀑布流控件、带左/右滑功能的控件、视频控件等，这种自定义View的难点在于程序的逻辑处理</p>
+<p><strong>完全自定义控件</strong></p>
+<p>继承自 View、TextureView 或 SurfaceView ，然后重写核心的回调方法，以View 为例，按需复写其构造、onMeasure、onLayout、onTouchEvent、onDraw、onAttachedToWindow、onDetachedFromWindow 等方法，这种自定义 View 的难点在于程序的设计、效率优化和排版，比如输入法中的手写控件、图文混排控件（现在很多都是通过webview加载网页实现了）、个性化进度条、弹幕显示控件、Markdown控件、IDE代码编辑控件等</p>
+<p>注意：</p>
+<p>我们需要合理的使用自定义 View ，千万不能滥用，不要动不动就自定义 View ，基础控件能完成的工能，千万别自定义 View，因为基础空间 Android，本身就有性能优化的，自定义 View 的价值在于做到基础控件无法做到的效果，为应用的表现增色；，将公用的交互效果提取成自定义控件，方便复用，减少不必要的重复劳动。</p>
+<h1 id="三、自定义-View-核心知识点"><a href="#三、自定义-View-核心知识点" class="headerlink" title="三、自定义 View 核心知识点"></a>三、自定义 View 核心知识点</h1><p>这部分主要是介绍自定义 View 的核心知识点，上面提到过，完全自定义 View 通常是继承 View ，TextureView，SurfaceView，所以先来了解下这三者之间的区别所在。</p>
+<p><strong>(1) View、SurfaceView、TextureView 的区别</strong></p>
+<p><strong>View</strong></p>
+<p>普通的 View，与宿主窗口共享同一个绘图表面，UI 在主线程中绘制，在有无硬件加速的情况下都能工作（没有硬件加速的情况下，canvas 的有些方法会失效）</p>
+<p><strong>SurfaceView</strong></p>
+<p>继承自 View，绘制和显示效率高，因为拥有独立的绘图表面，UI 在一个独立的线程中进行绘制，不会占用主线程的资源。SurfaceView 的使用和普通的 View 不一样，需要结合 SurfaceHodler 一起使用。因为和宿主窗口不是共享同一个绘图表面的原因，对其做动画操作可能会得不到想要的效果</p>
+<p><strong>TextureView</strong></p>
+<p>继承自 View，与 SurfaceView 相比，TextureView 不会创建一个单独的绘图表面，这使得它可以像一般的 View 一样执行一些变换操作，比如移动、动画等等，但 TextureView 必须在硬件加速开启的窗口中才能正常工作；</p>
+<p><strong>(2) 几个重要的函数</strong><br>最后通过自定义 View 的流程图来了解一下自定义 View 几个重要的函数。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-8fc0b04e27991ed9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义view的流程图.jpg"></p>
+<p><strong>构造函数</strong></p>
+<p>构造函数是View的入口，可以用于初始化一些的内容，和获取自定义属性</p>
+<p>View的构造函数有四种重载</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-59d290b32abbfaea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义View的构造函数.png"></p>
+<p>从上面的图也可以看出，自定 View 的构造函数的参数最多有四个，而且有四个参数的构造函数只能在 API 21 以上使用，因此四个参数的构造函数先不考虑，不过我们也需要了解这四个参数具体代表什么？</p>
+<p><strong>Context：</strong> View 中随处都会用到<br><strong>AttributeSet：</strong>  XML 属性（从 XML inflate 的时候使用）<br><strong>int defStyleAttr：</strong>  应用到 View 的默认风格（定义在主题中）<br><strong>int defStyleRes：</strong>  如果没有使用 defStyleAttr，应用到 View 的默认风格</p>
+<p>那么这里就有个问题了，有四种构造函数，我们该怎么选择呢？</p>
+<p>比如上面图片显示的自定义的 MyView ，继承 View 对象，如果我们想在普通的代码中新建一个 MyView，可以直接使用一个参数的构造函数，这也是大多数选择使用的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-d4ca9b79f00fcca2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一个参数的构造函数.png"></p>
+<p>那么两个参数的构造函数什么时候使用呢？比如有时候在 xml 中添加一个自定义 View ，并且加了一些布局属性，宽高属性以及 margin 属性，这些属性会存放在第二个构造函数的 AttributeSet 参数里。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-06ef7dda4b967653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="两个参数的构造函数.png"></p>
+<p>有三个参数的构造函数比第二个构造函数多了一个 int 型的值，名字叫 defStyleAttr ，从名称上判断，这是一个关于自定义属性的参数。第三个构造函数不会被系统默认调用，而是需要我们自己去显式调用，比如在第二个构造函数里调用调用第三个函数，并将第三个参数设为0 。defStyleAttr 指定的是在Theme style 定义的一个 attr，它的类型是 reference 主要生效在 obtainStyledAttributes 方法里，obtainStyledAttributes 方法有四个参数，第三个参数是 defStyleAttr ，第四个参数是自己指定的一个 style ，当且仅当 defStyleAttr 为 0 或者在 Theme 中找不到 defStyleAttr 指定的属性时，第四个参数才会生效，这些指的都是默认属性，当在 xml 里面定义的，就以在 xml 文件里指定的为准，所以优先级大概是：xml&gt;style&gt;defStyleAttr&gt;defStyleRes&gt;Theme 指定，当defStyleAttr 为 0 时，就跳过 defStyleAttr 指定的 reference ，所以一般用 0 就能满足一些基本开发。</p>
+<p><strong>onMeasure（测量 View 大小）</strong></p>
+<p>这个函数有什么用呢？将这个问题转化一下，就是问为什么要测量 View 的大小呢？</p>
+<p>因为 View 的大小不仅由自身所决定，同时也会受到父控件的影响，为了我们的控件能更好的适应各种情况，一般会自己进行测量</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-4ffb9fb9831047fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="onMeasure.png"></p>
+<p>MeasureSpce 的 mode 有三种：EXACTLY, AT_MOST，UNSPECIFIED，除去 UNSPECIFIED 不谈，其他两种 mode：</p>
+<p>当父布局是 EXACTLY 时，子控件确定大小或者 match_parent，mode 都是 EXACTLY，子控件是 wrap_content 时，mode 为 AT_MOST； </p>
+<p>当父布局是 AT_MOST 时，子控件确定大小，mode 为 EXACTLY，子控件 wrap_content 或者 match_parent 时，mode 为 AT_MOST。</p>
+<p>所以在确定控件大小时，需要判断 MeasureSpec 的 mode，不能直接用 MeasureSpec  的 size。在进行一些逻辑处理以后，调用 setMeasureDimension() 方法，将测量得到的宽高传进去供 layout 使用。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-25a75f176a06a1e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="onMeasure流程.png"></p>
+<p>在实际运用之中只需要记住有测量模式有三种，用 MeasureSpec 的 getSize是获取数值， getMode是获取模式即可。如果对 View 的宽高进行修改了，不要调用 super.onMeasure( widthMeasureSpec, heightMeasureSpec); 要调用 setMeasuredDimension( widthsize, heightsize); 这个函数。</p>
+<p><strong>onSizeChanged（确定 View 大小）</strong></p>
+<p>那么这个函数又是什么时候调用呢？</p>
+<p>这个函数在视图大小发生改变时调用。</p>
+<p>那么问题又来了，上面的 onMeasure 函数中不是说对 View 的宽高进行了修改后，要调用 setMeasuredDimension 吗？调用这个方法后，View 的大小基本已经确定了啊，View 的视图大小还会发生变化吗？这是因为 View 的大小不仅仅只是由其本身来决定的，也受它的父控件影响，所以在确定 View 大小的时候最好使用系统提供的 onSizeChanged 回调函数。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-11fadbfcc508eee4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="onSizeChanged.png"></p>
+<p><strong>onLayout（确定子 View 布局位置）</strong></p>
+<p>确定布局的函数是 onLayout ，它用于确定子 View 的位置，在自定义 ViewGroup 中会用到，他调用的是子 View 的 layout 函数。比如，有时候我们自定义 View 的时候，需要获取 View  的一些信息就需要用到这个函数。当然，如果是单纯的 View 就没与必要重写这个方法，为什么这么说呢？</p>
+<p>因为单纯的 View ，不是一个 View 容器，没有子 View ，而 onLayout 方法里主要是具体摆放子View 的位置，水平摆放或者垂直摆放，所以在单纯的自定义 View 是不需要重写 onLayout 方法。不过需要注意的一点是，子 View 的 margin 属性是否生效就要看 parent 是否在自身的 onLayout 方法进行处理，而 View 的 padding 属性是在 onDraw 方法中生效的</p>
+<p><strong>onDraw（绘制内容）</strong></p>
+<p>重头戏，onDraw，也就是是实际绘制的部分。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2136918-4f8eb3bf4fb38d28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="onDraw.png"></p>
+<p>一般自定义控件耗费心思最多的就是这个方法了，需要在这个方法里，用 Paint 在 Canvas 上画出你想要的图案。如果是直接继承的 View，那么在重写 onDraw 的方法是时候完全可以把 super.ondraw(canvas) 删掉，因为它的默认实现是空。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-自定义-View/" rel="tag"># Android 自定义 View</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/23/滴滴2016校招测评题(建水库问题)/" rel="next" title="滴滴2016校招测评题（建水库问题）">
+                <i class="fa fa-chevron-left"></i> 滴滴2016校招测评题（建水库问题）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/25/滴滴出行2017秋招算法笔试题(作弊概率)/" rel="prev" title="滴滴出行2017秋招算法笔试题（作弊概率）">
+                滴滴出行2017秋招算法笔试题（作弊概率） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、自定义-View-分类"><span class="nav-number">2.</span> <span class="nav-text">二、自定义 View 分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、自定义-View-核心知识点"><span class="nav-number">3.</span> <span class="nav-text">三、自定义 View 核心知识点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

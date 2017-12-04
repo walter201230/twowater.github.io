@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、什么是事件?1.一种用户的行为 用户长按某一张图片，点击某个按钮，这就是用户的行为，也是事件 2.一种通讯方式 为什么说事件也是一种通讯方式呢？因为用户点击按钮的时候，这是发生在UI层的，我们的UI要把一些信息发送给我们的逻辑代码，因此也是一种通讯方式  二、事件的类别1.点击事件tap 2.长按事件longtab">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序学习（5）事件">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/微信小程序学习（5）事件/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="一、什么是事件?1.一种用户的行为 用户长按某一张图片，点击某个按钮，这就是用户的行为，也是事件 2.一种通讯方式 为什么说事件也是一种通讯方式呢？因为用户点击按钮的时候，这是发生在UI层的，我们的UI要把一些信息发送给我们的逻辑代码，因此也是一种通讯方式  二、事件的类别1.点击事件tap 2.长按事件longtab 3.触摸事件 （1）touchstart 开始触摸 （2）touchend 结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017012022715">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017012200902">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017012219090">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017012226840">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017013027790">
+<meta property="og:image" content="http://img.blog.csdn.net/20161017013103682">
+<meta property="og:updated_time" content="2017-12-04T09:05:41.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序学习（5）事件">
+<meta name="twitter:description" content="一、什么是事件?1.一种用户的行为 用户长按某一张图片，点击某个按钮，这就是用户的行为，也是事件 2.一种通讯方式 为什么说事件也是一种通讯方式呢？因为用户点击按钮的时候，这是发生在UI层的，我们的UI要把一些信息发送给我们的逻辑代码，因此也是一种通讯方式  二、事件的类别1.点击事件tap 2.长按事件longtab 3.触摸事件 （1）touchstart 开始触摸 （2）touchend 结">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161017012022715">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/微信小程序学习（5）事件/"/>
+
+
+
+
+
+  <title>微信小程序学习（5）事件 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/微信小程序学习（5）事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序学习（5）事件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/微信小程序/微信小程序学习/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  771
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、什么是事件"><a href="#一、什么是事件" class="headerlink" title="一、什么是事件?"></a>一、什么是事件?</h1><p><strong>1.一种用户的行为</strong></p>
+<p>用户长按某一张图片，点击某个按钮，这就是用户的行为，也是事件</p>
+<p><strong>2.一种通讯方式</strong></p>
+<p>为什么说事件也是一种通讯方式呢？因为用户点击按钮的时候，这是发生在UI层的，我们的UI要把一些信息发送给我们的逻辑代码，因此也是一种通讯方式</p>
+<hr>
+<h1 id="二、事件的类别"><a href="#二、事件的类别" class="headerlink" title="二、事件的类别"></a>二、事件的类别</h1><p><strong>1.点击事件tap</strong></p>
+<p><strong>2.长按事件longtab</strong></p>
+<p><strong>3.触摸事件</strong></p>
+<p>（1）touchstart 开始触摸</p>
+<p>（2）touchend 结束触摸</p>
+<p>（3）touchmove 移动触摸</p>
+<p>（4）touchcancel取消触摸</p>
+<p>这里就有个问题了，结束触摸和取消触摸有什么区别吗？</p>
+<p>结束触摸可以理解为是主动的停止的触摸事件，比如我们正在移动一张图片，移动完成后就是结束触摸了，然后可能在移动的过程中，突然有事件来打断了触摸事件，比如电话来了，打断了你的触摸事件，这时候就是取消触摸了</p>
+<p><strong>4.其他的触摸事件 submit</strong></p>
+<p>每个控件都有自己的事件</p>
+<hr>
+<h1 id="三、事件冒泡"><a href="#三、事件冒泡" class="headerlink" title="三、事件冒泡"></a>三、事件冒泡</h1><p>了解什么是冒泡事件？什么是非冒泡事件？我们可以通过一个例子来理解什么是冒泡事件。</p>
+<p>1.首先我们先修改下启动界面，启动界面创建三个view组件，分别给他们对应的样式和绑定他们的点击事件，且布局是一层嵌套一层的</p>
+<p><img src="http://img.blog.csdn.net/20161017012022715" alt="3.1"></p>
+<p>2.然后在index.wxss文件中写下他们对应的样式</p>
+<p><img src="http://img.blog.csdn.net/20161017012200902" alt="3.2"></p>
+<p>3.在index.js文件中写对应的点击事件，在控制台输出对应的log</p>
+<p><img src="http://img.blog.csdn.net/20161017012219090" alt="3.3"></p>
+<p>4.最后我们看下效果，仔细观察可以看到，我们点击界面3的时候，控制台输出了3行，分别是clickView1，clickView2，clickView3的点击事件，点击界面2的时候，控制台输出了clickView2和clickView1，这就说明了点击子view的时候，也会响应父view的事件，这就是冒泡事件了，相反的，点击子view，父view不会响应点击事件，这就是非冒泡事件了。</p>
+<p><img src="http://img.blog.csdn.net/20161017012226840" alt="3.4"></p>
+<p>那么冒泡事件有哪些呢？</p>
+<p>上面所提到的点击事件，长按事件，触摸事件都是冒泡事件，其余的都是非冒泡事件</p>
+<hr>
+<h1 id="四、事件的绑定"><a href="#四、事件的绑定" class="headerlink" title="四、事件的绑定"></a>四、事件的绑定</h1><p>1.bind</p>
+<p>上面的冒泡事件的例子就是使用bind的方式来绑定事件的</p>
+<p>2.catch</p>
+<p>那么catch绑定事件和bind的绑定事件有什么不同呢？我们通过修改上面的例子来说明，我们把view3的bindtap改为catchtap</p>
+<p><img src="http://img.blog.csdn.net/20161017013027790" alt="4.2.1"></p>
+<p>然后我们看下运行的效果：</p>
+<p><img src="http://img.blog.csdn.net/20161017013103682" alt="4.2.2"></p>
+<p>可以看到，我们使用catch的绑定事件后，点击界面3，是没有触发到父view的点击事件的</p>
+<p>总结：使用bind的绑定事件，是可以触发冒泡事件的，就是可以触发父view的事件<br>使用catch是不会触发冒泡事件</p>
+<hr>
+<p>Demo的下载地址：<a href="http://download.csdn.net/detail/two_water/9655522" target="_blank" rel="noopener">http://download.csdn.net/detail/two_water/9655522</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/微信小程序学习（6）配置详解/" rel="next" title="微信小程序学习（6）配置详解">
+                <i class="fa fa-chevron-left"></i> 微信小程序学习（6）配置详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/28/深夜谈【辱母杀人案】/" rel="prev" title="深夜谈【辱母杀人案】（你是于欢，你会怎样做）">
+                深夜谈【辱母杀人案】（你是于欢，你会怎样做） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么是事件"><span class="nav-number">1.</span> <span class="nav-text">一、什么是事件?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、事件的类别"><span class="nav-number">2.</span> <span class="nav-text">二、事件的类别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、事件冒泡"><span class="nav-number">3.</span> <span class="nav-text">三、事件冒泡</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、事件的绑定"><span class="nav-number">4.</span> <span class="nav-text">四、事件的绑定</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

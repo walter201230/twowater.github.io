@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android网络框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="要写一个优秀的网络框架，当然少不了对 Http 协议的了解，因为Http协议是网络请求的核心。  一、Http协议的简介1.什么是Http协议呢？ 这是直接网上搜索出来的结果：超文本传输协议（HTTP，HyperText Transfer Protocol) 是互联网上应用最为广泛的一种网络协议。所有的 WWW 文件都">
+<meta name="keywords" content="Android网络框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 网络框架 网络框架的核心Http协议">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/Android 网络框架_网络框架的核心Http协议/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="要写一个优秀的网络框架，当然少不了对 Http 协议的了解，因为Http协议是网络请求的核心。  一、Http协议的简介1.什么是Http协议呢？ 这是直接网上搜索出来的结果：超文本传输协议（HTTP，HyperText Transfer Protocol) 是互联网上应用最为广泛的一种网络协议。所有的 WWW 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161106233151029">
+<meta property="og:image" content="http://img.blog.csdn.net/20161106235034068">
+<meta property="og:image" content="http://img.blog.csdn.net/20161106235044146">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107000212932">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107005528568">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107001401251">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107001410735">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107005701035">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107005938052">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107010015590">
+<meta property="og:updated_time" content="2017-12-04T09:09:40.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 网络框架 网络框架的核心Http协议">
+<meta name="twitter:description" content="要写一个优秀的网络框架，当然少不了对 Http 协议的了解，因为Http协议是网络请求的核心。  一、Http协议的简介1.什么是Http协议呢？ 这是直接网上搜索出来的结果：超文本传输协议（HTTP，HyperText Transfer Protocol) 是互联网上应用最为广泛的一种网络协议。所有的 WWW 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161106233151029">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/13/Android 网络框架_网络框架的核心Http协议/"/>
+
+
+
+
+
+  <title>Android 网络框架 网络框架的核心Http协议 | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/13/Android 网络框架_网络框架的核心Http协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 网络框架 网络框架的核心Http协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T00:00:00+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Android网络框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Android网络框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,054
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>要写一个优秀的网络框架，当然少不了对 Http 协议的了解，因为Http协议是网络请求的核心。</p>
+<hr>
+<h1 id="一、Http协议的简介"><a href="#一、Http协议的简介" class="headerlink" title="一、Http协议的简介"></a>一、Http协议的简介</h1><p><strong>1.什么是Http协议呢？</strong></p>
+<p>这是直接网上搜索出来的结果：超文本传输协议（HTTP，HyperText Transfer Protocol) 是互联网上应用最为广泛的一种网络协议。所有的 WWW 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。</p>
+<p>说白了，http 协议就算是超文本传输协议</p>
+<p><strong>2.Http的版本</strong></p>
+<p><img src="http://img.blog.csdn.net/20161106233151029" alt="Http 版本"></p>
+<p>目前（2016年11月6日23:33:31）基本都是使用 1.1 协议的，2.0 协议还没有普及，不过阿里好像已经开始使用 2.0 协议了。</p>
+<p>其实在 Http2.0 出现之前，Google 就推出过 SPDY ，SPDY 用以最小化网络延迟，提升网络速度，优化用户的网络使用体验。SPDY 并不是一种用于替代 HTTP 的协议，而是对 HTTP 协议的增强。新协议的功能包括数据流的多路复用、请求优先级以及 HTTP 报头压缩。谷歌表示，引入 SPDY 协议后，在实验室测试中页面加载速度比原先快 64%。可是现在（2016年11月6日23:38:01） 现在 Google 已经不再维护 SPDY 了，因为 Http2.0 基本都包含了 SPDY 的功能，且 SPDY 的开发者也加入到了Http2.0 的 维护开发中。</p>
+<p><strong>那么 Http2.0 跟 Http1.1 的区别是什么呢？</strong></p>
+<p>要想知道 2.0 和 1.1 的区别，当然最好的方式是先了解 2.0 版本新增了哪些功能。</p>
+<p>看上面的Http版本图就知道，Http2.0 的一个核心功能就是：<strong>多路复用</strong></p>
+<p>http2.0 能对网络效率有较大提升，其中一个原因就是使用了多路复用</p>
+<p><strong>（1）多路复用</strong></p>
+<p>我们先来看看http1.1中多请求的处理方式：</p>
+<p><img src="http://img.blog.csdn.net/20161106235034068" alt="http1.1中多请求的处理方式"></p>
+<p>可以看到，要么是串行，一个请求完成后再发另一个请求，要么是可以并发，但请求结果的返回过程必须是顺序的，第一个响应完成后，才能响应第二个，即使第二个先处理完成，也要等待第一个，就产生了阻塞</p>
+<p>那么 Http2.0 多请求是怎样处理的呢？</p>
+<p><img src="http://img.blog.csdn.net/20161106235044146" alt="http2.0 的多请求处理方式"></p>
+<p>只要有了请求结果数据，可以立即返回，不关心顺序问题，因为数据都被组装成了一个个的frame帧，frame中记录了自己所属数据流的ID，客户端把frame都接收到以后，根据数据流ID再进行组装即可</p>
+<p><strong>（2）服务器推送流</strong></p>
+<p>我们都知道，现在（2016年11月6日23:54:37）我们可以给服务器推送信息，可是服务器是不可以给客户端主动推送信息的，在 2.0 添加的一个核心功能就是服务器推送流。</p>
+<p>服务器推送流（Server Push）服务端能够更快的把资源推送给客户端，例如服务端可以主动把 JS 和 CSS 文件推送给客户端，而不需要客户端解析 HTML 再发送这些请求，当客户端需要的时候，它已经在客户端了</p>
+<p><strong>3.Http的几种请求方式</strong></p>
+<p><img src="http://img.blog.csdn.net/20161107000212932" alt="Http的几种请求方式"></p>
+<p>目前就我个人而言，就使用过 get 和 post 请求，其他的请求方式基本没有使用过</p>
+<p><strong>get 请求方式和 post 请求有什么区别呢？</strong></p>
+<p><img src="http://img.blog.csdn.net/20161107005528568" alt="post、get 请求对比"></p>
+<hr>
+<h1 id="二、Http-实操详解"><a href="#二、Http-实操详解" class="headerlink" title="二、Http 实操详解"></a>二、Http 实操详解</h1><p>1.在浏览器中查看请求信息</p>
+<p><img src="http://img.blog.csdn.net/20161107001401251" alt="浏览器开发者模式"></p>
+<p>然后点击对应的请求，可以查看详细的请求信息</p>
+<p><img src="http://img.blog.csdn.net/20161107001410735" alt="查看请求头"></p>
+<p>这对我们实际开发是很有用处的，其中最重要的是看请求头和响应信息。</p>
+<hr>
+<h1 id="三、常见的请求头和响应头"><a href="#三、常见的请求头和响应头" class="headerlink" title="三、常见的请求头和响应头"></a>三、常见的请求头和响应头</h1><p><strong>1.常见的请求头</strong></p>
+<p><img src="http://img.blog.csdn.net/20161107005701035" alt="Http 请求头"></p>
+<p><strong>2.常见的响应头</strong></p>
+<p><img src="http://img.blog.csdn.net/20161107005938052" alt="Http 响应头"></p>
+<p><strong>3.常见的响应码</strong></p>
+<p><img src="http://img.blog.csdn.net/20161107010015590" alt="Http 响应码"></p>
+<p>上面只是简单的列举了一部分的请求头和响应头，完整的请求头和响应头可以看这个网址：<a href="http://tools.jb51.net/table/http_header" target="_blank" rel="noopener">http://tools.jb51.net/table/http_header</a></p>
+<hr>
+<p>欢迎转载，转载请标明来源：</p>
+<p>CSDN主页：<a href="http://blog.csdn.net/two_water" target="_blank" rel="noopener">http://blog.csdn.net/two_water</a><br>简书主页：<a href="http://www.jianshu.com/users/8ec863a03f4f/latest_articles" target="_blank" rel="noopener">http://www.jianshu.com/users/8ec863a03f4f/latest_articles</a></p>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android网络框架/" rel="tag"># Android网络框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/Google刁钻古怪面试题/" rel="next" title="Google刁钻古怪面试题">
+                <i class="fa fa-chevron-left"></i> Google刁钻古怪面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/13/Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3/" rel="prev" title="Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3">
+                Android 网络框架_目前（2016年11月7日）最流行的网络框架OKHttp3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Http协议的简介"><span class="nav-number">1.</span> <span class="nav-text">一、Http协议的简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、Http-实操详解"><span class="nav-number">2.</span> <span class="nav-text">二、Http 实操详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、常见的请求头和响应头"><span class="nav-number">3.</span> <span class="nav-text">三、常见的请求头和响应头</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
