@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="产品," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="行业背景最近二三十年里，互联网高速发展，日新月异，新概念，新思维，新观点，穷出不尽，互联网颠覆了很多行业。彩票行业也不例外。 彩票，只有国家（福彩、体彩）有发行的资格，个人觉得从某种意义上来说，彩票就是相当于赌博，然而博彩可以说是互联网商业模式中最直接的变现方式。因此彩票在互联网时代迎来了属于它的春天。2009 年至 ">
+<meta name="keywords" content="产品">
+<meta property="og:type" content="article">
+<meta property="og:title" content="互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)">
+<meta property="og:url" content="http://yoursite.com/2018/01/02/互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)/index.html">
+<meta property="og:site_name" content="两点水的博客">
+<meta property="og:description" content="行业背景最近二三十年里，互联网高速发展，日新月异，新概念，新思维，新观点，穷出不尽，互联网颠覆了很多行业。彩票行业也不例外。 彩票，只有国家（福彩、体彩）有发行的资格，个人觉得从某种意义上来说，彩票就是相当于赌博，然而博彩可以说是互联网商业模式中最直接的变现方式。因此彩票在互联网时代迎来了属于它的春天。2009 年至 2014 年互联网彩票销售额同比增速均在 50% 以上，2014 年更是达到了">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%BD%A9%E7%A5%A8%E9%94%80%E5%94%AE%E8%A7%84%E6%A8%A1%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%EF%BC%88%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%9A%E6%B5%B7%E9%80%9A%E8%AF%81%E5%88%B8%E7%A0%94%E7%A9%B6%E6%89%80%EF%BC%89.jpg">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E4%B8%8E%E7%BA%BF%E4%B8%8B%E4%BC%A0%E7%BB%9F%E5%BD%A9%E7%A5%A8%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%E5%AF%B9%E6%AF%94%EF%BC%88%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%9A%E6%B5%B7%E9%80%9A%E8%AF%81%E5%88%B8%E7%A0%94%E7%A9%B6%E6%89%80%EF%BC%89.jpg">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%85%B3%E4%BA%8E%E5%BD%A9%E7%A5%A8%E7%9A%84%20App%20%E5%BA%94%E7%94%A8%E8%BF%91%20600%20%E4%B8%AA%EF%BC%88%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90%20appannie%20%EF%BC%89.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%A4%A9%E5%A4%A9%E4%B8%AD%E5%BD%A9%E7%A5%A8icon.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/%E7%BD%91%E6%98%93%E5%BD%A9%E7%A5%A8icon.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/500%20%E5%BD%A9%E7%A5%A8icon.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/App%20Store%20%E6%8E%92%E5%90%8D%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/Android%20%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA%E4%B8%8B%E8%BD%BD%E9%87%8F%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/%E5%A4%A9%E5%A4%A9%E4%B8%AD%E5%BD%A9%E7%A5%A8%E5%85%AC%E4%BC%97%E5%8F%B7.jpg">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E7%95%8C%E9%9D%A2%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%8A%9F%E8%83%BD%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E8%B4%AD%E5%BD%A9%E6%88%AA%E5%9B%BE.jpg">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png">
+<meta property="og:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E6%9E%B6%E6%9E%84.png">
+<meta property="og:image" content="http://twowater.com.cn/images/20171204192251900.gif">
+<meta property="og:updated_time" content="2018-01-02T07:39:39.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)">
+<meta name="twitter:description" content="行业背景最近二三十年里，互联网高速发展，日新月异，新概念，新思维，新观点，穷出不尽，互联网颠覆了很多行业。彩票行业也不例外。 彩票，只有国家（福彩、体彩）有发行的资格，个人觉得从某种意义上来说，彩票就是相当于赌博，然而博彩可以说是互联网商业模式中最直接的变现方式。因此彩票在互联网时代迎来了属于它的春天。2009 年至 2014 年互联网彩票销售额同比增速均在 50% 以上，2014 年更是达到了">
+<meta name="twitter:image" content="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%BD%A9%E7%A5%A8%E9%94%80%E5%94%AE%E8%A7%84%E6%A8%A1%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%EF%BC%88%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%9A%E6%B5%B7%E9%80%9A%E8%AF%81%E5%88%B8%E7%A0%94%E7%A9%B6%E6%89%80%EF%BC%89.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/02/互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)/"/>
+
+
+
+
+
+  <title>互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天) | 两点水的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">两点水的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="两点水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="两点水的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">互联网彩票产品分析(沉浸两年的互联网彩票开始迎来属于它的春天)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T00:00:00+08:00">
+                2018-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/产品/" itemprop="url" rel="index">
+                    <span itemprop="name">产品</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,600
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="行业背景"><a href="#行业背景" class="headerlink" title="行业背景"></a>行业背景</h1><p>最近二三十年里，互联网高速发展，日新月异，新概念，新思维，新观点，穷出不尽，互联网颠覆了很多行业。彩票行业也不例外。</p>
+<p>彩票，只有国家（福彩、体彩）有发行的资格，个人觉得从某种意义上来说，彩票就是相当于赌博，然而博彩可以说是互联网商业模式中最直接的变现方式。因此彩票在互联网时代迎来了属于它的春天。2009 年至 2014 年互联网彩票销售额同比增速均在 50% 以上，2014 年更是达到了 850 亿元之多。不过，在 2015 年 2 月 28 日财政部一纸禁令之后，互联网彩票全面熄火，这也直接导致 2015 年彩票市场销售额下滑 3.19% 。</p>
+<p>据此前中国体彩运营管理有限公司中国竞彩微信开发项目招标信息显示，项目开发预计2017年3月份左右完成。财政部的网售彩票禁令文件到今年4月份到期。沉浸了两年的互联网彩票似乎又开始活跃了，而且 18 年是世界杯，市场份额瞬间能提升一个档次，互联网彩票是否又会迎来属于它的春天呢。</p>
+<h1 id="市场分析"><a href="#市场分析" class="headerlink" title="市场分析"></a>市场分析</h1><p>在我国，彩票销售额占 GDP 的比重一直处于上升态势，彩票行业整体销售规模从 2008 年的 1052 亿元增长至 2016 年的 3946 亿元，虽然 2015 年互联网售彩渠道被关闭，彩票销售总体增长率略有下降，但平均年复合增长率仍达到 18%。</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%BD%A9%E7%A5%A8%E9%94%80%E5%94%AE%E8%A7%84%E6%A8%A1%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%EF%BC%88%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%9A%E6%B5%B7%E9%80%9A%E8%AF%81%E5%88%B8%E7%A0%94%E7%A9%B6%E6%89%80%EF%BC%89.jpg" alt="彩票销售规模增长趋势（资料来源：海通证券研究所）"></p>
+<p>2008 年开始，互联网彩票市场高速发展，至 2014 年超越彩票市场整体增幅水平，复合增长率达 86%。包含百度、腾讯、阿里、新浪、网易在内的互联网巨头纷纷涉足互联网彩票业。2014 年，互联网彩票的市场规模已达 850 亿元。</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E4%B8%8E%E7%BA%BF%E4%B8%8B%E4%BC%A0%E7%BB%9F%E5%BD%A9%E7%A5%A8%E5%A2%9E%E9%95%BF%E8%B6%8B%E5%8A%BF%E5%AF%B9%E6%AF%94%EF%BC%88%E8%B5%84%E6%96%99%E6%9D%A5%E6%BA%90%EF%BC%9A%E6%B5%B7%E9%80%9A%E8%AF%81%E5%88%B8%E7%A0%94%E7%A9%B6%E6%89%80%EF%BC%89.jpg" alt="互联网彩票与线下传统彩票增长趋势对比（资料来源：海通证券研究所）"></p>
+<p>从数据上，足以说明，彩票市场是多么的大，人人都想涉足进去，而且随着彩票政策的规范，互联网彩票逐步开放，彩票市场仍然有翻倍的空间。互联网彩票可以增加彩票各种玩法的趣味性，也能增加用户之间的互动，而且像这种线上销售和彩票游戏化的发展还有很大的空间，处理得当，也能造就一个巨无霸级的产品。</p>
+<h1 id="产品分析"><a href="#产品分析" class="headerlink" title="产品分析"></a>产品分析</h1><p>在搜索 “彩票” 关键词中，找到了有将近 600 个关于彩票的 app。</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%85%B3%E4%BA%8E%E5%BD%A9%E7%A5%A8%E7%9A%84%20App%20%E5%BA%94%E7%94%A8%E8%BF%91%20600%20%E4%B8%AA%EF%BC%88%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90%20appannie%20%EF%BC%89.png" alt="彩票 app"></p>
+<p>因此从中选择下面几款具有代表性的 app ，进行产品分析。</p>
+<table>
+<thead>
+<tr>
+<th>产品名称</th>
+<th>App Icon</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>天天中彩票</td>
+<td><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%A4%A9%E5%A4%A9%E4%B8%AD%E5%BD%A9%E7%A5%A8icon.png" alt="天天中彩票icon"></td>
+<td>　根据“天眼查”上获得的企业信息，其著作权属于海南天天众彩科技有限公司,然而它的大股东其实是腾讯，出资比例 19.9%</td>
+</tr>
+<tr>
+<td>网易彩票</td>
+<td><img src="http://p1ceh5usj.bkt.clouddn.com/%E7%BD%91%E6%98%93%E5%BD%A9%E7%A5%A8icon.png" alt="网易彩票icon"></td>
+<td>网易官方出品 ，拥有网易的官方流量</td>
+</tr>
+<tr>
+<td>500 彩票</td>
+<td><img src="http://p1ceh5usj.bkt.clouddn.com/500%20%E5%BD%A9%E7%A5%A8icon.png" alt="500 彩票icon"></td>
+<td>互联网彩票鼻祖，第一家彩票上市的公司</td>
+</tr>
+</tbody>
+</table>
+<p>选取的三款产品中，他们的市场排名和知名度上还是比较高的，先来看下面两张分析图：</p>
+<p>(1) 2017 年 App Store 排名对比图（数据来源于 ASO100）</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/App%20Store%20%E6%8E%92%E5%90%8D%E5%AF%B9%E6%AF%94.png" alt="App Store 排名对比"></p>
+<p>(2) 2017 年 Android 应用市场下载量对比图（数据来源于酷传）</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/Android%20%E5%BA%94%E7%94%A8%E5%B8%82%E5%9C%BA%E4%B8%8B%E8%BD%BD%E9%87%8F%E5%AF%B9%E6%AF%94.png" alt="Android 应用市场下载量对比"></p>
+<p>通常下载量，注册数这些数据除了官方给的，其余渠道来源的都是未必准确的，但是这些数据还是有一定的价值的。我们可以通过这些数据分析一下趋势，可见，这类产品的下载量在近一年里还是不停的上涨的。无论是 Android 还是 iOS，天天中彩票在这几个产品中还是一直处于领先的地位，且在相关的领域中，排名还是相对靠前的。这也不意外，毕竟天天中彩票背后是腾讯，腾讯这个名号，不仅仅给这款产品输入流量的血液，还给用户有一种天然的信任感。这是互联网彩票最缺的。最为特色的是，它有自己独特的微信公众号。这个公众号带来的价值非同凡可。</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/%E5%A4%A9%E5%A4%A9%E4%B8%AD%E5%BD%A9%E7%A5%A8%E5%85%AC%E4%BC%97%E5%8F%B7.jpg" alt="天天中彩票公众号"></p>
+<p>然后我们看看这几款产品的界面：</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E7%95%8C%E9%9D%A2%E5%AF%B9%E6%AF%94.png" alt="界面对比"></p>
+<p>总的来看，3 款产品设计色彩基本是一致的，设计的基础色调与彩票中奖相关。所以，大多都以红为基调，其次以白色为底，各种红包，金钱袋，元宝图标随处可见，给人一种金钱视觉上的冲击。这类产品的设计基本就是这个样式的了，毕竟这种产品要承载的内容太多了。</p>
+<p>到功能了，下面是三款产品之间的功能对比图：</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E5%8A%9F%E8%83%BD%E5%AF%B9%E6%AF%94.png" alt="功能对比"></p>
+<p>从功能上来看，作为彩票 app ，主要功能肯定是彩票咨询和购彩了，可是 500 彩票 App 是没法充值购彩的，可能之前因为政策原因关闭了这个功能，目前还没有打开。而其余的两款都是可以进行线上购彩的。注意喔，是可以真实线上购彩及兑奖。下面是我购买的截图：</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E8%B4%AD%E5%BD%A9%E6%88%AA%E5%9B%BE.jpg" alt="购彩截图"></p>
+<p>其次，基本都会加入增加用户趣味性，增加用户交互的功能。比如赛事中心，赛事直播，用户也可以评论点评，增加用户的互动性，也能激发用户的好胜心。当然像天天中彩票那样，不仅增加了用户跟平台之间的互动，还增加了用户与用户之间的互动，可以把彩票赠送给他人，那么别人就拥有了该彩票，将彩票赋予了礼物的特性，增加了用户与用户之间的互动，还能增加传播，一举两得。</p>
+<p>总得来说，互联网彩票产品都是在满足用户购彩的基本需求上，增加各种社交属性，打造购彩场景，来满足用户的好胜心，让用户相信中彩的是自己。当然，想增加用户粘性，各种红包补贴，用户与用户之间的交流都是必可可少的。</p>
+<p>上面描述的基本都是基于前端和需求来的，现在简单介绍基本的后台功能，当然可以根据自己产品的特色进行增删改除，还是那句话，万变不离其宗。管理后台基本的功能可以看下下图：</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E7%AE%A1%E7%90%86%E5%90%8E%E5%8F%B0.png" alt="后台"></p>
+<h1 id="互联网彩票模式其实不赚钱"><a href="#互联网彩票模式其实不赚钱" class="headerlink" title="互联网彩票模式其实不赚钱"></a>互联网彩票模式其实不赚钱</h1><p>基本的互联网彩票产品就是这个模型了，现在应该考虑和思考的是盈利问题。虽然看起来会让有些人觉得很俗，可这是每个企业不可忽略的问题。</p>
+<p>互联网彩票业其实只是一个销售发行渠道，就如实体店、自助终端一样的，换句话说，网络彩票，只是代售渠道，任何一家网站和公司都没有自己合法的设计发行资格。所以大多数的互联网彩票都是代理级别，怎么理解呢？看下图：</p>
+<p><img src="http://p1ceh5usj.bkt.clouddn.com/chanpin/caipiao/%E4%BA%92%E8%81%94%E7%BD%91%E5%BD%A9%E7%A5%A8%E6%9E%B6%E6%9E%84.png" alt="互联网彩票架构"></p>
+<p>通常互联网彩票想丰富本身的彩种，都会接多家代理，为什么呢？因为接多家代理一方面可以方便来回切换，至于为什么要切换，无非是保证两点，第一，用户正常购彩，一家有问题了，立刻切到另一家；第二，控制风险，至于为什么，这里就不展开了。当然，接多家代理还有一点就是可以丰富彩种，上面也提了一下，主要是因为每个地方有不同的地方彩，也有不同的高频彩，所以接多家，能完善彩种。</p>
+<p>到重点了，盈利问题。彩票的总发行费用只占销售额的 15%，还包括两大彩票中心的运营成本，其实网络彩票的可能拿到的利润极低，只能占据销售额的 5-7% ，甚至更低。利润其实就是跟那些实体店的彩票销售点一只的。当然，每个地方利润不一致的，不过基本都是在这个范围内了。</p>
+<p>互联网彩票而且还有极大的风险，就是牌照问题。按照惯例，互联网彩票业有一个牌照的预期，牌照出来之前，爱怎么玩怎么玩，但是一旦牌照出来，拿不到牌照怎么办？所以这个风险导致了并不是所有的公司都敢在这个方向上投入。目前只有两家网站是被批准销售彩票的（2012 年 9 月，财政部批准中体彩中心委托中体彩彩票运营管理有限公司、深圳市易讯天空网络技术有限公司开展互联网代理销售体育彩票业务试点工作），前者即中国体彩网，后者为 500 彩票网）</p>
+<p>说白了，如果你有足够的流量用户，像天天中彩票那些，积少成多，利润还是相当的可观的，而且有了流量，可以开展的业务也会增多了，那么变现就不会是什么问题了。可是根据我个人的观察，应用市场是的大多是的互联网彩票并不是这种级别的，对于他们来说，互联网彩票不仅低利润，还高风险。为什么还那么多人，这么多公司想进入这个领域呢？</p>
+<h1 id="深入探索互联网彩票"><a href="#深入探索互联网彩票" class="headerlink" title="深入探索互联网彩票"></a>深入探索互联网彩票</h1><p>本人探索这个领域一个月多，不仅仅是技术实现，还有整个商业模式。发现了很多互联网彩票根本不在乎牌照，也不会说赚不到钱，那是因为有 “吃票” 存在。可以不夸张的说，互联网彩票把 “吃票” 可以表现的完美无瑕。</p>
+<p>当然，你可以把这种看作是灰色地带吧。还有一种就是黑色地带了，纯私彩的。这种可以说千万别涉及，无论是用户还是商家。</p>
+<p>这部分不进行开展下去了，只能感慨一下。</p>
+<p>打开微信扫一扫，关注微信公众号：</p>
+<p><img src="http://twowater.com.cn/images/20171204192251900.gif" alt="微信公众号"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/20171204192251900.gif" alt="两点水 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/26/草根学Python（十四）一步一步了解正则表达式/" rel="next" title="草根学Python（十四） 一步一步了解正则表">
+                <i class="fa fa-chevron-left"></i> 草根学Python（十四） 一步一步了解正则表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="uyan_frame"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="两点水" />
+            
+              <p class="site-author-name" itemprop="name">两点水</p>
+              <p class="site-description motion-element" itemprop="description">草根开发者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="http://img.blog.csdn.net/20171204192251900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvVHdvX1dhdGVy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" target="_blank" title="微信公众号">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微信公众号</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/TwoWater" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://twowater.com.cn" target="_blank" title="博客">
+                    
+                      <i class="fa fa-fw fa-globe"></i>博客</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/liangdianshui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/two_water" target="_blank" title="CSDN">
+                    
+                      <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/8ec863a03f4f" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-globe"></i>简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58d8834f0ce46300570d3582" target="_blank" title="掘金">
+                    
+                      <i class="fa fa-fw fa-globe"></i>掘金</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#行业背景"><span class="nav-number">1.</span> <span class="nav-text">行业背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#市场分析"><span class="nav-number">2.</span> <span class="nav-text">市场分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产品分析"><span class="nav-number">3.</span> <span class="nav-text">产品分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#互联网彩票模式其实不赚钱"><span class="nav-number">4.</span> <span class="nav-text">互联网彩票模式其实不赚钱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入探索互联网彩票"><span class="nav-number">5.</span> <span class="nav-text">深入探索互联网彩票</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">两点水</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2150773"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
